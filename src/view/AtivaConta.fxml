@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="333.0" prefWidth="520.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.AtivaContaController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="333.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="524.0" />
+      <Label layoutX="229.0" layoutY="73.0" text="Insira o código enviado no seu email" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
+         </font></Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="333.0" layoutX="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="248.0" layoutX="21.0" layoutY="42.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="126.0" />
+      <ImageView fx:id="imgEssencial" fitHeight="127.0" fitWidth="133.0" layoutX="405.0" layoutY="205.0" opacity="0.05" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../BackgroundEssenciAll/EssenciAll2.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="textCodigo" focusColor="#14fff3" labelFloat="true" layoutX="234.0" layoutY="131.0" prefHeight="25.0" prefWidth="195.0" promptText="Código" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
+         </font>
+      </JFXTextField>
+      <JFXButton layoutX="343.0" layoutY="205.0" onAction="#ativar" prefHeight="27.0" prefWidth="153.0" style="-fx-background-color: transparent; -fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Ativar" textFill="WHITE" />
+      <JFXButton layoutX="168.0" layoutY="205.0" onAction="#enviar" style="-fx-background-color: transparent; -fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Enviar código novamente" textFill="WHITE" />
+      <ImageView fx:id="imgVoltar" fitHeight="37.0" fitWidth="34.0" layoutX="61.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../left-arrow-angle.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnVoltar" layoutX="49.0" layoutY="145.0" onAction="#voltar" prefHeight="45.0" prefWidth="54.0" text=" " textFill="WHITE" />
+   </children>
+</AnchorPane>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="471.0" prefWidth="680.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.TelaempresasController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="478.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="146.0" />
+      <ImageView fx:id="imgFundo" fitHeight="497.0" fitWidth="610.0" layoutX="-226.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/NovosPerfume/massa.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="478.0" layoutX="146.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="533.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="24.0" layoutX="146.0" layoutY="105.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="533.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="39.0" layoutX="146.0" layoutY="67.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="533.0" />
+      <Label layoutX="151.0" layoutY="23.0" text="Selecione as marcas que voce trabalha" textFill="WHITE">
+         <font>
+            <Font name="Bank Gothic Light BT" size="24.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="ImgAvon" fitHeight="94.0" fitWidth="124.0" layoutX="169.0" layoutY="150.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Avon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgEudora" fitHeight="94.0" fitWidth="122.0" layoutX="169.0" layoutY="257.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Eudora.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgHinode" fitHeight="101.0" fitWidth="124.0" layoutX="165.0" layoutY="362.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/hinode.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgLaqua" fitHeight="101.0" fitWidth="124.0" layoutX="325.0" layoutY="254.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Lacka.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgMary" fitHeight="101.0" fitWidth="124.0" layoutX="329.0" layoutY="365.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/MaryKay.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgNatura" fitHeight="100.0" fitWidth="116.0" layoutX="507.0" layoutY="150.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Natura.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgJequiti" fitHeight="94.0" fitWidth="116.0" layoutX="329.0" layoutY="150.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Jequiti.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgBoticario" fitHeight="94.0" fitWidth="116.0" layoutX="506.0" layoutY="257.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Boticario.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="ImgUp" fitHeight="101.0" fitWidth="124.0" layoutX="506.0" layoutY="368.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Circuloempresas/Originals/Up.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="imgCadastrar" fitHeight="24.0" fitWidth="25.0" layoutX="31.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Cadastrarr.png" />
+         </image>
+      </ImageView>
+      <JFXButton layoutX="25.0" layoutY="242.0" onAction="#cadastrar" prefHeight="30.0" prefWidth="107.0" ripplerFill="WHITE" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="     Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font></JFXButton>
+      <JFXCheckBox fx:id="ChekAvon" checkedColor="#233443" layoutX="234.0" layoutY="85.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekJequiti" checkedColor="#233443" layoutX="400.0" layoutY="85.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="CkeckNatura" checkedColor="#233443" layoutX="579.0" layoutY="85.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekBoticario" checkedColor="#233443" layoutX="579.0" layoutY="188.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekUP" checkedColor="#233443" layoutX="578.0" layoutY="296.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekMAry" checkedColor="#233443" layoutX="403.0" layoutY="296.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekLaqua" checkedColor="#233443" layoutX="402.0" layoutY="188.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekEudora" checkedColor="#233443" layoutX="232.0" layoutY="188.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXCheckBox fx:id="ChekHinode" checkedColor="#233443" layoutX="233.0" layoutY="296.0" text=" " unCheckedColor="WHITE" visible="false" />
+      <JFXButton fx:id="btnAvon" layoutX="185.0" layoutY="155.0" onAction="#selecionaAvon" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnEudora" layoutX="186.0" layoutY="263.0" onAction="#selecionaEudora" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnHinode" layoutX="185.0" layoutY="371.0" onAction="#selecionaHinode" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnJequiti" layoutX="346.0" layoutY="155.0" onAction="#selecionaJequiti" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnNatura" layoutX="522.0" layoutY="155.0" onAction="#selecionaNatura" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnLaqua" layoutX="345.0" layoutY="263.0" onAction="#selecionaLaqua" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnMary" layoutX="350.0" layoutY="373.0" onAction="#selecionaMaryKay" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnUp" layoutX="527.0" layoutY="376.0" onAction="#selecionaUp" prefHeight="78.0" prefWidth="83.0" text=" " />
+      <JFXButton fx:id="btnBoticario" layoutX="524.0" layoutY="263.0" onAction="#selecionaBoticario" prefHeight="78.0" prefWidth="83.0" text=" " />
+   </children>
+   <effect>
+      <InnerShadow />
+   </effect>
+</AnchorPane>

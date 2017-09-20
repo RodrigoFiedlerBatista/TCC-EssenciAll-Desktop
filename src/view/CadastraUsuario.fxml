@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="592.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CadastraUsuarioController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="88.0" layoutX="87.0" layoutY="109.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="505.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="82.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="592.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="462.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="89.0" />
+      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="478.0" layoutY="339.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../BackgroundEssenciAll/EssenciAll2.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="159.0" layoutY="13.0" text="Cadastrar" textFill="WHITE">
+         <font>
+            <Font name="Bank Gothic Light BT" size="32.0" />
+         </font></Label>
+      <ImageView fx:id="imagemIconeSair" fitHeight="34.0" fitWidth="26.0" layoutX="31.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../Icones/left-arrow-angle.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnVoltar" layoutX="25.0" layoutY="212.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
+      <ImageView fx:id="imagemPerfil" fitHeight="116.0" fitWidth="105.0" layoutX="159.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../icones+/user.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="218.0" prefHeight="25.0" prefWidth="219.0" promptText="Login" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="258.0" prefHeight="25.0" prefWidth="219.0" promptText="Senha" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font></JFXPasswordField>
+      <JFXPasswordField fx:id="textSenha2" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="299.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmar Senha" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font></JFXPasswordField>
+      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="339.0" prefHeight="25.0" prefWidth="219.0" promptText="Email" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXRadioButton fx:id="checkRevendedor" layoutX="159.0" layoutY="400.0" text="Revendedor" textFill="WHITE">
+         <font>
+            <Font name="Bank Gothic Medium BT" size="12.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXRadioButton fx:id="checkRevendedor1" layoutX="299.0" layoutY="400.0" text="Cliente" textFill="WHITE">
+         <font>
+            <Font name="Bank Gothic Medium BT" size="12.0" />
+         </font>
+      </JFXRadioButton>
+      <JFXButton layoutX="432.0" layoutY="298.0" onAction="#cadastra" prefHeight="27.0" prefWidth="105.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Cadastrar" textFill="WHITE" />
+      <JFXButton fx:id="btnImagem" layoutX="276.0" layoutY="159.0" onAction="#trocarImagem" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text=" Escolher Imagem" textFill="WHITE" />
+   </children>
+</AnchorPane>

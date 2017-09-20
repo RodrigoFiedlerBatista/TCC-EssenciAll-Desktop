@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="480.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.HomeRevendedorController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="480.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="640.0" />
+      <Label layoutX="282.0" layoutY="30.0" text="Revendedor" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="33.0" />
+         </font></Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="480.0" layoutX="24.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="173.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="344.0" layoutX="21.0" layoutY="66.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="180.0" />
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="21.0" layoutY="177.0" onAction="#contaRevendedor" prefHeight="18.0" prefWidth="180.0" style="-fx-background-color: #233443;" text="          Home" textFill="WHITE">
+         <graphic>
+            <ImageView fx:id="imgConta" fitHeight="18.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../Icones/ContaBranco.png" />
+               </image>
+            </ImageView>
+         </graphic></JFXButton>
+   </children>
+</AnchorPane>
