@@ -4,10 +4,11 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -30,6 +31,9 @@ public class AtivaContaController implements Initializable {
     
     @FXML
     private JFXButton btnVoltar;
+    
+    @FXML
+    private JFXTextField textEmail;
 
     @FXML
     void enviar(ActionEvent event) {
@@ -43,6 +47,48 @@ public class AtivaContaController implements Initializable {
         tcc.iniciaStage("AtivaConta.fxml");
         alertas.emailEnviado();
         
+    }
+    
+    @FXML
+    void mudarEmail(ActionEvent event) {
+        Alertas alertas = new Alertas();
+        if (validaEmail()) {
+            Usuario.atualizaUsuarios();
+            boolean foi = true;
+            for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
+                if (Usuario.getUsuarios().get(i).getEmail().equals(textEmail.getText())) {
+                    alertas.erroCadastroUsuarioEmailExistente();
+                    foi = false;
+                }
+            }
+            if (foi) {
+                Email email = new Email();
+                TCC tcc = new TCC();
+                UsuarioDAO usuario = new UsuarioDAO();
+                CriptografiaOtp criptografia = new CriptografiaOtp();
+                String codigo = criptografia.genCodigo();
+                usuario.atualizaEmail(textEmail.getText(), codigo);
+                tcc.fechaTela();
+                tcc.iniciaStage("Email.fxml");
+                email.enviaEmail(textEmail.getText(), codigo);  
+                tcc.fechaTela();
+                tcc.iniciaStage("Login.fxml");
+                alertas.emailEnviado();
+            }
+            
+        } else {
+            alertas.erroCadastroUsuarioEmail();
+        }
+    }
+    
+    private boolean validaEmail(){
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(textEmail.getText());
+        if (m.find() && m.group().equals(textEmail.getText())) {
+            return true;
+        } else {
+            return false;
+        }
     }
     
     @FXML
@@ -63,9 +109,7 @@ public class AtivaContaController implements Initializable {
             tcc.iniciaStage("Login.fxml");
             alerta.ativouConta();
         } else {
-            
             alerta.codigoIncorreto();
-            
         }
     }
     
@@ -91,6 +135,7 @@ public class AtivaContaController implements Initializable {
         iniciaImagem();
         acaoBotoes();
         textCodigo.setStyle("-fx-text-fill: #ffffff; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        textEmail.setStyle("-fx-text-fill: #ffffff; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }    
     
 }

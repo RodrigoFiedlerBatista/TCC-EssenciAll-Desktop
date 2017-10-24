@@ -195,62 +195,75 @@ public class TelaempresasController implements Initializable {
         checaSelecionados();
     }
     
+    private boolean checaMarcas(){
+        if (ChekBoticario.isSelected() == false && ChekUP.isSelected() == false && ChekMAry.isSelected() == false && ChekLaqua.isSelected() == false && CkeckNatura.isSelected() == false && ChekJequiti.isSelected() == false && ChekHinode.isSelected() == false && ChekEudora.isSelected() == false && ChekAvon.isSelected() == false) {
+            Alertas alertas = new Alertas();
+            alertas.erroCadastroMarcas();
+            return false;
+        } else {
+            return true;
+        }    
+    }
+    
     @FXML
     void cadastrar(ActionEvent event) {
         Revende revende = new Revende();
         RevendeDAO revendeDAO = new RevendeDAO();
         TCC tcc = new TCC();
         Alertas alertas = new Alertas();
-        if (this.ChekEudora.isSelected()) {
-            revende.setEudora(true);
-        } else {
-            revende.setEudora(false);
+        if (checaMarcas()) {
+            if (this.ChekEudora.isSelected()) {
+                revende.setEudora(true);
+            } else {
+                revende.setEudora(false);
+            }
+            if (this.ChekAvon.isSelected()) {
+                revende.setAvon(true);
+            } else {
+                revende.setAvon(false);
+            }
+            if (this.ChekBoticario.isSelected()) {
+                revende.setBoticario(true);
+            } else {
+                revende.setBoticario(false);
+            }
+            if (this.ChekHinode.isSelected()) {
+                revende.setHinode(true);
+            } else {
+                revende.setHinode(false);
+            }
+            if (this.ChekJequiti.isSelected()) {
+                revende.setJequiti(true);
+            } else {
+                revende.setJequiti(false);
+            }
+            if (this.ChekLaqua.isSelected()) {
+                revende.setLaqua(true);
+            } else {
+                revende.setLaqua(false);
+            }
+            if (this.ChekMAry.isSelected()) {
+                revende.setMary(true);
+            } else {
+                revende.setMary(false);
+            }
+            if (this.ChekUP.isSelected()) {
+                revende.setUp(true);
+            } else {
+                revende.setUp(false);
+            }
+            if (this.CkeckNatura.isSelected()) {
+                revende.setNatura(true);
+            } else {
+                revende.setNatura(false);
+            }
+            revendeDAO.addRevende(revende);
+
+            tcc.fechaTela();
+            tcc.iniciaStage("Login.fxml");
+            alertas.revendedorCadastrado();
         }
-        if (this.ChekAvon.isSelected()) {
-            revende.setAvon(true);
-        } else {
-            revende.setAvon(false);
-        }
-        if (this.ChekBoticario.isSelected()) {
-            revende.setBoticario(true);
-        } else {
-            revende.setBoticario(false);
-        }
-        if (this.ChekHinode.isSelected()) {
-            revende.setHinode(true);
-        } else {
-            revende.setHinode(false);
-        }
-        if (this.ChekJequiti.isSelected()) {
-            revende.setJequiti(true);
-        } else {
-            revende.setJequiti(false);
-        }
-        if (this.ChekLaqua.isSelected()) {
-            revende.setLaqua(true);
-        } else {
-            revende.setLaqua(false);
-        }
-        if (this.ChekMAry.isSelected()) {
-            revende.setMary(true);
-        } else {
-            revende.setMary(false);
-        }
-        if (this.ChekUP.isSelected()) {
-            revende.setUp(true);
-        } else {
-            revende.setUp(false);
-        }
-        if (this.CkeckNatura.isSelected()) {
-            revende.setNatura(true);
-        } else {
-            revende.setNatura(false);
-        }
-        revendeDAO.addRevende(revende);
         
-        tcc.fechaTela();
-        tcc.iniciaStage("Login.fxml");
-        alertas.revendedorCadastrado();
         
     }
     

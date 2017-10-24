@@ -122,6 +122,27 @@ public class UsuarioDAO {
         }
     }
     
+    public void atualizaSenha(String senha, String chave, String email){
+        String sql = "update usuario set usuario_senha = ?, chave_senha = ? where id_usuario = ?";
+        Usuario.atualizaUsuarios();
+        int usuario = 0;
+        for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
+            if (Usuario.getUsuarios().get(i).getEmail().equals(email)) {
+                usuario = Usuario.getUsuarios().get(i).getId_usuario();
+            }
+        }
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, senha);
+            stmt.setString(2, chave);
+            stmt.setInt(3, usuario);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void atualizaEmail(String email, String codigo){
         String sql = "update usuario set email = ?, ativada = false, codigo = ? where id_usuario = ?";
         ConnectionFactory con = new ConnectionFactory();

@@ -5,6 +5,22 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void senhaEnviada(){
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Recuperar Senha");
+        alerta.setHeaderText("Senha");
+        alerta.setContentText("Sua nova senha foi enviada em seu email!");
+        alerta.show();
+    }
+    
+    public void erroEmailNaoEncontrado(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Email");
+        alerta.setContentText("O email informado não está cadastrado.");
+        alerta.show();
+    }
+    
     public void revendedorCadastrado(){
         Alert alerta = new Alert(AlertType.INFORMATION);
         alerta.setTitle("Cadastro");
@@ -130,6 +146,14 @@ public class Alertas {
         alerta.setTitle("Erro");
         alerta.setHeaderText("Email");
         alerta.setContentText("O email inserido já está cadastrado!");
+        alerta.show();
+    }
+    
+    public void erroCadastroMarcas(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Cadastro");
+        alerta.setContentText("Selecione ao menos uma marca!");
         alerta.show();
     }
     

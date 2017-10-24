@@ -54,9 +54,11 @@ public class LoginController implements Initializable {
     @FXML
     private JFXButton botaoLogin;
     
-     @FXML
+    @FXML
     void novasenha(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("NovaSenha.fxml");
     }
     
     private static boolean logou = false;
@@ -67,31 +69,31 @@ public class LoginController implements Initializable {
         TCC tcc = new TCC();
         Alertas alerta = new Alertas();
         String senha;
-        for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-            senha = criptografia.decriptografa(Usuario.getUsuarios().get(i).getSenha(), Usuario.getUsuarios().get(i).getChaveSenha());
+        for (int j = 0; j< Usuario.getUsuarios().size(); j++) {
+            senha = criptografia.decriptografa(Usuario.getUsuarios().get(j).getSenha(), Usuario.getUsuarios().get(j).getChaveSenha());
             System.out.println(Usuario.getUsuarioLogado());
-            if (senha.equals(textSenha.getText()) && textLogin.getText().equals(Usuario.getUsuarios().get(i).getLogin())) {
+            if (senha.equals(textSenha.getText()) && textLogin.getText().equals(Usuario.getUsuarios().get(j).getLogin())) {
                 
-                if (Usuario.getUsuarios().get(i).isAtivado()) {
-                    if (Usuario.getUsuarios().get(i).isRevendedor()) {
-                        Usuario.setUsuarioLogado(i);
+                if (Usuario.getUsuarios().get(j).isAtivado()) {
+                    if (Usuario.getUsuarios().get(j).isRevendedor()) {
+                        Usuario.setUsuarioLogado(j);
                         tcc.fechaTela();
                         tcc.iniciaStage("ContaRevendedor.fxml");
                         logou = true;
                     } else {
-                        Usuario.setUsuarioLogado(i);
+                        Usuario.setUsuarioLogado(j);
                         tcc.fechaTela();
                         tcc.iniciaStage("HomeUsuario.fxml");
                         logou = true;
                     }
                 } else {
                     logou = true;
-                    Usuario.setUsuarioLogado(i);
+                    Usuario.setUsuarioLogado(j);
                     tcc.fechaTela();
                     tcc.iniciaStage("AtivaConta.fxml");
                 }
             } else {
-                System.out.println("Não deu:" + i);
+                System.out.println("Não deu:" + j);
             }
         }
         
