@@ -12,60 +12,81 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="414.0" prefWidth="592.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CadastraUsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="436.0" prefWidth="592.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CadastraUsuarioController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="88.0" layoutX="87.0" layoutY="109.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="505.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="82.0" layoutY="65.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="592.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="462.0" layoutX="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="89.0" />
-      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="478.0" layoutY="339.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="444.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="592.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.21428571428571425" startY="0.6142857142857143">
+               <stops>
+                  <Stop color="#233443" />
+                  <Stop color="#2c2c31" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="35.0" layoutX="63.0" layoutY="126.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="529.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="438.0" layoutX="1.0" layoutY="4.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="64.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="105.0" layoutX="-138.0" layoutY="-15.0" rotate="-35.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="244.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="48.0" layoutX="65.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="78.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="76.0" layoutX="63.0" layoutY="50.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="529.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="64.0" layoutX="-18.0" layoutY="380.0" rotate="-35.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0" />
+      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="478.0" layoutY="329.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../BackgroundEssenciAll/EssenciAll2.png" />
+            <Image url="@BackgroundEssenciAll/EssenciAll2.png" />
          </image>
       </ImageView>
-      <Label layoutX="159.0" layoutY="13.0" text="Cadastrar" textFill="WHITE">
+      <Label layoutX="385.0" layoutY="67.0" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="32.0" />
          </font></Label>
-      <ImageView fx:id="imagemIconeSair" fitHeight="34.0" fitWidth="26.0" layoutX="31.0" layoutY="218.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagemIconeSair" fitHeight="34.0" fitWidth="26.0" layoutX="20.0" layoutY="287.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../Icones/left-arrow-angle.png" />
+            <Image url="@BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnVoltar" layoutX="25.0" layoutY="212.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
-      <ImageView fx:id="imagemPerfil" fitHeight="116.0" fitWidth="105.0" layoutX="159.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnVoltar" layoutX="14.0" layoutY="281.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
+      <ImageView fx:id="imagemPerfil" fitHeight="116.0" fitWidth="105.0" layoutX="130.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../icones+/user.png" />
+            <Image url="@icones+/user.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="218.0" prefHeight="25.0" prefWidth="219.0" promptText="Login" unFocusColor="WHITE">
+      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="95.0" layoutY="243.0" prefHeight="25.0" prefWidth="219.0" promptText="Login" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="258.0" prefHeight="25.0" prefWidth="219.0" promptText="Senha" unFocusColor="WHITE">
+      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="95.0" layoutY="283.0" prefHeight="25.0" prefWidth="219.0" promptText="Senha" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXPasswordField>
-      <JFXPasswordField fx:id="textSenha2" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="299.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmar Senha" unFocusColor="WHITE">
+      <JFXPasswordField fx:id="textSenha2" focusColor="#14fff3" labelFloat="true" layoutX="334.0" layoutY="243.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmar Senha" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXPasswordField>
-      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="172.0" layoutY="339.0" prefHeight="25.0" prefWidth="219.0" promptText="Email" unFocusColor="WHITE">
+      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="334.0" layoutY="283.0" prefHeight="25.0" prefWidth="219.0" promptText="Email" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXRadioButton fx:id="checkRevendedor" layoutX="159.0" layoutY="400.0" text="Revendedor" textFill="WHITE">
+      <JFXRadioButton fx:id="checkRevendedor" layoutX="184.0" layoutY="344.0" text="Revendedor" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Medium BT" size="12.0" />
          </font>
       </JFXRadioButton>
-      <JFXRadioButton fx:id="checkRevendedor1" layoutX="299.0" layoutY="400.0" text="Cliente" textFill="WHITE">
+      <JFXRadioButton fx:id="checkRevendedor1" layoutX="324.0" layoutY="344.0" text="Cliente" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Medium BT" size="12.0" />
          </font>
       </JFXRadioButton>
-      <JFXButton layoutX="432.0" layoutY="298.0" onAction="#cadastra" prefHeight="27.0" prefWidth="105.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Cadastrar" textFill="WHITE" />
-      <JFXButton fx:id="btnImagem" layoutX="276.0" layoutY="159.0" onAction="#trocarImagem" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text=" Escolher Imagem" textFill="WHITE" />
+      <JFXButton layoutX="256.0" layoutY="382.0" onAction="#cadastra" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text="Cadastrar" textFill="WHITE" />
+      <JFXButton fx:id="btnImagem" layoutX="256.0" layoutY="165.0" onAction="#trocarImagem" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: white; -fx-background-radius: 2; -fx-border-radius: 2;" text=" Escolher Imagem" textFill="WHITE" />
+      <Separator layoutX="310.0" layoutY="102.0" prefWidth="200.0" />
+      <ImageView fx:id="iconeInicio" fitHeight="36.0" fitWidth="41.0" layoutX="15.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@parfume_1.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnInicio" layoutX="11.0" layoutY="142.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="105.0" layoutX="65.0" layoutY="337.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="78.0" />
    </children>
 </AnchorPane>

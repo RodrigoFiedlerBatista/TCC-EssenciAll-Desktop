@@ -62,7 +62,7 @@ public class LoginController implements Initializable {
         thread.interrupt();
     }
     
-    private static boolean logou = false;
+    private static boolean logou;
     
     @FXML
     void login(ActionEvent event) throws InterruptedException {
@@ -70,6 +70,7 @@ public class LoginController implements Initializable {
         TCC tcc = new TCC();
         Alertas alerta = new Alertas();
         String senha;
+        logou = false;
         for (int j = 0; j< Usuario.getUsuarios().size(); j++) {
             senha = criptografia.decriptografa(Usuario.getUsuarios().get(j).getSenha(), Usuario.getUsuarios().get(j).getChaveSenha());
             System.out.println(Usuario.getUsuarioLogado());
@@ -185,10 +186,8 @@ public class LoginController implements Initializable {
         Task t = new Task() {
             @Override
             protected Object call() throws Exception {
-
                 while (i < 10) {
                     Thread.sleep(4000);
-
                     switch (i) {
                         case 0:
                             img_desodorante.setImage(new Image("/imagens/PerfumeCadastrar.jpg"));
@@ -208,15 +207,10 @@ public class LoginController implements Initializable {
                         default:
                             break;
                     }
-
                 }
-
                 return null;
-                
             }
-            
         };
-        
         thread = new Thread(t);
         thread.start();
     }
@@ -228,6 +222,10 @@ public class LoginController implements Initializable {
         fade.setDuration(Duration.seconds(1.5));
         fade.setNode(node);
         fade.play();
+    }
+    
+    public void close(){
+        thread.interrupt();
     }
     
     @Override
