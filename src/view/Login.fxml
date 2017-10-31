@@ -14,20 +14,20 @@
 
 <AnchorPane id="AnchorPane" prefHeight="425.0" prefWidth="634.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.LoginController">
    <children>
-      <ImageView fx:id="img_desodorante" fitHeight="425.0" fitWidth="680.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img_desodorante" fitHeight="538.0" fitWidth="857.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../BackgroundEssenciAll/PerfumeCadastrar.jpg" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/PerfumeCadastrar.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="367.0" layoutX="172.0" layoutY="31.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="304.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="172.0" layoutY="56.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="304.0" />
-      <ImageView fx:id="imgEssencial" fitHeight="107.0" fitWidth="110.0" layoutX="282.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="403.0" layoutX="234.0" layoutY="73.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="340.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="234.0" layoutY="105.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="340.0" />
+      <ImageView fx:id="imgEssencial" fitHeight="107.0" fitWidth="110.0" layoutX="360.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../BackgroundEssenciAll/EssenciAll2.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="botaoLogin" layoutX="285.0" layoutY="255.0" onAction="#login" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #364c6e;" text="Entrar" textFill="WHITE" />
-      <ImageView fx:id="ImagemIconeCadastrar" fitHeight="38.0" fitWidth="35.0" layoutX="247.0" layoutY="332.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="botaoLogin" layoutX="363.0" layoutY="308.0" onAction="#login" prefHeight="25.0" prefWidth="78.0" style="-fx-background-color: #364c6e;" text="Entrar" textFill="WHITE" />
+      <ImageView fx:id="ImagemIconeCadastrar" fitHeight="38.0" fitWidth="35.0" layoutX="317.0" layoutY="393.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../BackgroundEssenciAll/Cadastrarr.png" />
          </image>
@@ -35,7 +35,7 @@
             <InnerShadow color="WHITE" />
          </effect>
       </ImageView>
-      <Label layoutX="192.0" layoutY="294.0" prefHeight="23.0" prefWidth="257.0" text="Não é cadastrado ainda? / Esqueceu sua senha?">
+      <Label layoutX="276.0" layoutY="349.0" prefHeight="23.0" prefWidth="257.0" text="Não é cadastrado ainda? / Esqueceu sua senha?">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font>
@@ -48,30 +48,30 @@
             </LinearGradient>
          </textFill>
       </Label>
-      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="225.0" layoutY="138.0" prefHeight="22.0" prefWidth="229.0" promptText="Login" unFocusColor="WHITE">
+      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="287.0" layoutY="188.0" prefHeight="23.0" prefWidth="257.0" promptText="Login" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXTextField>
-      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="224.0" layoutY="200.0" prefHeight="23.0" prefWidth="229.0" promptText="Senha" unFocusColor="WHITE">
+      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="286.0" layoutY="250.0" prefHeight="23.0" prefWidth="257.0" promptText="Senha" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXPasswordField>
-      <JFXButton fx:id="btnCadastrar" layoutX="238.0" layoutY="327.0" onAction="#cadastrar" prefHeight="45.0" prefWidth="52.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgLogin" fitHeight="23.0" fitWidth="22.0" layoutX="191.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnCadastrar" layoutX="308.0" layoutY="388.0" onAction="#cadastrar" prefHeight="45.0" prefWidth="52.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgLogin" fitHeight="23.0" fitWidth="22.0" layoutX="253.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../icones+/userBranco.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgSenha" fitHeight="22.0" fitWidth="22.0" layoutX="191.0" layoutY="204.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgSenha" fitHeight="22.0" fitWidth="22.0" layoutX="253.0" layoutY="254.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../icones+/keyBranco.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="ImagemIconeNovasenha" fitHeight="38.0" fitWidth="42.0" layoutX="377.0" layoutY="334.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="ImagemIconeNovasenha" fitHeight="38.0" fitWidth="42.0" layoutX="447.0" layoutY="395.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../Nova%20senhaBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnNovasenha" layoutX="370.0" layoutY="331.0" onAction="#novasenha" prefHeight="45.0" prefWidth="52.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnNovasenha" layoutX="440.0" layoutY="392.0" onAction="#novasenha" prefHeight="45.0" prefWidth="52.0" text=" " textFill="WHITE" />
    </children>
 </AnchorPane>

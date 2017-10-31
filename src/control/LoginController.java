@@ -55,16 +55,17 @@ public class LoginController implements Initializable {
     private JFXButton botaoLogin;
     
     @FXML
-    void novasenha(ActionEvent event) {
+    void novasenha(ActionEvent event) throws InterruptedException {
         TCC tcc = new TCC();
         tcc.fechaTela();
         tcc.iniciaStage("NovaSenha.fxml");
+        thread.interrupt();
     }
     
     private static boolean logou = false;
     
     @FXML
-    void login(ActionEvent event) {
+    void login(ActionEvent event) throws InterruptedException {
         CriptografiaOtp criptografia = new CriptografiaOtp();
         TCC tcc = new TCC();
         Alertas alerta = new Alertas();
@@ -80,17 +81,20 @@ public class LoginController implements Initializable {
                         tcc.fechaTela();
                         tcc.iniciaStage("ContaRevendedor.fxml");
                         logou = true;
+                        thread.interrupt();
                     } else {
                         Usuario.setUsuarioLogado(j);
                         tcc.fechaTela();
                         tcc.iniciaStage("HomeUsuario.fxml");
                         logou = true;
+                        thread.interrupt();
                     }
                 } else {
                     logou = true;
                     Usuario.setUsuarioLogado(j);
                     tcc.fechaTela();
                     tcc.iniciaStage("AtivaConta.fxml");
+                    thread.interrupt();
                 }
             } else {
                 System.out.println("Não deu:" + j);
@@ -104,16 +108,18 @@ public class LoginController implements Initializable {
     }
     
     @FXML
-    void fechar(ActionEvent event) {
+    void fechar(ActionEvent event) throws InterruptedException {
         TCC tcc = new TCC();
         tcc.fechaTela();
+        thread.interrupt();
     }
     
     @FXML
-    void cadastrar(ActionEvent event) {
+    void cadastrar(ActionEvent event) throws InterruptedException {
         TCC tcc = new TCC();
         tcc.fechaTela();
         tcc.iniciaStage("CadastraUsuario.fxml");
+        thread.interrupt();
     }
     
     private void iniciaImagem(){
@@ -173,6 +179,7 @@ public class LoginController implements Initializable {
     }
     
     int i = 0;
+    Thread thread;
 
     private void task() {
         Task t = new Task() {
@@ -210,7 +217,7 @@ public class LoginController implements Initializable {
             
         };
         
-        Thread thread = new Thread(t);
+        thread = new Thread(t);
         thread.start();
     }
     
