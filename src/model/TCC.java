@@ -1,6 +1,7 @@
 package model;
 
 import control.LoginController;
+import control.TelaempresasController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -45,11 +46,16 @@ public class TCC extends Application {
         if (tela.equals("Login.fxml")) {
             LoginController login = loader.getController();
             stage.setOnHidden(e -> {
-                login.close();
+                login.close(); 
                 //Platform.exit();
             });
         }
-        
+        if (tela.equals("Telaempresas.fxml")) {
+            TelaempresasController empresas = loader.getController();
+            stage.setOnHidden(e -> {
+                
+            });
+        }
         stage.show();
         palco = stage;
     }

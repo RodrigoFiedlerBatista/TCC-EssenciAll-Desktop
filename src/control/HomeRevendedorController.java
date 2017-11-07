@@ -5,6 +5,8 @@ import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -57,7 +59,7 @@ public class HomeRevendedorController implements Initializable {
     @FXML
     private ImageView imgHome;
     
-    private static String url;
+    private static String url = "";
     
     @FXML
     void trocarImagem(ActionEvent event) {
@@ -87,18 +89,24 @@ public class HomeRevendedorController implements Initializable {
             trocou = true;
         }
         if (!textEmail.getText().equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getEmail())) {
-            Email email = new Email();
-            TCC tcc = new TCC();
-            CriptografiaOtp criptografia = new CriptografiaOtp();
-            String codigo = criptografia.genCodigo();
-            usuario.atualizaEmail(textEmail.getText(), codigo);
-            tcc.fechaTela();
-            tcc.iniciaStage("Email.fxml");
-            email.enviaEmail(textEmail.getText(), codigo);  
-            tcc.fechaTela();
-            tcc.iniciaStage("HomeRevendedor.fxml");
-            System.out.println(codigo);
-            trocou = true;
+            
+            if (validaEmail()) {
+                Email email = new Email();
+                TCC tcc = new TCC();
+                CriptografiaOtp criptografia = new CriptografiaOtp();
+                String codigo = criptografia.genCodigo();
+                usuario.atualizaEmail(textEmail.getText(), codigo);
+                tcc.fechaTela();
+                tcc.iniciaStage("Email.fxml");
+                email.enviaEmail(textEmail.getText(), codigo);  
+                tcc.fechaTela();
+                tcc.iniciaStage("HomeRevendedor.fxml");
+                System.out.println(codigo);
+                trocou = true;
+            } else {
+                alertas.erroCadastroUsuarioEmail();
+            }
+            
         }
         if (!url.equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem())) {
             gerencia.deleta(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem());
@@ -122,6 +130,16 @@ public class HomeRevendedorController implements Initializable {
             Usuario.atualizaUsuarios();
         } else {
             alertas.informacoesInalteradas();
+        }
+    }
+    
+    private boolean validaEmail(){
+        Pattern p = Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z]+)+");
+        Matcher m = p.matcher(textEmail.getText());
+        if (m.find() && m.group().equals(textEmail.getText())) {
+            return true;
+        } else {
+            return false;
         }
     }
 

@@ -1,11 +1,15 @@
 package control;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import model.Alertas;
 import model.CriptografiaOtp;
 import model.Email;
@@ -16,7 +20,16 @@ import model.jdbc.UsuarioDAO;
 public class NovaSenhaController implements Initializable {
 
     @FXML
-    private TextField textEmail;
+    private ImageView iconeInicio;
+
+    @FXML
+    private JFXButton btnInicio;
+
+    @FXML
+    private JFXTextField textEmail;
+
+    @FXML
+    private ImageView fundo;
 
     @FXML
     void enviar(ActionEvent event) {
@@ -48,9 +61,21 @@ public class NovaSenhaController implements Initializable {
         
     }
     
+    @FXML
+    void voltar(ActionEvent event) {
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("Login.fxml");
+    }
+    
+    private void iniciaImagem(){
+        fundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\oi.jpg"));
+        iconeInicio.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        iniciaImagem();
     }    
     
 }
