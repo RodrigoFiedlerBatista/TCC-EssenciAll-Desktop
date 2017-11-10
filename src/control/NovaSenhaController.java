@@ -7,7 +7,6 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -68,6 +67,18 @@ public class NovaSenhaController implements Initializable {
         tcc.iniciaStage("Login.fxml");
     }
     
+    private void acaoBotoes(){
+        btnInicio.setOnMouseEntered(event -> {
+            iconeInicio.setScaleX(1.1);
+            iconeInicio.setScaleY(1.1);
+        });
+        btnInicio.setOnMouseExited(event -> {
+            iconeInicio.setScaleX(1.0);
+            iconeInicio.setScaleY(1.0);
+        });
+        
+    }
+    
     private void iniciaImagem(){
         fundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\oi.jpg"));
         iconeInicio.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
@@ -76,6 +87,7 @@ public class NovaSenhaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         iniciaImagem();
+        acaoBotoes();
     }    
     
 }

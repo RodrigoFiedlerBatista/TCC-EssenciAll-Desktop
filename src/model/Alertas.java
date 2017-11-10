@@ -5,6 +5,46 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void erroInformacoesProduto(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro Cadastro");
+        alerta.setHeaderText("Informações");
+        alerta.setContentText("Preencha todos os campos para cadastrar o produto!");
+        alerta.show();
+    }
+    
+    public void erroValorQuantidadeProduto(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro Cadastro");
+        alerta.setHeaderText("Informações");
+        alerta.setContentText("Digite somente números nos campos Valor e Quantidade!");
+        alerta.show();
+    }
+    
+    public void produtoCadastrado(){
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Cadastro Produto");
+        alerta.setHeaderText("Produto");
+        alerta.setContentText("Produto Cadastrado com Sucesso!");
+        alerta.show();
+    }
+    
+    public void erroDescricaoProduto(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro Cadastro");
+        alerta.setHeaderText("Descrição do Produto");
+        alerta.setContentText("Digite uma descrição com menos de 200 caracteres!");
+        alerta.show();
+    }
+    
+    public void erroNomeProduto(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro Cadastro");
+        alerta.setHeaderText("Nome do Produto");
+        alerta.setContentText("Esse nome já existe, digite um nome com menos de 100 caracteres!");
+        alerta.show();
+    }
+    
     public void senhaEnviada(){
         Alert alerta = new Alert(AlertType.INFORMATION);
         alerta.setTitle("Recuperar Senha");

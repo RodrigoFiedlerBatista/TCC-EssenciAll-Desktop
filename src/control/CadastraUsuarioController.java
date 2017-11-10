@@ -198,8 +198,8 @@ public class CadastraUsuarioController implements Initializable {
         });
         
         btnImagem.setOnMouseEntered(event ->{
-            imagemPerfil.setScaleX(1.0);
-            imagemPerfil.setScaleY(1.0);
+            imagemPerfil.setScaleX(1.1);
+            imagemPerfil.setScaleY(1.1);
         });
         
         btnImagem.setOnMouseExited(event ->{

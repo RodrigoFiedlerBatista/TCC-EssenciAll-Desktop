@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package control;
 
 import com.jfoenix.controls.JFXButton;
@@ -15,17 +10,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.TCC;
 
-/**
- * FXML Controller class
- *
- * @author Aluno
- */
 public class ContaRevendedorController implements Initializable {
 
-    /**
-     * Initializes the controller class.
-     */
-    
     @FXML
     private ImageView imgRevendedores;
 
@@ -88,6 +74,7 @@ public class ContaRevendedorController implements Initializable {
         
         btnEstoque.setOnMouseClicked(event -> {
         TCC tcc = new TCC();
+        tcc.fechaTela();
         tcc.iniciaStage("Estoque.fxml");
          
         });
@@ -122,7 +109,6 @@ public class ContaRevendedorController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         iniciaImagem();
         telaEstoque();
         telaProdutos();

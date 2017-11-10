@@ -15,6 +15,7 @@ public class Email {
     public void enviaEmail(String usuario, String codigo) {
 
         new Thread() {
+            
             @Override
             public void run(){
                 Properties props = new Properties();

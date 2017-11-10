@@ -5,12 +5,12 @@ import control.TelaempresasController;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import model.jdbc.UsuarioDAO;
 
 public class TCC extends Application {
     
@@ -53,7 +53,8 @@ public class TCC extends Application {
         if (tela.equals("Telaempresas.fxml")) {
             TelaempresasController empresas = loader.getController();
             stage.setOnHidden(e -> {
-                
+                UsuarioDAO usuario = new UsuarioDAO();
+                usuario.deletaUsuario(Usuario.getUsuarioLogado());
             });
         }
         stage.show();

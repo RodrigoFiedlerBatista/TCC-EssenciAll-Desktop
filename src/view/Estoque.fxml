@@ -6,6 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.EstoqueController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="353.0" prefWidth="531.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.EstoqueController">
+   <children>
+      <Button layoutX="286.0" layoutY="164.0" mnemonicParsing="false" onAction="#cadastraProduto" text="Cadastrar Produto" />
+   </children>
 </AnchorPane>

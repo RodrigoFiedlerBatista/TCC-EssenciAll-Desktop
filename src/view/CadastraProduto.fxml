@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.CadastraProdutoController">
+   <children>
+      <TextField fx:id="textNome" layoutX="397.0" layoutY="92.0" promptText="Nome" />
+      <TextArea fx:id="textDescricao" layoutX="372.0" layoutY="128.0" prefHeight="100.0" prefWidth="200.0" promptText="Descricao" />
+      <TextField fx:id="textQuantidade" layoutX="398.0" layoutY="244.0" promptText="Quantidade em estoque" />
+      <TextField fx:id="textValor" layoutX="397.0" layoutY="283.0" promptText="Valor em Reais" />
+      <ImageView fx:id="imgProduto" fitHeight="150.0" fitWidth="150.0" layoutX="28.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true" />
+      <Button layoutX="228.0" layoutY="136.0" mnemonicParsing="false" onAction="#trocarImagem" text="Trocar Imagem" />
+      <Button layoutX="438.0" layoutY="330.0" mnemonicParsing="false" onAction="#cadastrar" text="Cadastrar" />
+   </children>
+</AnchorPane>
