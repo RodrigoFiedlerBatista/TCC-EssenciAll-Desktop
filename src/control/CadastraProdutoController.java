@@ -17,7 +17,9 @@ import model.GerenciaArquivos;
 import model.GerenciaImagem;
 import model.Produto;
 import model.TCC;
+import model.Usuario;
 import model.jdbc.ProdutoDAO;
+import model.jdbc.UsuarioDAO;
 
 public class CadastraProdutoController implements Initializable {
     
@@ -68,14 +70,16 @@ public class CadastraProdutoController implements Initializable {
             ProdutoDAO produtoDAO = new ProdutoDAO();
             TCC tcc = new TCC();
             Alertas alertas = new Alertas();
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
             GerenciaArquivos gerenciaArquivos = new GerenciaArquivos();
             produto.setDescricao(textDescricao.getText());
             produto.setNome(textNome.getText());
             produto.setQuantidade(Integer.valueOf(textQuantidade.getText()));
-            produto.setUrls(url);
+            produto.setUrls(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             produto.setValor(Float.valueOf(textValor.getText()));
             produtoDAO.addProduto(produto);
-            gerenciaArquivos.copiaCola(url, System.getProperty("user.dir") + "\\src\\imagens\\produto\\" + textNome.getText() + ".png");
+            gerenciaArquivos.copiaCola(url, System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             tcc.fechaTela();
             tcc.iniciaStage("Estoque.fxml");
             alertas.produtoCadastrado();
@@ -110,6 +114,10 @@ public class CadastraProdutoController implements Initializable {
     private void iniciaImagem() {
         imgProduto.setImage(new Image("file:///" + url));
         imagemIconeSair.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+        textNome.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        textQuantidade.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        textDescricao.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        textValor.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }
     
     private void acaoBotoes() {

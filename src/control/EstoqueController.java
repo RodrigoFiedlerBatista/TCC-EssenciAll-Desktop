@@ -6,6 +6,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,6 +76,8 @@ public class EstoqueController implements Initializable {
     private JFXButton editProduto;
     
     private Produto produto;
+    
+    private ObservableList<Produto> produtos;
 
     @FXML
     void voltar(ActionEvent event) {
@@ -87,8 +90,8 @@ public class EstoqueController implements Initializable {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
-        ObservableList<Produto> produtos = produtoDAO.selectProduto();
-        ObservableList<Produto> produtos2 = produtoDAO.selectProduto();
+        produtos = produtoDAO.selectProduto();
+        ObservableList<Produto> produtos2 = FXCollections.observableArrayList();
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
                 ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
@@ -100,6 +103,7 @@ public class EstoqueController implements Initializable {
             
         }
         tbProduto.setItems(produtos2);
+        produtos = produtos2;
         colNome.setCellValueFactory(new PropertyValueFactory("nome"));
         colImagem.setCellValueFactory(new PropertyValueFactory("imagem"));
         colPreco.setCellValueFactory(new PropertyValueFactory("valor"));
@@ -140,11 +144,32 @@ public class EstoqueController implements Initializable {
                 if (b == alerta.getButtonTypes().get(0)) {
                     GerenciaArquivos gerencia = new GerenciaArquivos();
                     ProdutoDAO produtoDAO = new ProdutoDAO();
+                    UsuarioDAO usuarioDAO = new UsuarioDAO();
+                    ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
                     produtoDAO.removeProduto(produto.getId_produto());
-                    gerencia.deleta(System.getProperty("user.dir") + "\\src\\imagens\\produto\\" + produto.getNome() + ".png");
+                    gerencia.deleta(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + produto.getNome() + ".png");
                     atualizaTabela();
                 }
             });
+        });
+        editProduto.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            EditarProdutoController.setProduto(produto);
+            tcc.fechaTela();
+            tcc.iniciaStage("EditarProduto.fxml");
+        });
+    }
+    
+    private void pesquisaTabela(){
+        textPesquisa.setOnKeyReleased(event -> {
+            //atualizaTabela();
+            ObservableList<Produto> novoProdutos = FXCollections.observableArrayList();
+            for (int i = 0; i < produtos.size(); i++) {
+                if (produtos.get(i).getNome().toLowerCase().contains(textPesquisa.getText().toLowerCase())) {
+                    novoProdutos.add(produtos.get(i));
+                }
+            }
+            tbProduto.setItems(novoProdutos);
         });
     }
     
@@ -163,6 +188,7 @@ public class EstoqueController implements Initializable {
         iniciaImagem();
         acaoBotoes();
         selecionaProduto();
+        pesquisaTabela();
         textPesquisa.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }    
     

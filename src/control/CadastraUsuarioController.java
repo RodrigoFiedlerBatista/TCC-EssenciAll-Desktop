@@ -83,6 +83,7 @@ public class CadastraUsuarioController implements Initializable {
             usuario.setEmail(textEmail.getText());
             if (checkRevendedor.isSelected()) {
                 usuario.setRevendedor(true);
+                gerenciaArquivos.makeDir(System.getProperty("user.dir") + "\\imagensProdutos\\" + textLogin.getText());
             } else {
                 usuario.setRevendedor(false);
             }

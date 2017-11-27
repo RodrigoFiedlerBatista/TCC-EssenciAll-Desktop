@@ -13,7 +13,7 @@ import model.Usuario;
 public class ProdutoDAO {
     
     public void addProduto(Produto produto){
-        String sql = "insert into produto (vendedor, nome, descricao, quantidade, valor, url1) values (?, ?, ?, ?, ?, ?);";
+        String sql = "insert into produto (vendedor, nome, descricao, quantidade, valor, url1, codigo, reserva) values (?, ?, ?, ?, ?, ?, ?, ?);";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
@@ -25,6 +25,8 @@ public class ProdutoDAO {
             stmt.setInt(4, produto.getQuantidade());
             stmt.setFloat(5, produto.getValor());
             stmt.setString(6, produto.getUrls().get(0));
+            stmt.setInt(7, produto.getCodigo());
+            stmt.setInt(8, produto.getReserva());
             stmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
@@ -49,6 +51,8 @@ public class ProdutoDAO {
                 produto.setUrls(rs.getString("url3"));
                 produto.setValor(rs.getFloat("valor"));
                 produto.setVendedor(rs.getInt("vendedor"));
+                produto.setCodigo(rs.getInt("codigo"));
+                produto.setReserva(rs.getInt("reserva"));
                 produtos.add(produto);
             }
         } catch (SQLException e) {

@@ -14,6 +14,24 @@ public class Produto {
     private List<String> urls = new ArrayList();
     private int vendedor;
     private ImageView imagem;
+    private int codigo;
+    private int reserva;
+
+    public int getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(int codigo) {
+        this.codigo = codigo;
+    }
+
+    public int getReserva() {
+        return reserva;
+    }
+
+    public void setReserva(int reserva) {
+        this.reserva = reserva;
+    }
 
     public ImageView getImagem() {
         return imagem;
