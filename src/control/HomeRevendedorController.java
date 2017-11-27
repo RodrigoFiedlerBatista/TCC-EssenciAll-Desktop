@@ -7,6 +7,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,6 +63,8 @@ public class HomeRevendedorController implements Initializable {
     
     private static String url = "";
     
+    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
+    
     @FXML
     void trocarImagem(ActionEvent event) {
         GerenciaImagem gerencia = new GerenciaImagem();
@@ -81,53 +85,77 @@ public class HomeRevendedorController implements Initializable {
         Alertas alertas = new Alertas();
         GerenciaArquivos gerencia = new GerenciaArquivos();
         boolean trocou = false;
-        if (!textLogin.getText().equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getLogin())) {
-            usuario.atualizaLogin(textLogin.getText());
-            Usuario.atualizaUsuarios();
-            usuario.atualizaUrlImagem();
-            gerencia.move(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem(), System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getLogin() + ".png");
-            trocou = true;
-        }
-        if (!textEmail.getText().equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getEmail())) {
-            
-            if (validaEmail()) {
-                Email email = new Email();
-                TCC tcc = new TCC();
-                CriptografiaOtp criptografia = new CriptografiaOtp();
-                String codigo = criptografia.genCodigo();
-                usuario.atualizaEmail(textEmail.getText(), codigo);
-                tcc.fechaTela();
-                tcc.iniciaStage("Email.fxml");
-                email.enviaEmail(textEmail.getText(), codigo);  
-                tcc.fechaTela();
-                tcc.iniciaStage("HomeRevendedor.fxml");
-                System.out.println(codigo);
+        boolean verificou = true;
+        usuarios = usuario.selectUsuario();
+        if (!textLogin.getText().equals(usuarios.get(Usuario.getUsuarioLogado()).getLogin())) {
+            for (int i = 0; i < usuarios.size(); i++) {
+                if (usuarios.get(i).getLogin().equals(textLogin.getText())) {
+                    verificou = false;
+                }
+            }
+            if (verificou) {
+                usuario.atualizaLogin(textLogin.getText(), usuarios);
+                usuario.atualizaUrlImagem(textLogin.getText(), usuarios);
+                gerencia.move(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem(), System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + textLogin.getText() + ".png");
+                usuarios = usuario.selectUsuario();
+                url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
                 trocou = true;
             } else {
-                alertas.erroCadastroUsuarioEmail();
+                alertas.erroCadastroUsuarioLoginExistente();
+                return;
             }
-            
         }
-        if (!url.equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem())) {
-            gerencia.deleta(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem());
-            gerencia.copiaCola(url, System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getLogin() + ".png");
+        if (!textEmail.getText().equals(usuarios.get(Usuario.getUsuarioLogado()).getEmail())) {
+            if (validaEmail()) {
+                for (Usuario usuario1 : usuarios) {
+                    if (usuario1.getEmail().equals(textEmail.getText())) {
+                        verificou = false;
+                    }
+                }
+                if (verificou) {
+                    Email email = new Email();
+                    TCC tcc = new TCC();
+                    CriptografiaOtp criptografia = new CriptografiaOtp();
+                    String codigo = criptografia.genCodigo();
+                    usuario.atualizaEmail(textEmail.getText(), codigo, usuarios);
+                    tcc.fechaTela();
+                    tcc.iniciaStage("Email.fxml");
+                    email.enviaEmail(textEmail.getText(), codigo);  
+                    tcc.fechaTela();
+                    
+                    tcc.iniciaStage("HomeRevendedor.fxml");
+                    System.out.println(codigo);
+                    trocou = true;
+                } else {
+                    alertas.erroCadastroUsuarioEmailExistente();
+                    return;
+                }
+            } else {
+                alertas.erroCadastroUsuarioEmail();
+                return;
+            }
+        }
+        if (!url.equals(usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem())) {
+            gerencia.deleta(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem());
+            gerencia.copiaCola(url, System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + ".png");
             trocou = true;
         }
         if (!textSenha.getText().equals("")) {
             CriptografiaOtp criptografia = new CriptografiaOtp();
-            String senha = criptografia.decriptografa(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getSenha(), Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getChaveSenha());
+            String senha = criptografia.decriptografa(usuarios.get(Usuario.getUsuarioLogado()).getSenha(), usuarios.get(Usuario.getUsuarioLogado()).getChaveSenha());
             if (senha.equals(textSenha2.getText())) {
                 String chave = criptografia.genKey(textSenha.getText().length());
                 String novaSenha = criptografia.criptografa(textSenha.getText(), chave);
-                usuario.atualizaSenha(novaSenha, chave);
+                usuario.atualizaSenha(novaSenha, chave, usuarios);
                 trocou = true;
             } else {
                 alertas.erroConfirmacaoSenha();
+                return;
             }
         }
         if (trocou) {
             alertas.informacoesAlteradas();
-            Usuario.atualizaUsuarios();
+            usuarios = usuario.selectUsuario();
         } else {
             alertas.informacoesInalteradas();
         }
@@ -171,11 +199,16 @@ public class HomeRevendedorController implements Initializable {
     }
     
     public void atualizaUrl(){
-        url = Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
+        url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
     }
     
     public void iniciaImagem() {
-        imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getUrl_imagem()));
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
+        url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
+        imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + url));
         imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgConta.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
         imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
@@ -209,11 +242,12 @@ public class HomeRevendedorController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
         iniciaImagem();
-        Usuario.atualizaUsuarios();
         acaoBotoes();
-        textLogin.setText(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getLogin());
-        textEmail.setText(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getEmail());
+        textLogin.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
+        textEmail.setText(usuarios.get(Usuario.getUsuarioLogado()).getEmail());
         textLogin.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
         textEmail.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
         textSenha.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");

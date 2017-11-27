@@ -95,40 +95,39 @@ public class UsuarioDAO {
         return usuarios;
     }
     
-    public void atualizaLogin(String login){
+    public void atualizaLogin(String login, ObservableList<Usuario> usuarios){
         String sql = "update usuario set usuario_login = ? where id_usuario = ?";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, login);
-            stmt.setInt(2, Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.setInt(2, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             stmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void atualizaSenha(String senha, String chave){
+    public void atualizaSenha(String senha, String chave, ObservableList<Usuario> usuarios){
         String sql = "update usuario set usuario_senha = ?, chave_senha = ? where id_usuario = ?";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, senha);
             stmt.setString(2, chave);
-            stmt.setInt(3, Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.setInt(3, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             stmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void atualizaSenha(String senha, String chave, String email){
+    public void atualizaSenha(String senha, String chave, String email, ObservableList<Usuario> usuarios){
         String sql = "update usuario set usuario_senha = ?, chave_senha = ? where id_usuario = ?";
-        Usuario.atualizaUsuarios();
         int usuario = 0;
-        for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-            if (Usuario.getUsuarios().get(i).getEmail().equals(email)) {
-                usuario = Usuario.getUsuarios().get(i).getId_usuario();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (usuarios.get(i).getEmail().equals(email)) {
+                usuario = usuarios.get(i).getId_usuario();
             }
         }
         ConnectionFactory con = new ConnectionFactory();
@@ -143,27 +142,27 @@ public class UsuarioDAO {
         }
     }
     
-    public void atualizaEmail(String email, String codigo){
+    public void atualizaEmail(String email, String codigo, ObservableList<Usuario> usuarios){
         String sql = "update usuario set email = ?, ativada = false, codigo = ? where id_usuario = ?";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, email);
             stmt.setString(2, codigo);
-            stmt.setInt(3, Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.setInt(3, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             stmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
     
-    public void atualizaUrlImagem(){
+    public void atualizaUrlImagem(String login, ObservableList<Usuario> usuarios){
         String sql = "update usuario set url_imagem = ? where id_usuario = ?";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
-            stmt.setString(1, Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getLogin() + ".png");
-            stmt.setInt(2, Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.setString(1, login + ".png");
+            stmt.setInt(2, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             stmt.execute();
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

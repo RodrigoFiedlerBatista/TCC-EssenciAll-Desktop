@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.animation.FadeTransition;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -18,6 +20,7 @@ import model.Alertas;
 import model.CriptografiaOtp;
 import model.TCC;
 import model.Usuario;
+import model.jdbc.UsuarioDAO;
 
 public class LoginController implements Initializable {
 
@@ -54,6 +57,8 @@ public class LoginController implements Initializable {
     @FXML
     private JFXButton botaoLogin;
     
+    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
+    
     @FXML
     void novasenha(ActionEvent event) throws InterruptedException {
         TCC tcc = new TCC();
@@ -71,13 +76,13 @@ public class LoginController implements Initializable {
         Alertas alerta = new Alertas();
         String senha;
         logou = false;
-        for (int j = 0; j< Usuario.getUsuarios().size(); j++) {
-            senha = criptografia.decriptografa(Usuario.getUsuarios().get(j).getSenha(), Usuario.getUsuarios().get(j).getChaveSenha());
+        for (int j = 0; j < usuarios.size(); j++) {
+            senha = criptografia.decriptografa(usuarios.get(j).getSenha(), usuarios.get(j).getChaveSenha());
             System.out.println(Usuario.getUsuarioLogado());
-            if (senha.equals(textSenha.getText()) && textLogin.getText().equals(Usuario.getUsuarios().get(j).getLogin())) {
+            if (senha.equals(textSenha.getText()) && textLogin.getText().equals(usuarios.get(j).getLogin())) {
                 
-                if (Usuario.getUsuarios().get(j).isAtivado()) {
-                    if (Usuario.getUsuarios().get(j).isRevendedor()) {
+                if (usuarios.get(j).isAtivado()) {
+                    if (usuarios.get(j).isRevendedor()) {
                         Usuario.setUsuarioLogado(j);
                         tcc.fechaTela();
                         tcc.iniciaStage("ContaRevendedor.fxml");
@@ -86,7 +91,7 @@ public class LoginController implements Initializable {
                     } else {
                         Usuario.setUsuarioLogado(j);
                         tcc.fechaTela();
-                        tcc.iniciaStage("HomeUsuario.fxml");
+                        tcc.iniciaStage("ContaUsuario.fxml");
                         logou = true;
                         thread.interrupt();
                     }
@@ -153,6 +158,7 @@ public class LoginController implements Initializable {
             ImagemIconeNovasenha.setScaleX(1.0);
             ImagemIconeNovasenha.setScaleY(1.0);
         });
+        
     }
     
     private void effectButton() {
@@ -230,7 +236,8 @@ public class LoginController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Usuario.atualizaUsuarios();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
         iniciaImagem();
         acaoBotoes();
         textLogin.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");

@@ -5,6 +5,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -61,6 +63,8 @@ public class CadastraUsuarioController implements Initializable {
 
     @FXML
     private RadioButton checkRevendedor1;
+    
+    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
 
     private static String url = System.getProperty("user.dir") + "\\src\\imagens\\icon-clientes.png";
     
@@ -91,7 +95,7 @@ public class CadastraUsuarioController implements Initializable {
             usuario.setCodigo(codigo);
             usuario.setAtivado(false);
             usuarioDAO.addUsuario(usuario);
-            Usuario.atualizaUsuarios();
+            usuarios = usuarioDAO.selectUsuario();
             tcc.fechaTela();
             tcc.iniciaStage("Email.fxml");
             try {
@@ -104,7 +108,7 @@ public class CadastraUsuarioController implements Initializable {
             tcc.fechaTela();
             
             if (checkRevendedor.isSelected()) {
-                Usuario.setUsuarioLogado(Usuario.getUsuarios().get(Usuario.getUsuarios().size() - 1).getId_usuario());
+                Usuario.setUsuarioLogado(usuarios.get(usuarios.size() - 1).getId_usuario());
                 tcc.iniciaStage("Telaempresas.fxml");
                 
             } else {
@@ -125,12 +129,13 @@ public class CadastraUsuarioController implements Initializable {
     
     private boolean verificaValores(){
         Alertas alerta = new Alertas();
-        
-        for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-            if (textLogin.getText().equals(Usuario.getUsuarios().get(i).getLogin())) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (textLogin.getText().equals(usuarios.get(i).getLogin())) {
                 alerta.erroCadastroUsuarioLoginExistente();
                 return false;
-            } else if (textEmail.getText().equals(Usuario.getUsuarios().get(i).getEmail())) {
+            } else if (textEmail.getText().equals(usuarios.get(i).getEmail())) {
                 alerta.erroCadastroUsuarioEmailExistente();
                 return false;
             }
@@ -186,7 +191,7 @@ public class CadastraUsuarioController implements Initializable {
         imgEssencial.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\EssenciAll.png"));
     }
     
-    public void acaoBotoes(){
+    private void acaoBotoes(){
         btnVoltar.setOnMouseEntered(event ->{
             imagemIconeSair.setScaleX(1.1);
             imagemIconeSair.setScaleY(1.1);
@@ -208,7 +213,7 @@ public class CadastraUsuarioController implements Initializable {
         });
     }
     
-    public void textCor() {
+    private void textCor() {
         textLogin.setStyle("-fx-text-fill: #14fff3; -fx-prompt-text-fill: white");
         textSenha.setStyle("-fx-text-fill: #14fff3; -fx-prompt-text-fill: white");
         textSenha2.setStyle("-fx-text-fill: #14fff3; -fx-prompt-text-fill: white");
@@ -218,7 +223,8 @@ public class CadastraUsuarioController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        Usuario.atualizaUsuarios();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
         iniciaImagem();
         criaGrupo();
         acaoBotoes();

@@ -1,5 +1,8 @@
 package control;
 
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
@@ -7,8 +10,6 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -21,21 +22,37 @@ import model.jdbc.ProdutoDAO;
 public class CadastraProdutoController implements Initializable {
     
     @FXML
-    private TextField textQuantidade;
+    private JFXTextField textQuantidade;
 
     @FXML
-    private TextArea textDescricao;
+    private ImageView imagemIconeSair;
 
     @FXML
     private ImageView imgProduto;
 
     @FXML
-    private TextField textValor;
+    private JFXTextArea textDescricao;
 
     @FXML
-    private TextField textNome;
+    private JFXButton btnVoltar;
+
+    @FXML
+    private JFXTextField textValor;
+
+    @FXML
+    private ImageView imgEssencial;
+
+    @FXML
+    private JFXTextField textNome;
     
     private String url = System.getProperty("user.dir") + "\\src\\imagens\\massa_1.jpg";
+    
+    @FXML
+    void voltar(ActionEvent event) {
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("Estoque.fxml");
+    }
 
     @FXML
     void trocarImagem(ActionEvent event) {
@@ -50,6 +67,7 @@ public class CadastraProdutoController implements Initializable {
             Produto produto = new Produto();
             ProdutoDAO produtoDAO = new ProdutoDAO();
             TCC tcc = new TCC();
+            Alertas alertas = new Alertas();
             GerenciaArquivos gerenciaArquivos = new GerenciaArquivos();
             produto.setDescricao(textDescricao.getText());
             produto.setNome(textNome.getText());
@@ -60,6 +78,7 @@ public class CadastraProdutoController implements Initializable {
             gerenciaArquivos.copiaCola(url, System.getProperty("user.dir") + "\\src\\imagens\\produto\\" + textNome.getText() + ".png");
             tcc.fechaTela();
             tcc.iniciaStage("Estoque.fxml");
+            alertas.produtoCadastrado();
         }
     }
     
@@ -88,13 +107,26 @@ public class CadastraProdutoController implements Initializable {
         return true;
     }
     
-    public void iniciaImagem(){
+    private void iniciaImagem() {
         imgProduto.setImage(new Image("file:///" + url));
+        imagemIconeSair.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+    }
+    
+    private void acaoBotoes() {
+        btnVoltar.setOnMouseEntered(event -> {
+            imagemIconeSair.setScaleX(1.1);
+            imagemIconeSair.setScaleY(1.1);
+        });
+        btnVoltar.setOnMouseExited(event -> {
+            imagemIconeSair.setScaleX(1.0);
+            imagemIconeSair.setScaleY(1.0);
+        });
     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         iniciaImagem();
+        acaoBotoes();
     }    
     
 }

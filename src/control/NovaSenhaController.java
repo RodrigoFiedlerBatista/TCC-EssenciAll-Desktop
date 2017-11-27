@@ -4,6 +4,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -29,16 +31,18 @@ public class NovaSenhaController implements Initializable {
 
     @FXML
     private ImageView fundo;
+    
+    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
 
     @FXML
     void enviar(ActionEvent event) {
-        Usuario.atualizaUsuarios();
+        UsuarioDAO usuario = new UsuarioDAO();
+        usuarios = usuario.selectUsuario();
         boolean foi = false;
         Alertas alertas = new Alertas();
-        for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-            if (textEmail.getText().equals(Usuario.getUsuarios().get(i).getEmail())) {
+        for (int i = 0; i < usuarios.size(); i++) {
+            if (textEmail.getText().equals(usuarios.get(i).getEmail())) {
                 Email email = new Email();
-                UsuarioDAO usuario = new UsuarioDAO();
                 CriptografiaOtp criptografia = new CriptografiaOtp();
                 TCC tcc = new TCC();
                 String novaSenha = criptografia.genCodigo();
@@ -47,7 +51,7 @@ public class NovaSenhaController implements Initializable {
                 email.enviaEmailNovaSenha(textEmail.getText(), novaSenha);
                 String chave = criptografia.genKey(novaSenha.length());
                 String criptografada = criptografia.criptografa(novaSenha, chave);
-                usuario.atualizaSenha(criptografada, chave, textEmail.getText());
+                usuario.atualizaSenha(criptografada, chave, textEmail.getText(), usuarios);
                 foi = true;
                 tcc.fechaTela();
                 tcc.iniciaStage("Login.fxml");

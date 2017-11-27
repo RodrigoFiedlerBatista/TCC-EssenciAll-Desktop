@@ -19,6 +19,11 @@
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/NovosPerfume/oi.jpg" />
          </image>
       </ImageView>
+      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="474.0" layoutY="282.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/EssenciAll2.png" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" height="402.0" layoutX="87.0" layoutY="-1.0" opacity="0.7" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="492.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.21428571428571425" startY="0.6142857142857143">
@@ -44,8 +49,8 @@
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
          </font></Label>
-      <JFXTextField fx:id="textEmail" labelFloat="true" layoutX="210.0" layoutY="193.0" prefHeight="25.0" prefWidth="224.0" promptText="Email" unFocusColor="WHITE" />
-      <JFXButton layoutX="270.0" layoutY="248.0" onAction="#enviar" prefHeight="27.0" prefWidth="89.0" style="-fx-border-color: white; -fx-border-radius: 2;" text="Enviar" textFill="WHITE" />
+      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="210.0" layoutY="193.0" prefHeight="25.0" prefWidth="224.0" promptText="Email" unFocusColor="WHITE" />
+      <JFXButton layoutX="270.0" layoutY="248.0" onAction="#enviar" prefHeight="27.0" prefWidth="89.0" style="-fx-border-color: #14fff3; -fx-border-radius: 2;" text="Enviar" textFill="WHITE" />
       <ImageView fx:id="iconeInicio" fitHeight="36.0" fitWidth="41.0" layoutX="41.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Diversos/parfume_1.png" />

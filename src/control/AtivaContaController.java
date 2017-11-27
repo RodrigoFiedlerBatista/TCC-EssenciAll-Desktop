@@ -6,6 +6,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -34,15 +36,19 @@ public class AtivaContaController implements Initializable {
     
     @FXML
     private JFXTextField textEmail;
+    
+    private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
 
     @FXML
     void enviar(ActionEvent event) {
         Email email = new Email();
         Alertas alertas = new Alertas();
         TCC tcc = new TCC();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
         tcc.fechaTela();
         tcc.iniciaStage("Email.fxml");
-        email.enviaEmail(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getEmail(), Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getCodigo());
+        email.enviaEmail(usuarios.get(Usuario.getUsuarioLogado()).getEmail(), usuarios.get(Usuario.getUsuarioLogado()).getCodigo());
         tcc.fechaTela();
         tcc.iniciaStage("AtivaConta.fxml");
         alertas.emailEnviado();
@@ -53,10 +59,11 @@ public class AtivaContaController implements Initializable {
     void mudarEmail(ActionEvent event) {
         Alertas alertas = new Alertas();
         if (validaEmail()) {
-            Usuario.atualizaUsuarios();
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            usuarios = usuarioDAO.selectUsuario();
             boolean foi = true;
-            for (int i = 0; i < Usuario.getUsuarios().size(); i++) {
-                if (Usuario.getUsuarios().get(i).getEmail().equals(textEmail.getText())) {
+            for (int i = 0; i < usuarios.size(); i++) {
+                if (usuarios.get(i).getEmail().equals(textEmail.getText())) {
                     alertas.erroCadastroUsuarioEmailExistente();
                     foi = false;
                 }
@@ -67,7 +74,7 @@ public class AtivaContaController implements Initializable {
                 UsuarioDAO usuario = new UsuarioDAO();
                 CriptografiaOtp criptografia = new CriptografiaOtp();
                 String codigo = criptografia.genCodigo();
-                usuario.atualizaEmail(textEmail.getText(), codigo);
+                usuario.atualizaEmail(textEmail.getText(), codigo, usuarios);
                 tcc.fechaTela();
                 tcc.iniciaStage("Email.fxml");
                 email.enviaEmail(textEmail.getText(), codigo);  
@@ -101,10 +108,11 @@ public class AtivaContaController implements Initializable {
     @FXML
     void ativar(ActionEvent event) {
         Alertas alerta = new Alertas();
-        if (textCodigo.getText().equals(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getCodigo())) {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        usuarios = usuarioDAO.selectUsuario();
+        if (textCodigo.getText().equals(usuarios.get(Usuario.getUsuarioLogado()).getCodigo())) {
             TCC tcc = new TCC();
-            UsuarioDAO usuarioDAO = new UsuarioDAO();
-            usuarioDAO.setAtivado(Usuario.getUsuarios().get(Usuario.getUsuarioLogado()).getId_usuario());
+            usuarioDAO.setAtivado(usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             tcc.fechaTela();
             tcc.iniciaStage("Login.fxml");
             alerta.ativouConta();

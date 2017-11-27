@@ -5,6 +5,14 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void erroEnvioEmail() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Email");
+        alerta.setContentText("Não foi possivel enviar o email de confirmação de conta!");
+        alerta.show();
+    }
+    
     public void erroInformacoesProduto(){
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro Cadastro");

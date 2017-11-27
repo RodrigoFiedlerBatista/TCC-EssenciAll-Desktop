@@ -2,6 +2,7 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.scene.image.ImageView;
 
 public class Produto {
     
@@ -12,6 +13,15 @@ public class Produto {
     private float valor;
     private List<String> urls = new ArrayList();
     private int vendedor;
+    private ImageView imagem;
+
+    public ImageView getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(ImageView imagem) {
+        this.imagem = imagem;
+    }
 
     public int getVendedor() {
         return vendedor;

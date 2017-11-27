@@ -1,9 +1,5 @@
 package model;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import model.jdbc.UsuarioDAO;
-
 public class Usuario {
     
     private int id_usuario;
@@ -15,7 +11,6 @@ public class Usuario {
     private String url_imagem;
     private String codigo;
     private boolean ativado;
-    private static ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
     private static int usuarioLogado;
 
     public static int getUsuarioLogado() {
@@ -41,14 +36,6 @@ public class Usuario {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-    
-    public static ObservableList<Usuario> getUsuarios() {
-        return usuarios;
-    }
-
-    public static void setUsuarios(ObservableList<Usuario> usuarios) {
-        Usuario.usuarios = usuarios;
-    }
 
     public String getUrl_imagem() {
         return url_imagem;
@@ -56,11 +43,6 @@ public class Usuario {
 
     public void setUrl_imagem(String url_imagem) {
         this.url_imagem = url_imagem;
-    }
-    
-    public static void atualizaUsuarios(){
-        UsuarioDAO usuarioDAO = new UsuarioDAO();
-        Usuario.setUsuarios(usuarioDAO.selectUsuario());
     }
     
     public int getId_usuario() {

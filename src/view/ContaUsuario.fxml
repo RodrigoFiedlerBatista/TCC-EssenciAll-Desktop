@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.ContaUsuarioController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ContaUsuarioController">
    <children>
       <Label layoutX="246.0" layoutY="55.0" text="HOME DO USUARIO" />
+      <Button layoutX="300.0" layoutY="200.0" mnemonicParsing="false" onAction="#conta" text="Conta" />
    </children>
 </AnchorPane>

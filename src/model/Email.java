@@ -13,7 +13,7 @@ import javax.mail.internet.MimeMessage;
 public class Email {
     
     public void enviaEmail(String usuario, String codigo) {
-
+        
         new Thread() {
             
             @Override
