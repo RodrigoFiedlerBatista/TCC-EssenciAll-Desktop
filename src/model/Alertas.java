@@ -5,6 +5,46 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void produtoEditado() {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Edição");
+        alerta.setHeaderText("Produto");
+        alerta.setContentText("Produto editado com sucesso.");
+        alerta.show();
+    }
+    
+    public void erroCadastraProdutoMarca() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Cadastrar Produto");
+        alerta.setContentText("Selecione uma marca!");
+        alerta.show();
+    }
+    
+    public void erroDeletarProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Deletar Produto");
+        alerta.setContentText("Selecione um produto!");
+        alerta.show();
+    }
+    
+    public void erroEditarProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Editar Produto");
+        alerta.setContentText("Selecione um produto!");
+        alerta.show();
+    }
+    
+    public void erroReservaProduto(){
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Editar Produto");
+        alerta.setContentText("Não é possível reservar números negativos!");
+        alerta.show();
+    }
+    
     public void erroEnvioEmail() {
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro");

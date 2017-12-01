@@ -16,6 +16,15 @@ public class Produto {
     private ImageView imagem;
     private int codigo;
     private int reserva;
+    private String marca;
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
 
     public int getCodigo() {
         return codigo;
@@ -58,7 +67,7 @@ public class Produto {
     }
     
     public void setUrls(String url){
-        this.urls.add(url);
+        this.urls.add(0, url);
     }
 
     public int getId_produto() {

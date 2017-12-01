@@ -86,6 +86,7 @@ public class NovaSenhaController implements Initializable {
     private void iniciaImagem(){
         fundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\oi.jpg"));
         iconeInicio.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+        textEmail.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }
     
     @Override

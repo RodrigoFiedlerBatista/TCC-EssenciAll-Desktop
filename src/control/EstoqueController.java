@@ -15,9 +15,11 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Alertas;
 import model.GerenciaArquivos;
 import model.Produto;
 import model.TCC;
@@ -75,6 +77,12 @@ public class EstoqueController implements Initializable {
     @FXML
     private JFXButton editProduto;
     
+    @FXML
+    private JFXButton btnAdd;
+    
+    @FXML
+    private TableColumn<Produto, String> colMarca;
+    
     private Produto produto;
     
     private ObservableList<Produto> produtos;
@@ -95,10 +103,12 @@ public class EstoqueController implements Initializable {
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
                 ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
+                System.out.println(produtos.get(i).getUrls().get(0));
                 imagem.setFitHeight(100);
                 imagem.setFitWidth(100);
                 produtos.get(i).setImagem(imagem);
                 produtos2.add(produtos.get(i));
+                System.out.println("foi");
             }
             
         }
@@ -108,6 +118,7 @@ public class EstoqueController implements Initializable {
         colImagem.setCellValueFactory(new PropertyValueFactory("imagem"));
         colPreco.setCellValueFactory(new PropertyValueFactory("valor"));
         colQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
+        colMarca.setCellValueFactory(new PropertyValueFactory("marca"));
     }
     
     @FXML
@@ -137,27 +148,65 @@ public class EstoqueController implements Initializable {
             imagemIconeSair.setScaleY(1.0);
         });
         deleteProduto.setOnMouseClicked(event -> {
-            Alert alerta = new Alert(AlertType.CONFIRMATION);
-            alerta.setTitle("Confirmação");
-            alerta.setHeaderText("Tem certeza que deseja excluir esse produto?");
-            alerta.showAndWait().ifPresent(b -> {
-                if (b == alerta.getButtonTypes().get(0)) {
-                    GerenciaArquivos gerencia = new GerenciaArquivos();
-                    ProdutoDAO produtoDAO = new ProdutoDAO();
-                    UsuarioDAO usuarioDAO = new UsuarioDAO();
-                    ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
-                    produtoDAO.removeProduto(produto.getId_produto());
-                    gerencia.deleta(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + produto.getNome() + ".png");
-                    atualizaTabela();
-                }
-            });
+            if (produto == null) {
+                Alertas alertas = new Alertas();
+                alertas.erroDeletarProduto();
+            } else {
+                Alert alerta = new Alert(AlertType.CONFIRMATION);
+                alerta.setTitle("Confirmação");
+                alerta.setHeaderText("Tem certeza que deseja excluir esse produto?");
+                alerta.showAndWait().ifPresent(b -> {
+                    if (b == alerta.getButtonTypes().get(0)) {
+                        GerenciaArquivos gerencia = new GerenciaArquivos();
+                        ProdutoDAO produtoDAO = new ProdutoDAO();
+                        UsuarioDAO usuarioDAO = new UsuarioDAO();
+                        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
+                        produtoDAO.removeProduto(produto.getId_produto());
+                        gerencia.deleta(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + produto.getNome() + ".png");
+                        atualizaTabela();
+                    }
+                });
+            }
         });
         editProduto.setOnMouseClicked(event -> {
-            TCC tcc = new TCC();
-            EditarProdutoController.setProduto(produto);
-            tcc.fechaTela();
-            tcc.iniciaStage("EditarProduto.fxml");
+            if (produto == null) {
+                Alertas alertas = new Alertas();
+                alertas.erroEditarProduto();
+            } else {
+                TCC tcc = new TCC();
+                EditarProdutoController.setProduto(produto);
+                tcc.fechaTela();
+                tcc.iniciaStage("EditarProduto.fxml");
+            }
+            
         });
+        deleteProduto.setOnMouseEntered(event -> {
+            iconeDelete.setScaleX(1.1);
+            iconeDelete.setScaleY(1.1);
+        });
+        deleteProduto.setOnMouseExited(event -> {
+            iconeDelete.setScaleX(1.0);
+            iconeDelete.setScaleY(1.0);
+        });
+        deleteProduto.setTooltip(new Tooltip("Deletar Produto"));
+        editProduto.setOnMouseEntered(event -> {
+            iconeEdit.setScaleX(1.1);
+            iconeEdit.setScaleY(1.1);
+        });
+        editProduto.setOnMouseExited(event -> {
+            iconeEdit.setScaleX(1.0);
+            iconeEdit.setScaleY(1.0);
+        });
+        editProduto.setTooltip(new Tooltip("Editar Produto"));
+        btnAdd.setOnMouseEntered(event -> {
+            icone_cadastrarPerfume.setScaleX(1.1);
+            icone_cadastrarPerfume.setScaleY(1.1);
+        });
+        btnAdd.setOnMouseExited(event -> {
+            icone_cadastrarPerfume.setScaleX(1.0);
+            icone_cadastrarPerfume.setScaleY(1.0);
+        });
+        btnAdd.setTooltip(new Tooltip("Cadastrar Produto"));
     }
     
     private void pesquisaTabela(){

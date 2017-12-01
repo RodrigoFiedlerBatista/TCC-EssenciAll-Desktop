@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.EncontrarRevendedorController">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="447.0" layoutX="-1.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="86.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="-44.0" layoutY="-39.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="-107.0" layoutY="393.0" rotate="30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="425.0" layoutY="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+      <ImageView fx:id="imgFundo" fitHeight="447.0" fitWidth="673.0" layoutX="84.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/felipe-p-lima-rizo-363093.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="384.0" layoutX="115.0" layoutY="31.0" opacity="0.49" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
+      <JFXComboBox fx:id="cbMarcas" focusColor="#14fff3" labelFloat="true" layoutX="194.0" layoutY="223.0" prefHeight="25.0" prefWidth="156.0" promptText="Marcas" style="-fx-border-radius: 2;" unFocusColor="WHITE" />
+      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="332.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/pesquisa.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="194.0" layoutY="277.0" prefHeight="25.0" prefWidth="156.0" unFocusColor="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="82.0" layoutX="115.0" layoutY="43.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="115.0" layoutY="125.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
+      <Separator layoutX="419.0" layoutY="95.0" prefWidth="200.0" />
+      <ImageView fx:id="imgPerfilRevendedor" fitHeight="104.0" fitWidth="99.0" layoutX="137.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="257.0" layoutY="118.0" text="Nome" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="555.0" layoutY="55.0" prefHeight="32.0" prefWidth="67.0" text="Filtros" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed" size="30.0" />
+         </font>
+      </Label>
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="36.0" layoutY="313.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="41.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/revendedoresBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="171.0" onAction="#clientes" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/ContaBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="235.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/sairBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="35.0" layoutY="298.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="30.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton alignment="BOTTOM_LEFT" layoutX="34.0" layoutY="101.0" onAction="#pedir" prefHeight="35.0" prefWidth="40.0" text=" " textFill="WHITE" />
+      <JFXTreeTableView layoutX="395.0" layoutY="174.0" prefHeight="211.0" prefWidth="301.0">
+         <columns>
+            <TreeTableColumn prefWidth="75.0" text="Revendedor " />
+            <TreeTableColumn prefWidth="75.0" text="Revendedor" />
+            <TreeTableColumn prefWidth="75.0" text="Revendedor" />
+            <TreeTableColumn prefWidth="75.0" text="Revendedor" />
+         </columns>
+      </JFXTreeTableView>
+   </children>
+</AnchorPane>

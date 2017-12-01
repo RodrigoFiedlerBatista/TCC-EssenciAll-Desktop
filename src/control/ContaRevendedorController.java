@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.TCC;
@@ -49,6 +50,12 @@ public class ContaRevendedorController implements Initializable {
     @FXML
     private ImageView imgFundoContRevend;
     
+    @FXML
+    private JFXButton btnConta;
+    
+    @FXML
+    private JFXButton btnSair;
+    
     private ObservableList<Usuario> usuarios;
     
     @FXML
@@ -58,20 +65,16 @@ public class ContaRevendedorController implements Initializable {
 
     @FXML
     void sair(ActionEvent event) {
-        
         TCC tcc = new TCC();
         tcc.fechaTela();
         tcc.iniciaStage("Login.fxml");
-
     }
 
     @FXML
     void conta(ActionEvent event) {
-        
         TCC tcc = new TCC();
         tcc.fechaTela();
         tcc.iniciaStage("HomeRevendedor.fxml");
-
     }
 
     @FXML
@@ -95,6 +98,33 @@ public class ContaRevendedorController implements Initializable {
             tcc.fechaTela();
             tcc.iniciaStage("Estoque.fxml"); 
         });
+        btnEstoque.setOnMouseEntered(event -> {
+            imgEstoque.setScaleX(1.1);
+            imgEstoque.setScaleY(1.1);
+        });
+        btnEstoque.setOnMouseExited(event -> {
+            imgEstoque.setScaleX(1.0);
+            imgEstoque.setScaleY(1.0);
+        });
+        btnEstoque.setTooltip(new Tooltip("Estoque"));
+        btnConta.setOnMouseEntered(event -> {
+            imgConta1.setScaleX(1.1);
+            imgConta1.setScaleY(1.1);
+        });
+        btnConta.setOnMouseExited(event -> {
+            imgConta1.setScaleX(1.0);
+            imgConta1.setScaleY(1.0);
+        });
+        btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnSair.setOnMouseEntered(event -> {
+            imgLogout.setScaleX(1.1);
+            imgLogout.setScaleY(1.1);
+        });
+        btnSair.setOnMouseExited(event -> {
+            imgLogout.setScaleX(1.0);
+            imgLogout.setScaleY(1.0);
+        });
+        btnSair.setTooltip(new Tooltip("Sair"));
     }
     
     public void iniciaImagem(){

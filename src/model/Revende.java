@@ -11,7 +11,25 @@ public class Revende {
     private boolean boticario;
     private boolean up;
     private boolean avon;
+    private int id_revende;
+    private int id_usuario;
 
+    public int getId_revende() {
+        return id_revende;
+    }
+
+    public void setId_revende(int id_revende) {
+        this.id_revende = id_revende;
+    }
+
+    public int getId_usuario() {
+        return id_usuario;
+    }
+
+    public void setId_usuario(int id_usuario) {
+        this.id_usuario = id_usuario;
+    }
+    
     public boolean isEudora() {
         return eudora;
     }

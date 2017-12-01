@@ -1,24 +1,29 @@
 package control;
 
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.regex.Pattern;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
 import model.GerenciaArquivos;
 import model.GerenciaImagem;
 import model.Produto;
+import model.Revende;
 import model.TCC;
 import model.Usuario;
 import model.jdbc.ProdutoDAO;
+import model.jdbc.RevendeDAO;
 import model.jdbc.UsuarioDAO;
 
 public class CadastraProdutoController implements Initializable {
@@ -46,6 +51,9 @@ public class CadastraProdutoController implements Initializable {
 
     @FXML
     private JFXTextField textNome;
+    
+    @FXML
+    private JFXComboBox<String> cbMarca;
     
     private String url = System.getProperty("user.dir") + "\\src\\imagens\\massa_1.jpg";
     
@@ -78,6 +86,7 @@ public class CadastraProdutoController implements Initializable {
             produto.setQuantidade(Integer.valueOf(textQuantidade.getText()));
             produto.setUrls(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             produto.setValor(Float.valueOf(textValor.getText()));
+            produto.setMarca(cbMarca.getValue());
             produtoDAO.addProduto(produto);
             gerenciaArquivos.copiaCola(url, System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             tcc.fechaTela();
@@ -88,12 +97,16 @@ public class CadastraProdutoController implements Initializable {
     
     public boolean verificaValores(){
         ProdutoDAO produtoDAO = new ProdutoDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
         Alertas alertas = new Alertas();
         ObservableList<Produto> produtos = produtoDAO.selectProduto();
+        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
         for (int i = 0; i < produtos.size(); i++) {
-            if (produtos.get(i).getNome().equals(textNome.getText())) {
-                alertas.erroNomeProduto();
-                return false;
+            if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
+                if (produtos.get(i).getNome().equals(textNome.getText())) {
+                    alertas.erroNomeProduto();
+                    return false;
+                }
             }
         }
         if (textDescricao.getText().length() > 200) {
@@ -106,6 +119,10 @@ public class CadastraProdutoController implements Initializable {
         }
         if (!Pattern.matches("[0-9]+", textQuantidade.getText()) || !Pattern.matches("[0-9]+", textValor.getText())) {
             alertas.erroValorQuantidadeProduto();
+            return false;
+        }
+        if (cbMarca.getValue() == null) {
+            alertas.erroCadastraProdutoMarca();
             return false;
         }
         return true;
@@ -131,10 +148,63 @@ public class CadastraProdutoController implements Initializable {
         });
     }
     
+    private void iniciaComboBox() {
+        RevendeDAO revendeDAO = new RevendeDAO();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ObservableList<Revende> revende = revendeDAO.selectRevende();
+        ObservableList<String> marcas = FXCollections.observableArrayList();
+        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
+        for (int i = 0; i < revende.size(); i++) {
+            if (revende.get(i).getId_usuario() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
+                if (revende.get(i).isAvon()) {
+                    marcas.add("Avon");
+                }
+                if (revende.get(i).isBoticario()) {
+                    marcas.add("Boticário");
+                }
+                if (revende.get(i).isEudora()) {
+                    marcas.add("Eudora");
+                }
+                if (revende.get(i).isHinode()) {
+                    marcas.add("Hinode");
+                }
+                if (revende.get(i).isJequiti()) {
+                    marcas.add("Jequiti");
+                }
+                if (revende.get(i).isLaqua()) {
+                    marcas.add("Laqua");
+                }
+                if (revende.get(i).isMary()) {
+                    marcas.add("Mary Kay");
+                }
+                if (revende.get(i).isNatura()) {
+                    marcas.add("Natura");
+                }
+                if (revende.get(i).isUp()) {
+                    marcas.add("UP");
+                }
+            }
+        }
+        cbMarca.setItems(marcas);
+        cbMarca.setButtonCell(new ListCell<String>(){
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty); 
+                setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+                if(!(empty || item==null)){
+                    setText("");
+                    setText(item.toString());
+                }
+            }
+        });
+        
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         iniciaImagem();
         acaoBotoes();
+        iniciaComboBox();
     }    
     
 }

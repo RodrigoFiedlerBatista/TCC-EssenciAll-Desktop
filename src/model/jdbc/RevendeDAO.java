@@ -34,27 +34,28 @@ public class RevendeDAO {
         }
     }
     
-    public ObservableList<Usuario> selectRevende(){
-        ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
+    public ObservableList<Revende> selectRevende(){
+        ObservableList<Revende> usuarios = FXCollections.observableArrayList();
         // Escrever o SQL
-        String sql = "select * from usuario order by id_usuario";
+        String sql = "select * from revende order by id_revende";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();
-            
             while(rs.next()){
-                Usuario usuario = new Usuario();
-                usuario.setId_usuario(rs.getInt("id_usuario"));
-                usuario.setLogin(rs.getString("usuario_login"));
-                usuario.setSenha(rs.getString("usuario_senha"));
-                usuario.setChaveSenha(rs.getString("chave_senha"));
-                usuario.setEmail(rs.getString("email"));
-                usuario.setRevendedor(rs.getBoolean("revendedor"));
-                usuario.setUrl_imagem(rs.getString("url_imagem"));
-                usuario.setAtivado(rs.getBoolean("ativada"));
-                usuario.setCodigo(rs.getString("codigo"));
-                usuarios.add(usuario);
+                Revende revende = new Revende();
+                revende.setAvon(rs.getBoolean("avon"));
+                revende.setBoticario(rs.getBoolean("boticario"));
+                revende.setEudora(rs.getBoolean("eudora"));
+                revende.setHinode(rs.getBoolean("hinode"));
+                revende.setJequiti(rs.getBoolean("jequiti"));
+                revende.setLaqua(rs.getBoolean("laqua"));
+                revende.setMary(rs.getBoolean("mary"));
+                revende.setNatura(rs.getBoolean("natura"));
+                revende.setUp(rs.getBoolean("up"));
+                revende.setId_revende(rs.getInt("id_revende"));
+                revende.setId_usuario(rs.getInt("id_usuario"));
+                usuarios.add(revende);
             }
         } catch (SQLException ex) {
             Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);

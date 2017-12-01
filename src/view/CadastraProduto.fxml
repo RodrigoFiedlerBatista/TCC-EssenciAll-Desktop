@@ -58,7 +58,7 @@
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXTextField>
-      <JFXTextArea fx:id="textDescricao" focusColor="#14fff3" labelFloat="true" layoutX="365.0" layoutY="231.0" prefHeight="113.0" prefWidth="232.0" promptText="Descricao" unFocusColor="WHITE">
+      <JFXTextArea fx:id="textDescricao" focusColor="#14fff3" labelFloat="true" layoutX="365.0" layoutY="231.0" prefHeight="63.0" prefWidth="232.0" promptText="Descricao" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXTextArea>
@@ -68,5 +68,7 @@
          </image>
       </ImageView>
       <JFXButton fx:id="btnVoltar" layoutX="36.0" layoutY="203.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
+      <JFXComboBox fx:id="cbMarca" focusColor="#14fff3" layoutX="365.0" layoutY="323.0" prefHeight="25.0" prefWidth="232.0" unFocusColor="WHITE" />
+      <Label layoutX="366.0" layoutY="307.0" text="Marca" textFill="WHITE" />
    </children>
 </AnchorPane>

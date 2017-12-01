@@ -41,13 +41,13 @@
             <Image url="@../../../../../Desktop/Icones/menu/left-arrow-angle.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="303.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="303.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="44.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/Icones/Usuario/ContaBranco.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="240.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="240.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="44.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/Icones/Usuario/revendedoresBranco.png" />
