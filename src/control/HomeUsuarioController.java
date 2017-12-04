@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -26,15 +27,6 @@ import model.jdbc.UsuarioDAO;
 
 public class HomeUsuarioController implements Initializable {
     
-    @FXML
-    private JFXPasswordField textSenha;
-
-    @FXML
-    private ImageView imgPerfil;
-
-    @FXML
-    private ImageView imgRevendedores;
-
     @FXML
     private JFXTextField textLogin;
 
@@ -51,16 +43,43 @@ public class HomeUsuarioController implements Initializable {
     private JFXButton btnImagem;
 
     @FXML
+    private JFXButton btnConta;
+
+    @FXML
+    private JFXButton btnRevendedor;
+
+    @FXML
+    private ImageView imgFundo;
+
+    @FXML
+    private JFXPasswordField textSenha;
+
+    @FXML
+    private ImageView imgPerfil;
+
+    @FXML
+    private ImageView imgRevendedores;
+
+    @FXML
     private JFXTextField textEmail;
 
     @FXML
-    private ImageView imgCart;
+    private ImageView imgEssencial;
+
+    @FXML
+    private ImageView imgFechar;
 
     @FXML
     private ImageView imgLogout;
 
     @FXML
     private ImageView imgHome;
+    
+    @FXML
+    private JFXButton btnHome;
+    
+    @FXML
+    private JFXButton btnSair;
     
     private static String url = "";
     
@@ -155,6 +174,9 @@ public class HomeUsuarioController implements Initializable {
             }
         }
         if (trocou) {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("ContaUsuario.fxml");
             alertas.informacoesAlteradas();
             usuarios = usuario.selectUsuario();
         } else {
@@ -181,12 +203,16 @@ public class HomeUsuarioController implements Initializable {
 
     @FXML
     void home(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("ContaUsuario.fxml");
     }
 
     @FXML
     void conta(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("HomeUsuario.fxml");
     }
 
     @FXML
@@ -212,33 +238,59 @@ public class HomeUsuarioController implements Initializable {
         imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + url));
         imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgConta.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
-        imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
+        //imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
         //imgMenu.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\menu.png"));
         //imgFechar.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\fecharBranco.png"));
         imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png")); 
         imgHome.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\homeBranco.png"));
+        imgFundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\conta1.jpg"));
     }
     
     private void acaoBotoes(){
-        /*btnFechar.setOnMouseEntered(event ->{
-            imgFechar.setScaleX(1.1);
-            imgFechar.setScaleY(1.1);
-        });
-        
-        btnFechar.setOnMouseExited(event ->{
-            imgFechar.setScaleX(1.0);
-            imgFechar.setScaleY(1.0);
-        });*/
-        
         btnImagem.setOnMouseEntered(event ->{
             imgPerfil.setScaleX(1.1);
             imgPerfil.setScaleY(1.1);
         });
-        
         btnImagem.setOnMouseExited(event ->{
             imgPerfil.setScaleX(1.0);
             imgPerfil.setScaleY(1.0);
         });
+        btnSair.setOnMouseEntered(event ->{
+            imgLogout.setScaleX(1.1);
+            imgLogout.setScaleY(1.1);
+        });
+        btnSair.setOnMouseExited(event ->{
+            imgLogout.setScaleX(1.0);
+            imgLogout.setScaleY(1.0);
+        });
+        btnSair.setTooltip(new Tooltip("Sair"));
+        btnConta.setOnMouseEntered(event ->{
+            imgConta.setScaleX(1.1);
+            imgConta.setScaleY(1.1);
+        });
+        btnConta.setOnMouseExited(event ->{
+            imgConta.setScaleX(1.0);
+            imgConta.setScaleY(1.0);
+        });
+        btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnHome.setOnMouseEntered(event ->{
+            imgHome.setScaleX(1.1);
+            imgHome.setScaleY(1.1);
+        });
+        btnHome.setOnMouseExited(event ->{
+            imgHome.setScaleX(1.0);
+            imgHome.setScaleY(1.0);
+        });
+        btnHome.setTooltip(new Tooltip("Home"));
+        btnRevendedor.setOnMouseEntered(event ->{
+            imgRevendedores.setScaleX(1.1);
+            imgRevendedores.setScaleY(1.1);
+        });
+        btnRevendedor.setOnMouseExited(event ->{
+            imgRevendedores.setScaleX(1.0);
+            imgRevendedores.setScaleY(1.0);
+        });
+        btnRevendedor.setTooltip(new Tooltip("Revendedores"));
     }
     
     @Override

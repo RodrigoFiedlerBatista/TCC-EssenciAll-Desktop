@@ -12,6 +12,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -24,15 +25,6 @@ import model.Usuario;
 import model.jdbc.UsuarioDAO;
 
 public class HomeRevendedorController implements Initializable {
-
-    @FXML
-    private JFXPasswordField textSenha;
-
-    @FXML
-    private ImageView imgPerfil;
-
-    @FXML
-    private ImageView imgRevendedores;
 
     @FXML
     private JFXTextField textLogin;
@@ -50,16 +42,43 @@ public class HomeRevendedorController implements Initializable {
     private JFXButton btnImagem;
 
     @FXML
+    private JFXButton btnConta;
+
+    @FXML
+    private JFXButton btnRevendedor;
+
+    @FXML
+    private ImageView imgFundo;
+
+    @FXML
+    private JFXPasswordField textSenha;
+
+    @FXML
+    private ImageView imgPerfil;
+
+    @FXML
+    private ImageView imgRevendedores;
+
+    @FXML
     private JFXTextField textEmail;
 
     @FXML
-    private ImageView imgCart;
+    private ImageView imgEssencial;
+
+    @FXML
+    private JFXButton btnSair;
+
+    @FXML
+    private ImageView imgFechar;
 
     @FXML
     private ImageView imgLogout;
 
     @FXML
     private ImageView imgHome;
+
+    @FXML
+    private JFXButton btnHome;
     
     private static String url = "";
     
@@ -180,12 +199,16 @@ public class HomeRevendedorController implements Initializable {
 
     @FXML
     void home(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("ContaRevendedor.fxml");
     }
 
     @FXML
     void conta(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("HomeRevendedor.fxml");
     }
 
     @FXML
@@ -211,9 +234,10 @@ public class HomeRevendedorController implements Initializable {
         imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + url));
         imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgConta.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
-        imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
+        //imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
         //imgMenu.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\menu.png"));
         //imgFechar.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\fecharBranco.png"));
+        imgFundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\conta1.jpg"));
         imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png")); 
         imgHome.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\homeBranco.png"));
     }
@@ -238,6 +262,42 @@ public class HomeRevendedorController implements Initializable {
             imgPerfil.setScaleX(1.0);
             imgPerfil.setScaleY(1.0);
         });
+        btnConta.setOnMouseEntered(event -> {
+            imgConta.setScaleX(1.1);
+            imgConta.setScaleY(1.1);
+        });
+        btnConta.setOnMouseExited(event -> {
+            imgConta.setScaleX(1.0);
+            imgConta.setScaleY(1.0);
+        });
+        btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnHome.setOnMouseEntered(event -> {
+            imgHome.setScaleX(1.1);
+            imgHome.setScaleY(1.1);
+        });
+        btnHome.setOnMouseExited(event -> {
+            imgHome.setScaleX(1.0);
+            imgHome.setScaleY(1.0);
+        });
+        btnHome.setTooltip(new Tooltip("Home"));
+        btnRevendedor.setOnMouseEntered(event -> {
+            imgRevendedores.setScaleX(1.1);
+            imgRevendedores.setScaleY(1.1);
+        });
+        btnRevendedor.setOnMouseExited(event -> {
+            imgRevendedores.setScaleX(1.0);
+            imgRevendedores.setScaleY(1.0);
+        });
+        btnRevendedor.setTooltip(new Tooltip("Revendedor"));
+        btnSair.setOnMouseEntered(event -> {
+            imgLogout.setScaleX(1.1);
+            imgLogout.setScaleY(1.1);
+        });
+        btnSair.setOnMouseExited(event -> {
+            imgLogout.setScaleX(1.0);
+            imgLogout.setScaleY(1.0);
+        });
+        btnSair.setTooltip(new Tooltip("Sair"));
     }
     
     @Override

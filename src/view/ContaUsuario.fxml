@@ -49,7 +49,7 @@
             <DropShadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#18c9be" height="133.0" layoutX="489.0" layoutY="228.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#18c9be" height="133.0" layoutX="484.0" layoutY="193.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
          <effect>
             <DropShadow />
          </effect>
@@ -59,7 +59,7 @@
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="imgEncontrarRevendedores" fitHeight="87.0" fitWidth="89.0" layoutX="518.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgEncontrarRevendedores" fitHeight="87.0" fitWidth="89.0" layoutX="513.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/revendedoresBranco.png" />
          </image>
@@ -69,12 +69,12 @@
             <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="496.0" layoutY="367.0" text="Encontrar Revendedores" textFill="WHITE">
+      <Label layoutX="491.0" layoutY="332.0" text="Encontrar Revendedores" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
          </font>
       </Label>
-      <Label layoutX="256.0" layoutY="111.0" text="Nome" textFill="WHITE">
+      <Label fx:id="labelNome" layoutX="256.0" layoutY="111.0" text="Nome" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
          </font>
@@ -88,19 +88,19 @@
          </effect>
       </ImageView>
       <Separator layoutX="479.0" layoutY="77.0" prefWidth="200.0" />
+      <JFXButton fx:id="btnPedido" layoutX="256.0" layoutY="193.0" prefHeight="133.0" prefWidth="146.0" text=" " />
       <Label layoutX="554.0" layoutY="42.0" text="Usuario" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="32.0" />
          </font>
       </Label>
-      <JFXButton fx:id="btnPedido" layoutX="256.0" layoutY="193.0" prefHeight="133.0" prefWidth="146.0" text=" " />
-      <JFXButton fx:id="btnEcontrarRevendedor" layoutX="488.0" layoutY="228.0" prefHeight="133.0" prefWidth="146.0" text=" " />
+      <JFXButton fx:id="btnEncontrarRevendedor" layoutX="483.0" layoutY="193.0" prefHeight="133.0" prefWidth="146.0" text=" " />
       <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="43.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/sairBranco.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="294.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="294.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgPedidos" fitHeight="53.0" fitWidth="45.0" layoutX="32.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
@@ -123,6 +123,6 @@
       </ImageView>
       <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="40.0" layoutY="235.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
       <JFXButton fx:id="btnRevendedor" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="175.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="114.0" onAction="#pedir" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnPedir" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="114.0" onAction="#pedir" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
    </children>
 </AnchorPane>

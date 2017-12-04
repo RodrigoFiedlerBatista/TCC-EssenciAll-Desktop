@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
@@ -119,6 +120,7 @@ public class EstoqueController implements Initializable {
         colPreco.setCellValueFactory(new PropertyValueFactory("valor"));
         colQuantidade.setCellValueFactory(new PropertyValueFactory("quantidade"));
         colMarca.setCellValueFactory(new PropertyValueFactory("marca"));
+        tbProduto.setPlaceholder(new Label("Não há produtos cadastrados."));
     }
     
     @FXML

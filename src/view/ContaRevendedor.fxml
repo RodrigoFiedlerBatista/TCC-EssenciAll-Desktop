@@ -14,12 +14,12 @@
 
 <AnchorPane id="AnchorPane" prefHeight="413.0" prefWidth="623.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.ContaRevendedorController">
    <children>
-      <ImageView fx:id="imgFundoContRevend" fitHeight="366.0" fitWidth="660.0" layoutX="90.0" layoutY="83.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgFundoContRevend" fitHeight="449.0" fitWidth="687.0" layoutX="67.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Vetores/borda.png" />
+            <Image url="@../../../HD/conta6.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="449.0" opacity="0.9" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="741.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="449.0" opacity="0.8" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="741.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0" startX="0.21428571428571425" startY="0.6142857142857143">
                <stops>
@@ -54,13 +54,13 @@
          </image>
       </ImageView>
       <JFXButton alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="176.0" onAction="#clientes" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31d1a" height="133.0" layoutX="447.0" layoutY="229.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31d1a" height="133.0" layoutX="447.0" layoutY="196.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
          <effect>
             <DropShadow />
          </effect></Rectangle>
-      <ImageView fx:id="imgProdutos" fitHeight="117.0" fitWidth="112.0" layoutX="467.0" layoutY="239.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgProdutos" fitHeight="117.0" fitWidth="112.0" layoutX="467.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/BackgroundEssenciAll/perfume%20(2).png" />
+            <Image url="@../../../BackgroundEssenciAll/perfume%20(2).png" />
          </image>
       </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31d1a" height="133.0" layoutX="214.0" layoutY="194.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
@@ -69,10 +69,10 @@
          </effect></Rectangle>
       <ImageView fx:id="imgEstoque" fitHeight="117.0" fitWidth="124.0" layoutX="227.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/estoque/icone-produtos2.png" />
+            <Image url="@../../../BackgroundEssenciAll/Icones/estoque/icone-produtos2.png" />
          </image>
       </ImageView>
-      <Label layoutX="494.0" layoutY="369.0" text="Produtos" textFill="WHITE">
+      <Label layoutX="494.0" layoutY="336.0" text="Produtos" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
          </font>
@@ -83,7 +83,7 @@
          </font>
       </Label>
       <JFXButton fx:id="btnEstoque" layoutX="213.0" layoutY="195.0" prefHeight="133.0" prefWidth="146.0" text=" " />
-      <JFXButton fx:id="btnProdutos" layoutX="447.0" layoutY="228.0" prefHeight="133.0" prefWidth="146.0" text=" " />
+      <JFXButton fx:id="btnProdutos" layoutX="447.0" layoutY="195.0" prefHeight="133.0" prefWidth="146.0" text=" " />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="54.0" layoutX="-49.0" layoutY="-33.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
          <effect>
             <InnerShadow />
