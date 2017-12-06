@@ -84,6 +84,9 @@ public class EstoqueController implements Initializable {
     @FXML
     private TableColumn<Produto, String> colMarca;
     
+    @FXML
+    private JFXButton btnGraficos;
+    
     private Produto produto;
     
     private ObservableList<Produto> produtos;
@@ -95,6 +98,13 @@ public class EstoqueController implements Initializable {
         tcc.iniciaStage("ContaRevendedor.fxml");
     }
     
+    @FXML
+    void graficos(ActionEvent event) {
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("Graficos.fxml");
+    }
+    
     private void atualizaTabela(){
         ProdutoDAO produtoDAO = new ProdutoDAO();
         UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -104,12 +114,10 @@ public class EstoqueController implements Initializable {
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
                 ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
-                System.out.println(produtos.get(i).getUrls().get(0));
                 imagem.setFitHeight(100);
                 imagem.setFitWidth(100);
                 produtos.get(i).setImagem(imagem);
                 produtos2.add(produtos.get(i));
-                System.out.println("foi");
             }
             
         }
@@ -216,7 +224,7 @@ public class EstoqueController implements Initializable {
             //atualizaTabela();
             ObservableList<Produto> novoProdutos = FXCollections.observableArrayList();
             for (int i = 0; i < produtos.size(); i++) {
-                if (produtos.get(i).getNome().toLowerCase().contains(textPesquisa.getText().toLowerCase())) {
+                if (produtos.get(i).getNome().toLowerCase().startsWith(textPesquisa.getText().toLowerCase())) {
                     novoProdutos.add(produtos.get(i));
                 }
             }

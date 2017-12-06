@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.ProdutosRevendedorController">
+   <children>
+      <TableView fx:id="tbProduto" layoutX="158.0" layoutY="65.0" prefHeight="331.0" prefWidth="434.0">
+        <columns>
+          <TableColumn fx:id="colNome" prefWidth="122.0" text="Produto" />
+          <TableColumn fx:id="colPreco" prefWidth="82.0" text="Preço" />
+            <TableColumn fx:id="colEstoque" prefWidth="87.0" text="Estoque" />
+            <TableColumn fx:id="colImagem" prefWidth="142.0" text="Imagem" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnAdd" layoutX="14.0" layoutY="218.0" mnemonicParsing="false" onAction="#addCarrinho" text="Adicionar ao Carrinho" />
+      <Button layoutX="56.0" layoutY="340.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <TextField fx:id="textPesquisa" layoutX="158.0" layoutY="27.0" prefHeight="25.0" prefWidth="256.0" promptText="Pesquisar Produto" />
+      <TextField fx:id="textQuantidade" layoutX="21.0" layoutY="183.0" prefHeight="25.0" prefWidth="118.0" promptText="Quantidade" />
+   </children>
+</AnchorPane>

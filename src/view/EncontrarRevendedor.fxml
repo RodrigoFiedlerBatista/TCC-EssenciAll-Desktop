@@ -88,5 +88,6 @@
           <TableColumn fx:id="clNome" prefWidth="281.0" text="Revendedor" />
         </columns>
       </TableView>
+      <JFXButton layoutX="500.0" layoutY="386.0" onAction="#produtos" prefHeight="27.0" prefWidth="120.0" style="-fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: white;" text="Ver Produtos" textFill="WHITE" />
    </children>
 </AnchorPane>

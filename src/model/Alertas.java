@@ -5,6 +5,62 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void erroSelecionePedido() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Pedido");
+        alerta.setContentText("Selecione um pedido!");
+        alerta.show();
+    }
+    
+    public void carrinhoVazio() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Pedido");
+        alerta.setContentText("Seu Carrinho Está Vazio!");
+        alerta.show();
+    }
+    
+    public void pedidoRealizado() {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Compra");
+        alerta.setHeaderText("Pedido");
+        alerta.setContentText("Pedido realizado com sucesso.");
+        alerta.show();
+    }
+    
+    public void produtoAdicionadoCarrinho() {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Compra");
+        alerta.setHeaderText("Produto");
+        alerta.setContentText("Produto adicionado ao carrinho com sucesso.");
+        alerta.show();
+    }
+    
+    public void erroQuantidadeProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Produto");
+        alerta.setContentText("Não há tantos produtos disponiveis para venda.");
+        alerta.show();
+    }
+    
+    public void selecioneUsuario() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Revendedor");
+        alerta.setContentText("Selecione um revendedor na tabela.");
+        alerta.show();
+    }
+    
+    public void selecioneProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Produto");
+        alerta.setContentText("Selecione um produto na tabela.");
+        alerta.show();
+    }
+    
     public void produtoEditado() {
         Alert alerta = new Alert(AlertType.INFORMATION);
         alerta.setTitle("Edição");

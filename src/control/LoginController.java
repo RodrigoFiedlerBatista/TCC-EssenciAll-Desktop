@@ -17,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 import model.Alertas;
+import model.Carrinho;
 import model.CriptografiaOtp;
 import model.TCC;
 import model.Usuario;
@@ -246,6 +247,7 @@ public class LoginController implements Initializable {
         img_desodorante.setImage(new Image("/imagens/perfumelogo.jpg"));
         fadeIn(img_desodorante);
         task();
+        Carrinho.clear();
     }    
     
 }

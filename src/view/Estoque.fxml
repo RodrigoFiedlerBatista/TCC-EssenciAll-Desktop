@@ -111,5 +111,6 @@
             <Image url="@../../../../../Desktop/pesquisa.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnGraficos" layoutX="34.0" layoutY="200.0" onAction="#graficos" prefHeight="43.0" prefWidth="35.0" text=" " textFill="#b8e0f8" />
    </children>
 </AnchorPane>

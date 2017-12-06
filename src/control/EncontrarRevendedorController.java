@@ -9,6 +9,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -18,8 +19,10 @@ import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import model.Alertas;
 import model.Produto;
 import model.Revende;
+import model.TCC;
 import model.Usuario;
 import model.jdbc.RevendeDAO;
 import model.jdbc.UsuarioDAO;
@@ -76,6 +79,10 @@ public class EncontrarRevendedorController implements Initializable {
     
     private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
     
+    private ObservableList<Usuario> usuariosSelecionados = FXCollections.observableArrayList();
+    
+    private Usuario usuario;
+    
     private void iniciaImagem() {
         imgFundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfumecapa.jpg"));
         imgPesquisa.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\pesquisa.png"));
@@ -96,6 +103,11 @@ public class EncontrarRevendedorController implements Initializable {
             imgLogout.setScaleY(1.0);
         });
         btnSair.setTooltip(new Tooltip("Sair"));
+        btnSair.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("ContaUsuario.fxml");
+        });
         btnRevendedores.setOnMouseEntered(event -> {
             imgRevendedores.setScaleX(1.1);
             imgRevendedores.setScaleY(1.1);
@@ -114,6 +126,11 @@ public class EncontrarRevendedorController implements Initializable {
             imgConta1.setScaleY(1.0);
         });
         btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnConta.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("HomeUsuario.fxml");
+        });
         btnPedido.setOnMouseEntered(event -> {
             imgCart.setScaleX(1.1);
             imgCart.setScaleY(1.1);
@@ -151,7 +168,7 @@ public class EncontrarRevendedorController implements Initializable {
                 RevendeDAO revendeDAO = new RevendeDAO();
                 usuarios = usuarioDAO.selectUsuario();
                 ObservableList<Revende> revende = revendeDAO.selectRevende();
-                ObservableList<Usuario> usuariosSelecionados = FXCollections.observableArrayList();
+                //ObservableList<Usuario> usuariosSelecionados = FXCollections.observableArrayList();
                 switch(newValue) {
                     case "Eudora":
                         for (int i = 0; i < revende.size(); i++) {
@@ -282,13 +299,35 @@ public class EncontrarRevendedorController implements Initializable {
         textPesquisa.setOnKeyReleased(event -> {
             //atualizaTabela();
             ObservableList<Usuario> novoUsuarios = FXCollections.observableArrayList();
-            for (int i = 0; i < usuarios.size(); i++) {
-                if (usuarios.get(i).getLogin().toLowerCase().contains(textPesquisa.getText().toLowerCase())) {
-                    novoUsuarios.add(usuarios.get(i));
+            for (int i = 0; i < usuariosSelecionados.size(); i++) {
+                if (usuariosSelecionados.get(i).getLogin().toLowerCase().startsWith(textPesquisa.getText().toLowerCase())) {
+                    novoUsuarios.add(usuariosSelecionados.get(i));
                 }
             }
             tbRevendedor.setItems(novoUsuarios);
         });
+    }
+    
+    private void selecionaTabela() {
+        tbRevendedor.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Usuario>() {
+            @Override
+            public void changed(ObservableValue<? extends Usuario> observable, Usuario oldValue, Usuario newValue) {
+                usuario = newValue;
+            }
+        });
+    }
+    
+    @FXML
+    void produtos(ActionEvent event) {
+        if (usuario == null) {
+            Alertas alertas = new Alertas();
+            alertas.selecioneUsuario();
+        } else {
+            ProdutosRevendedorController.setUsuario(usuario);
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("ProdutosRevendedor.fxml");
+        }
     }
     
     @Override
@@ -300,6 +339,8 @@ public class EncontrarRevendedorController implements Initializable {
         iniciaTabela();
         iniciaComboBox();
         atualizaComboBox();
+        pesquisaTabela();
+        selecionaTabela();
         labelNome.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
         labelNome.autosize();
         tbRevendedor.setPlaceholder(new Label("Não há revendedores"));

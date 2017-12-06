@@ -2,6 +2,8 @@ package model;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.image.ImageView;
 
 public class Produto {
@@ -17,6 +19,28 @@ public class Produto {
     private int codigo;
     private int reserva;
     private String marca;
+    private int vendidos;
+    private int disponivel;
+    
+    public int getDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(int disponivel) {
+        this.disponivel = disponivel;
+    }
+    
+    public void setDisponivel() {
+        disponivel = quantidade - reserva;
+    }
+
+    public int getVendidos() {
+        return vendidos;
+    }
+
+    public void setVendidos(int vendidos) {
+        this.vendidos = vendidos;
+    }
 
     public String getMarca() {
         return marca;

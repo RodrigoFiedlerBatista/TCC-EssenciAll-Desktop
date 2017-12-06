@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="439.0" prefWidth="778.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.GraficosController">
+   <children>
+      <BarChart fx:id="graficoProdutos" layoutX="160.0" layoutY="51.0" prefHeight="350.0" prefWidth="582.0">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+      <Button layoutX="33.0" layoutY="84.0" mnemonicParsing="false" onAction="#produtosVendidos" text="Produtos Vendidos" />
+      <Button layoutX="24.0" layoutY="125.0" mnemonicParsing="false" onAction="#marcasVendidas" text="Marcas Mais Vendidas" />
+      <PieChart fx:id="graficoMarcas" layoutX="175.0" layoutY="58.0" prefHeight="318.0" prefWidth="555.0" title="Marcas Mais Vendidas" visible="false" />
+      <Button layoutX="59.0" layoutY="182.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+   </children>
+</AnchorPane>

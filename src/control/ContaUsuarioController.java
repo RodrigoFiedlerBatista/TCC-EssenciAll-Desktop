@@ -74,7 +74,9 @@ public class ContaUsuarioController implements Initializable {
 
     @FXML
     void pedir(ActionEvent event) {
-
+        TCC tcc = new TCC();
+        tcc.fechaTela();
+        tcc.iniciaStage("Carrinho.fxml");
     }
     
     private void iniciaImagem() {
@@ -100,7 +102,7 @@ public class ContaUsuarioController implements Initializable {
         btnPedido.setOnMouseClicked(event -> {
             TCC tcc = new TCC();
             tcc.fechaTela();
-            tcc.iniciaStage("PedidoCliente.fxml");
+            tcc.iniciaStage("Pedidos.fxml");
         });
         btnPedido.setTooltip(new Tooltip("Ver Pedidos"));
         btnEncontrarRevendedor.setOnMouseEntered(event -> {
