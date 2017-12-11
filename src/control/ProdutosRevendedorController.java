@@ -1,5 +1,6 @@
 package control;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -14,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,6 +25,7 @@ import model.Produto;
 import model.TCC;
 import model.Usuario;
 import model.jdbc.ProdutoDAO;
+import model.jdbc.UsuarioDAO;
 
 public class ProdutosRevendedorController implements Initializable {
 
@@ -31,12 +34,6 @@ public class ProdutosRevendedorController implements Initializable {
 
     @FXML
     private TableColumn<Produto, String> colNome;
-
-    @FXML
-    private TextField textQuantidade;
-
-    @FXML
-    private Button btnAdd;
 
     @FXML
     private TextField textPesquisa;
@@ -49,6 +46,36 @@ public class ProdutosRevendedorController implements Initializable {
 
     @FXML
     private TableColumn<Produto, Float> colPreco;
+    
+    @FXML
+    private JFXButton btnMais;
+    
+    @FXML
+    private Label labelQuantidade;
+    
+    @FXML
+    private Label labelNome;
+
+    @FXML
+    private JFXButton btnMenos;
+    
+    @FXML
+    private ImageView imgPerfil;
+    
+    @FXML
+    private ImageView imgLogout;
+    
+    @FXML
+    private ImageView imgConta1;
+    
+    @FXML
+    private ImageView imgRevendedores;
+    
+    @FXML
+    private ImageView imgCart;
+    
+    @FXML
+    private JFXButton btnVoltar;
     
     private static Usuario usuario;
     
@@ -66,10 +93,10 @@ public class ProdutosRevendedorController implements Initializable {
         if (produto == null) {
             alertas.selecioneProduto();
         } else {
-            if (Integer.valueOf(textQuantidade.getText()) > produto.getDisponivel()) {
+            if (Integer.valueOf(labelQuantidade.getText()) > produto.getDisponivel()) {
                 alertas.erroQuantidadeProduto();
             } else {
-                produto.setQuantidade(Integer.valueOf(textQuantidade.getText()));
+                produto.setQuantidade(Integer.valueOf(labelQuantidade.getText()));
                 Carrinho.addProduto(produto);
                 alertas.produtoAdicionadoCarrinho();
             }
@@ -111,6 +138,7 @@ public class ProdutosRevendedorController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Produto> observable, Produto oldValue, Produto newValue) {
                 produto = newValue;
+                labelQuantidade.setText("0");
             }
         });
     }
@@ -128,11 +156,69 @@ public class ProdutosRevendedorController implements Initializable {
         });
     }
     
+    private void trocaQuantidade() {
+        Alertas alertas = new Alertas();
+        btnMais.setOnMouseClicked(event -> {
+            if (produto == null) {
+                alertas.erroSelecioneProduto();
+            } else {
+                if (Integer.valueOf(labelQuantidade.getText()) == 0) {
+                    alertas.erroReservaProduto();
+                } else {
+                    labelQuantidade.setText(String.valueOf(Integer.valueOf(labelQuantidade.getText()) - 1));
+                }
+            }
+        });
+        btnMenos.setOnMouseClicked(event -> {
+            if (produto == null) {
+                alertas.erroSelecioneProduto();
+            } else {
+                if (Integer.valueOf(labelQuantidade.getText()) >= produto.getDisponivel()) {
+                    alertas.erroQuantidadeProduto();
+                } else {
+                    labelQuantidade.setText(String.valueOf(Integer.valueOf(labelQuantidade.getText()) + 1));
+                }
+            }
+        });
+    }
+    
+    private void iniciaUsuario() {
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
+        labelNome.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
+        labelNome.autosize();
+        imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + ".png"));
+    }
+    
+    private void iniciaImagem() {
+        imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+        imgConta1.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
+        imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\RevendedoresBranco.png"));
+        imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\PedidosBranco.png"));
+    }
+    
+    private void acaoBotoes() {
+        btnVoltar.setOnMouseEntered(event -> {
+            imgLogout.setScaleX(1.1);
+            imgLogout.setScaleY(1.1);
+        });
+        btnVoltar.setOnMouseExited(event -> {
+            imgLogout.setScaleX(1.0);
+            imgLogout.setScaleY(1.0);
+        });
+        btnVoltar.setTooltip(new Tooltip("Voltar"));
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         iniciaTabela();
         pesquisaProduto();
         selecionaTabela();
+        trocaQuantidade();
+        iniciaImagem();
+        iniciaUsuario();
+        acaoBotoes();
+        textPesquisa.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }    
     
 }

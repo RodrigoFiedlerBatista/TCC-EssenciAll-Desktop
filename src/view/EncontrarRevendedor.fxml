@@ -27,19 +27,18 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="425.0" layoutY="10.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
       <ImageView fx:id="imgFundo" fitHeight="447.0" fitWidth="673.0" layoutX="84.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/felipe-p-lima-rizo-363093.jpg" />
-         </image>
-      </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="384.0" layoutX="115.0" layoutY="31.0" opacity="0.49" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
-      <JFXComboBox fx:id="cbMarcas" focusColor="#14fff3" labelFloat="true" layoutX="194.0" layoutY="223.0" prefHeight="25.0" prefWidth="156.0" promptText="Marcas" style="-fx-border-radius: 2;" unFocusColor="WHITE" />
-      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="332.0" layoutY="288.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Slides/felipe-p-lima-rizo-363093.jpg" />
+         </image></ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="447.0" layoutX="85.0" opacity="0.49" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="671.0" />
+      <JFXComboBox fx:id="cbMarcas" focusColor="#14fff3" labelFloat="true" layoutX="305.0" layoutY="163.0" prefHeight="25.0" prefWidth="156.0" style="-fx-border-radius: 2;" unFocusColor="WHITE" />
+      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="712.0" layoutY="171.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/pesquisa.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="194.0" layoutY="277.0" prefHeight="25.0" prefWidth="156.0" unFocusColor="WHITE" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="82.0" layoutX="115.0" layoutY="43.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="115.0" layoutY="125.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="611.0" />
+      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="479.0" layoutY="163.0" prefHeight="25.0" prefWidth="250.0" promptText="Pesquisar revendedor" unFocusColor="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="82.0" layoutX="84.0" layoutY="43.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="671.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="84.0" layoutY="125.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="671.0" />
       <Separator layoutX="419.0" layoutY="95.0" prefWidth="200.0" />
       <ImageView fx:id="imgPerfilRevendedor" fitHeight="104.0" fitWidth="99.0" layoutX="137.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
          <effect>
@@ -59,35 +58,36 @@
             <Font name="Tw Cen MT Condensed" size="30.0" />
          </font>
       </Label>
-      <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="41.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="41.0" layoutY="178.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/revendedoresBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnRevendedores" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="171.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnRevendedores" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="174.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="241.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/ContaBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="235.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="304.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="238.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="307.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/sairBranco.png" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="35.0" layoutY="298.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="30.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="35.0" layoutY="301.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="30.0" layoutY="99.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="28.0" layoutY="95.0" prefHeight="53.0" prefWidth="43.0" text=" " textFill="WHITE" />
-      <TableView fx:id="tbRevendedor" layoutX="419.0" layoutY="177.0" prefHeight="200.0" prefWidth="282.0">
+      <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="36.0" layoutY="103.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <TableView fx:id="tbRevendedor" layoutX="305.0" layoutY="198.0" prefHeight="230.0" prefWidth="427.0" style="-fx-background-color: #95a1ab; -fx-border-color: white; -fx-border-radius: 4;" stylesheets="@../css/Tabelacss.css">
         <columns>
-          <TableColumn fx:id="clNome" prefWidth="281.0" text="Revendedor" />
+          <TableColumn fx:id="clNome" prefWidth="424.00006103515625" text="Revendedor" />
         </columns>
       </TableView>
-      <JFXButton layoutX="500.0" layoutY="386.0" onAction="#produtos" prefHeight="27.0" prefWidth="120.0" style="-fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: white;" text="Ver Produtos" textFill="WHITE" />
+      <JFXButton layoutX="137.0" layoutY="291.0" onAction="#produtos" prefHeight="27.0" prefWidth="112.0" style="-fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: white;" text="Ver Produtos" textFill="WHITE" />
+      <Label layoutX="305.0" layoutY="153.0" text="Marca" textFill="WHITE" />
    </children>
 </AnchorPane>

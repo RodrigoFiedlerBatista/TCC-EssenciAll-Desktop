@@ -9,9 +9,43 @@ public class Pedido {
     private int cliente;
     private int revendedor;
     private int id_pedido;
-    private String status;
+    private ObservableList<Boolean> visualizado = FXCollections.observableArrayList();
+    private ObservableList<String> status = FXCollections.observableArrayList();
     private ObservableList<Integer> quantidade = FXCollections.observableArrayList();
+    private ObservableList<Integer> id_itenpedido = FXCollections.observableArrayList();
 
+    public ObservableList<Integer> getId_itenpedido() {
+        return id_itenpedido;
+    }
+
+    public void setId_itenpedido(ObservableList<Integer> id_itenpedido) {
+        this.id_itenpedido = id_itenpedido;
+    }
+    
+    public void setId_itenpedido(int id) {
+        this.id_itenpedido.add(id);
+    }
+
+    public ObservableList<Boolean> getVisualizado() {
+        return visualizado;
+    }
+
+    public void setVisualizado(ObservableList<Boolean> visualizado) {
+        this.visualizado = visualizado;
+    }
+    
+    public void setVisualizado(boolean visualizado) {
+        this.visualizado.add(visualizado);
+    }
+
+    public int getRevendedor() {
+        return revendedor;
+    }
+
+    public void setRevendedor(int revendedor) {
+        this.revendedor = revendedor;
+    }
+    
     public ObservableList<Integer> getQuantidade() {
         return quantidade;
     }
@@ -24,11 +58,15 @@ public class Pedido {
         this.quantidade.add(i);
     }
 
-    public String getStatus() {
+    public ObservableList<String> getStatus() {
         return status;
     }
-
+    
     public void setStatus(String status) {
+        this.status.add(status);
+    }
+
+    public void setStatus(ObservableList<String> status) {
         this.status = status;
     }
 
@@ -60,12 +98,12 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public int getRevendedor() {
+    /*public int getRevendedor() {
         return revendedor;
     }
 
     public void setRevendedor(int revendedor) {
-        this.revendedor = revendedor;
-    }
+        this.revendedor = revendedor;*/
+    //}
     
 }

@@ -1,10 +1,10 @@
 package control;
 
+import com.jfoenix.controls.JFXButton;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -20,6 +20,7 @@ import model.Produto;
 import model.TCC;
 import model.Usuario;
 import model.jdbc.PedidoDAO;
+import model.jdbc.ProdutoDAO;
 import model.jdbc.UsuarioDAO;
 
 public class CarrinhoController implements Initializable {
@@ -41,8 +42,40 @@ public class CarrinhoController implements Initializable {
     
     @FXML
     private TableColumn<Produto, Integer> colQuantidade;
+    
+    @FXML
+    private JFXButton btnConta;
+
+    @FXML
+    private JFXButton btnPedir;
+
+    @FXML
+    private JFXButton btnRevendedor;
+    
+    @FXML
+    private ImageView imgPerfilRevendedor;
+
+    @FXML
+    private ImageView imgRevendedores;
+
+    @FXML
+    private JFXButton btnSair;
+
+    @FXML
+    private ImageView imgCart;
+    
+     @FXML
+    private ImageView imgConta1;
+
+    @FXML
+    private ImageView imgLogout;
 
     private Produto produto;
+    
+    @FXML
+    void conta(ActionEvent event) {
+
+    }
     
     @FXML
     void voltar(ActionEvent event) {
@@ -59,6 +92,10 @@ public class CarrinhoController implements Initializable {
         } else {
             PedidoDAO pedidoDAO = new PedidoDAO();
             UsuarioDAO usuarioDAO = new UsuarioDAO();
+            ProdutoDAO produtoDAO = new ProdutoDAO();
+            for (int i = 0; i < Carrinho.getCarrinho().size(); i++) {
+                produtoDAO.editaVendidos(Carrinho.getCarrinho().get(i).getVendidos() + colQuantidade.getCellData(i), Carrinho.getCarrinho().get(i).getId_produto());
+            }
             ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
             pedidoDAO.addPedido(usuarios.get(Usuario.getUsuarioLogado()).getId_usuario(), Carrinho.getCarrinho());
             alertas.pedidoRealizado();

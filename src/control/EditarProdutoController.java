@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ListCell;
+import javafx.scene.control.Tooltip;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
@@ -50,25 +51,22 @@ public class EditarProdutoController implements Initializable {
     private ImageView imagemIconeSair;
 
     @FXML
-    private JFXButton textCancelar;
+    private JFXButton btnVoltar;
+
+    @FXML
+    private JFXComboBox<String> cbMarca;
 
     @FXML
     private ImageView imgProduto;
 
     @FXML
+    private JFXTextArea textDescricao;
+
+    @FXML
     private JFXTextField textUnidade;
 
     @FXML
-    private JFXButton btnVoltar;
-
-    @FXML
     private JFXButton btnDiminuir;
-    
-    @FXML
-    private JFXTextArea textDescricao;
-    
-    @FXML
-    private JFXComboBox<String> cbMarca;
     
     private static Produto produto;
     
@@ -109,6 +107,12 @@ public class EditarProdutoController implements Initializable {
             imagemIconeSair.setScaleX(1.0);
             imagemIconeSair.setScaleY(1.0);
         });
+        btnVoltar.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("Estoque.fxml");
+        });
+        btnVoltar.setTooltip(new Tooltip("Voltar"));
         textSalvar.setOnMouseClicked(event -> {
             if (verificaValores()) {
                 ProdutoDAO produtoDAO = new ProdutoDAO();
@@ -138,11 +142,6 @@ public class EditarProdutoController implements Initializable {
                 tcc.iniciaStage("Estoque.fxml");
                 alertas.produtoEditado();
             }
-        });
-        textCancelar.setOnMouseClicked(event -> {
-            TCC tcc = new TCC();
-            tcc.fechaTela();
-            tcc.iniciaStage("Estoque.fxml");
         });
     }
     

@@ -18,50 +18,48 @@ import model.jdbc.UsuarioDAO;
 public class ContaRevendedorController implements Initializable {
 
     @FXML
-    private ImageView imgPerfilRevendedor;
-    
-    @FXML
-    private ImageView imgRevendedores;
+    private ImageView imgEstoque;
 
-    @FXML
-    private ImageView imgCart;
-
-    @FXML
-    private ImageView imgLogout;
-    
     @FXML
     private Label labelNome;
 
     @FXML
+    private ImageView imgFundoContRevend;
+
+    @FXML
+    private JFXButton btnConta;
+
+    @FXML
+    private JFXButton btnPedidos;
+
+    @FXML
+    private ImageView imgPedidos;
+
+    @FXML
+    private ImageView imgPerfilRevendedor;
+
+    @FXML
+    private JFXButton btnSair;
+
+    @FXML
+    private ImageView imgEssencial;
+
+    @FXML
+    private ImageView imgLogout;
+
+    @FXML
     private ImageView imgConta1;
-    
+
     @FXML
-    private ImageView imgEstoque;
-    
+    private ImageView imgHome;
+
     @FXML
-    private ImageView imgProdutos;
-    
-    @FXML
-    private JFXButton btnProdutos;
- 
+    private JFXButton btnHome;
+
     @FXML
     private JFXButton btnEstoque;
     
-    @FXML
-    private ImageView imgFundoContRevend;
-    
-    @FXML
-    private JFXButton btnConta;
-    
-    @FXML
-    private JFXButton btnSair;
-    
     private ObservableList<Usuario> usuarios;
-    
-    @FXML
-    void pedir(ActionEvent event) {
-
-    }
 
     @FXML
     void sair(ActionEvent event) {
@@ -76,24 +74,9 @@ public class ContaRevendedorController implements Initializable {
         tcc.fechaTela();
         tcc.iniciaStage("HomeRevendedor.fxml");
     }
-
-    @FXML
-    void clientes(ActionEvent event) {
-
-    }
-
-    @FXML
-    void fechar(ActionEvent event) {
-        
-
-    }
     
     public void acaoBotoes() {
-        TCC tcc = new TCC();
-        btnProdutos.setOnMouseClicked(event -> {
-            tcc.fechaTela();
-            tcc.iniciaStage("CadastraProduto.fxml");
-        });        
+        TCC tcc = new TCC();       
         btnEstoque.setOnMouseClicked(event -> {
             tcc.fechaTela();
             tcc.iniciaStage("Estoque.fxml"); 
@@ -110,12 +93,14 @@ public class ContaRevendedorController implements Initializable {
         btnConta.setOnMouseEntered(event -> {
             imgConta1.setScaleX(1.1);
             imgConta1.setScaleY(1.1);
-        });
+        });      
+        /*-----------------------------------------*/       
         btnConta.setOnMouseExited(event -> {
             imgConta1.setScaleX(1.0);
             imgConta1.setScaleY(1.0);
         });
         btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        /*-----------------------------------------*/
         btnSair.setOnMouseEntered(event -> {
             imgLogout.setScaleX(1.1);
             imgLogout.setScaleY(1.1);
@@ -124,22 +109,76 @@ public class ContaRevendedorController implements Initializable {
             imgLogout.setScaleX(1.0);
             imgLogout.setScaleY(1.0);
         });
-        btnSair.setTooltip(new Tooltip("Sair"));
+        btnSair.setTooltip(new Tooltip("Sair"));     
+        btnPedidos.setOnMouseClicked(event -> {
+            tcc.fechaTela();
+            tcc.iniciaStage("pedidosRevendedor.fxml");
+        });
+        btnPedidos.setOnMouseEntered(event -> {
+            imgPedidos.setScaleX(1.1);
+            imgPedidos.setScaleY(1.1);
+        });
+        btnPedidos.setOnMouseExited(event -> {
+            imgPedidos.setScaleX(1.0);
+            imgPedidos.setScaleY(1.0);
+        });
+        btnPedidos.setTooltip(new Tooltip("Pedidos"));
+        btnHome.setOnMouseEntered(event -> {
+            imgHome.setScaleX(1.1);
+            imgHome.setScaleY(1.1);
+        });
+        btnHome.setOnMouseExited(event -> {
+            imgHome.setScaleX(1.0);
+            imgHome.setScaleY(1.0);
+        });
+        btnHome.setTooltip(new Tooltip("Home"));
     }
     
     public void iniciaImagem(){
         imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\Imagem\\left-arrow-angle.png"));
         imgConta1.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
-        imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png"));
-        imgProdutos.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfumeProdutos.png"));
         imgEstoque.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\icone-produtos2.png"));
-        imgRevendedores.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
-        imgLogout.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+        imgHome.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\homeBranco.png"));
+        imgLogout.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png"));
         imgFundoContRevend.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\conta6.jpg"));
         imgPerfilRevendedor.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem()));
+        imgEssencial.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\EssenciAll.png"));
         labelNome.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
         labelNome.autosize();
     }
+    
+    /*private void checaPedidos() {
+        PedidoDAO pedidoDAO = new PedidoDAO();
+        ProdutoDAO produtoDAO = new ProdutoDAO();
+        ObservableList<Produto> produtos = produtoDAO.selectProduto();
+        ObservableList<Pedido> pedidos = pedidoDAO.selectPedido();
+        ObservableList<Produto> produtosUsuario = FXCollections.observableArrayList();
+        for (int i = 0; i < produtos.size(); i++) {
+            if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
+                produtosUsuario.add(produtos.get(i));
+            }
+        }
+        int notificou = 0;
+        for (int i = 0; i < pedidos.size(); i++) {
+            for (int j = 0; j < pedidos.get(i).getProdutos().size(); j++) {
+                for (int k = 0; k < produtosUsuario.size(); k++) {
+                    if (pedidos.get(i).getProdutos().get(j) == produtosUsuario.get(k).getId_produto()) {
+                        if (!pedidos.get(i).getVisualizado().get(k)) {
+                            notificou++;
+                        }
+                    }
+                }
+            }
+        }
+        if (notificou > 0) {
+            labelNotificacao.setVisible(true);
+            labelNotificacao.setText(String.valueOf(notificou));
+            circuloNotificacao.setVisible(true);
+        } else {
+            labelNotificacao.setVisible(false);
+            circuloNotificacao.setVisible(false);
+        }
+    }*/
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -147,6 +186,7 @@ public class ContaRevendedorController implements Initializable {
         usuarios = usuario.selectUsuario();
         iniciaImagem();
         acaoBotoes();
+        //checaPedidos();
     }    
     
 }

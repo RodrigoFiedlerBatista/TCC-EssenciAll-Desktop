@@ -27,6 +27,12 @@ import model.jdbc.UsuarioDAO;
 public class HomeRevendedorController implements Initializable {
 
     @FXML
+    private ImageView imgLapis;
+
+    @FXML
+    private JFXTextField textCidade;
+
+    @FXML
     private JFXTextField textLogin;
 
     @FXML
@@ -36,16 +42,16 @@ public class HomeRevendedorController implements Initializable {
     private ImageView imgConta;
 
     @FXML
-    private JFXButton btnFechar;
+    private JFXTextField textEndereco;
 
     @FXML
     private JFXButton btnImagem;
 
     @FXML
-    private JFXButton btnConta;
+    private JFXButton editarRevenda;
 
     @FXML
-    private JFXButton btnRevendedor;
+    private JFXButton btnConta;
 
     @FXML
     private ImageView imgFundo;
@@ -57,9 +63,6 @@ public class HomeRevendedorController implements Initializable {
     private ImageView imgPerfil;
 
     @FXML
-    private ImageView imgRevendedores;
-
-    @FXML
     private JFXTextField textEmail;
 
     @FXML
@@ -69,9 +72,6 @@ public class HomeRevendedorController implements Initializable {
     private JFXButton btnSair;
 
     @FXML
-    private ImageView imgFechar;
-
-    @FXML
     private ImageView imgLogout;
 
     @FXML
@@ -79,6 +79,9 @@ public class HomeRevendedorController implements Initializable {
 
     @FXML
     private JFXButton btnHome;
+
+    @FXML
+    private ImageView imgPerfume;
     
     private static String url = "";
     
@@ -172,7 +175,28 @@ public class HomeRevendedorController implements Initializable {
                 return;
             }
         }
+        if (textCidade.getText().length() > 100 || textCidade.getText().equals("")) {
+            alertas.erroCidadeInvalida();
+            return;
+        } else {
+            if (!textCidade.getText().equals(usuarios.get(Usuario.getUsuarioLogado()).getCidade())) {
+                usuario.atualizaCidade(textCidade.getText(), usuarios);
+                trocou = true;
+            }
+        }
+        if (textEndereco.getText().length() > 200 || textEndereco.getText().equals("")) {
+            alertas.erroEnderecoInvalido();
+            return;
+        } else {
+            if (!textEndereco.getText().equals(usuarios.get(Usuario.getUsuarioLogado()).getEndereco())) {
+                usuario.atualizaEndereco(textEndereco.getText(), usuarios);
+                trocou = true;
+            }
+        }
         if (trocou) {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("ContaRevendedor.fxml");
             alertas.informacoesAlteradas();
             usuarios = usuario.selectUsuario();
         } else {
@@ -210,16 +234,6 @@ public class HomeRevendedorController implements Initializable {
         tcc.fechaTela();
         tcc.iniciaStage("HomeRevendedor.fxml");
     }
-
-    @FXML
-    void revendedores(ActionEvent event) {
-
-    }
-
-    @FXML
-    void pedir(ActionEvent event) {
-
-    }
     
     public void atualizaUrl(){
         UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -231,8 +245,9 @@ public class HomeRevendedorController implements Initializable {
         UsuarioDAO usuarioDAO = new UsuarioDAO();
         usuarios = usuarioDAO.selectUsuario();
         url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
+        imgLapis.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\lapis.png"));
+        imgPerfume.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfume_1.png"));
         imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + url));
-        imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgConta.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
         //imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
         //imgMenu.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\menu.png"));
@@ -280,15 +295,6 @@ public class HomeRevendedorController implements Initializable {
             imgHome.setScaleY(1.0);
         });
         btnHome.setTooltip(new Tooltip("Home"));
-        btnRevendedor.setOnMouseEntered(event -> {
-            imgRevendedores.setScaleX(1.1);
-            imgRevendedores.setScaleY(1.1);
-        });
-        btnRevendedor.setOnMouseExited(event -> {
-            imgRevendedores.setScaleX(1.0);
-            imgRevendedores.setScaleY(1.0);
-        });
-        btnRevendedor.setTooltip(new Tooltip("Revendedor"));
         btnSair.setOnMouseEntered(event -> {
             imgLogout.setScaleX(1.1);
             imgLogout.setScaleY(1.1);
@@ -298,6 +304,33 @@ public class HomeRevendedorController implements Initializable {
             imgLogout.setScaleY(1.0);
         });
         btnSair.setTooltip(new Tooltip("Sair"));
+        editarRevenda.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("EditarEmpresas.fxml");
+        });
+        editarRevenda.setOnMouseEntered(event -> {
+            imgPerfume.setScaleX(1.1);
+            imgPerfume.setScaleY(1.1);
+            imgLapis.setScaleX(1.1);
+            imgLapis.setScaleY(1.1);
+        });
+        editarRevenda.setOnMouseExited(event -> {
+            imgPerfume.setScaleX(1.0);
+            imgPerfume.setScaleY(1.0);
+            imgLapis.setScaleX(1.0);
+            imgLapis.setScaleY(1.0);
+        });
+        editarRevenda.setTooltip(new Tooltip("Editar Marcas"));
+    }
+    
+    private void textCor() {
+        textLogin.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textEmail.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textSenha.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textSenha2.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textCidade.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textEndereco.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
     }
     
     @Override
@@ -306,12 +339,11 @@ public class HomeRevendedorController implements Initializable {
         usuarios = usuarioDAO.selectUsuario();
         iniciaImagem();
         acaoBotoes();
+        textCor();
         textLogin.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
         textEmail.setText(usuarios.get(Usuario.getUsuarioLogado()).getEmail());
-        textLogin.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
-        textEmail.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
-        textSenha.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
-        textSenha2.setStyle("-fx-prompt-text-fill: white; -fx-text-fill: white");
+        textCidade.setText(usuarios.get(Usuario.getUsuarioLogado()).getCidade());
+        textEndereco.setText(usuarios.get(Usuario.getUsuarioLogado()).getEndereco());
     }    
     
 }

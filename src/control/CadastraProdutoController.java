@@ -29,10 +29,16 @@ import model.jdbc.UsuarioDAO;
 public class CadastraProdutoController implements Initializable {
     
     @FXML
+    private JFXTextField textCodigo;
+
+    @FXML
     private JFXTextField textQuantidade;
 
     @FXML
     private ImageView imagemIconeSair;
+
+    @FXML
+    private JFXComboBox<String> cbMarca;
 
     @FXML
     private ImageView imgProduto;
@@ -51,9 +57,6 @@ public class CadastraProdutoController implements Initializable {
 
     @FXML
     private JFXTextField textNome;
-    
-    @FXML
-    private JFXComboBox<String> cbMarca;
     
     private String url = System.getProperty("user.dir") + "\\src\\imagens\\massa_1.jpg";
     
@@ -87,6 +90,7 @@ public class CadastraProdutoController implements Initializable {
             produto.setUrls(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             produto.setValor(Float.valueOf(textValor.getText()));
             produto.setMarca(cbMarca.getValue());
+            produto.setCodigo(Integer.valueOf(textCodigo.getText()));
             produtoDAO.addProduto(produto);
             gerenciaArquivos.copiaCola(url, System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + textNome.getText() + ".png");
             tcc.fechaTela();
@@ -121,6 +125,10 @@ public class CadastraProdutoController implements Initializable {
             alertas.erroValorQuantidadeProduto();
             return false;
         }
+        if (!Pattern.matches("[0-9]+", textCodigo.getText()) || textCodigo.getText().equals("")) {
+            alertas.erroCodigoProduto();
+            return false;
+        }
         if (cbMarca.getValue() == null) {
             alertas.erroCadastraProdutoMarca();
             return false;
@@ -131,10 +139,12 @@ public class CadastraProdutoController implements Initializable {
     private void iniciaImagem() {
         imgProduto.setImage(new Image("file:///" + url));
         imagemIconeSair.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
+        imgEssencial.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\EssenciAll.png"));
         textNome.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
         textQuantidade.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
         textDescricao.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
         textValor.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        textCodigo.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }
     
     private void acaoBotoes() {

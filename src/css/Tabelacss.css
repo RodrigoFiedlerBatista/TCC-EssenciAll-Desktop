@@ -1,0 +1,21 @@
+.table-view .column-header {
+    -fx-background-color: #233443;
+}
+
+.table-view .column-header .label {
+    -fx-font-size: 10pt;
+    -fx-font-family: "Segoe UI Light";
+    -fx-text-fill: white;
+    -fx-alignment: center;
+    -fx-opacity: 1;
+}
+.chart-pie-label {-fx-fill: #ffffff;}
+.chart-title {
+    -fx-text-fill: #ffffff;
+}
+/*.button{
+    -fx-border-color: white;
+}
+.JFXButton{
+    -fx-border-color: white;
+}*/

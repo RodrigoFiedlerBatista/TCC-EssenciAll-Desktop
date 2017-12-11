@@ -29,36 +29,31 @@
             </LinearGradient>
          </fill>
       </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="82.0" layoutY="104.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="659.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="449.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="89.0" />
-      <ImageView fx:id="imgCart" fitHeight="25.0" fitWidth="25.0" layoutX="42.0" layoutY="111.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="44.0" layoutY="286.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/compra/cart.png" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
          </image>
       </ImageView>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="106.0" onAction="#pedir" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="44.0" layoutY="309.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="280.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="44.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/menu/left-arrow-angle.png" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/ContaBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="303.0" onAction="#sair" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="44.0" layoutY="243.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="203.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgHome" fitHeight="28.0" fitWidth="22.0" layoutX="44.0" layoutY="129.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/Usuario/ContaBranco.png" />
+            <Image url="@../imagens/homeBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="240.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
-      <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="44.0" layoutY="180.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/Icones/Usuario/revendedoresBranco.png" />
-         </image>
-      </ImageView>
-      <JFXButton alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="176.0" onAction="#clientes" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnHome" alignment="BOTTOM_LEFT" layoutX="41.0" layoutY="125.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#e31d1a" height="133.0" layoutX="447.0" layoutY="196.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="146.0">
          <effect>
             <DropShadow />
          </effect></Rectangle>
-      <ImageView fx:id="imgProdutos" fitHeight="117.0" fitWidth="112.0" layoutX="467.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgPedidos" fitHeight="117.0" fitWidth="112.0" layoutX="467.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../BackgroundEssenciAll/perfume%20(2).png" />
          </image>
@@ -72,7 +67,7 @@
             <Image url="@../../../BackgroundEssenciAll/Icones/estoque/icone-produtos2.png" />
          </image>
       </ImageView>
-      <Label layoutX="494.0" layoutY="336.0" text="Produtos" textFill="WHITE">
+      <Label layoutX="494.0" layoutY="336.0" text="Pedidos" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="15.0" />
          </font>
@@ -83,7 +78,7 @@
          </font>
       </Label>
       <JFXButton fx:id="btnEstoque" layoutX="213.0" layoutY="195.0" prefHeight="133.0" prefWidth="146.0" text=" " />
-      <JFXButton fx:id="btnProdutos" layoutX="447.0" layoutY="195.0" prefHeight="133.0" prefWidth="146.0" text=" " />
+      <JFXButton fx:id="btnPedidos" layoutX="447.0" layoutY="195.0" prefHeight="133.0" prefWidth="146.0" text=" " />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="54.0" layoutX="-49.0" layoutY="-33.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
          <effect>
             <InnerShadow />
@@ -95,8 +90,7 @@
          </effect>
       </Rectangle>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="386.0" layoutX="-2.0" layoutY="29.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="90.0" layoutY="104.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="651.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="82.0" layoutX="90.0" layoutY="22.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="651.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="82.0" layoutX="82.0" layoutY="22.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="659.0" />
       <Label layoutX="477.0" layoutY="39.0" text="Revendedor" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="32.0" />
@@ -110,7 +104,7 @@
       </ImageView>
       <ImageView fx:id="imgPerfilRevendedor" fitHeight="104.0" fitWidth="99.0" layoutX="129.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/Usuario/userBranco.png" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
          </image>
          <effect>
             <DropShadow />

@@ -19,7 +19,12 @@
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/PerfumeCadastrar.jpg" />
          </image>
       </ImageView>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="403.0" layoutX="234.0" layoutY="73.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="340.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#231e1f" height="403.0" layoutX="234.0" layoutY="73.0" strokeType="INSIDE" strokeWidth="0.0" width="340.0" />
+      <ImageView fx:id="imgGif" fitHeight="255.0" fitWidth="340.0" layoutX="234.0" layoutY="133.0" opacity="0.8" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/gifLogin.gif" />
+         </image>
+      </ImageView>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="38.0" layoutX="234.0" layoutY="105.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="340.0" />
       <ImageView fx:id="imgEssencial" fitHeight="107.0" fitWidth="110.0" layoutX="360.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true">
          <image>

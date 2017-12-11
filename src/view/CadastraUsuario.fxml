@@ -14,30 +14,19 @@
 
 <AnchorPane id="AnchorPane" prefHeight="436.0" prefWidth="592.0" style="-fx-background-color: #233443;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.CadastraUsuarioController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="444.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="636.0">
-         <fill>
-            <LinearGradient endX="1.0" endY="1.0" startX="0.21428571428571425" startY="0.6142857142857143">
-               <stops>
-                  <Stop color="#233443" />
-                  <Stop color="#2c2c31" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </fill>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="35.0" layoutX="86.0" layoutY="126.0" opacity="0.12" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="550.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="438.0" layoutX="-2.0" layoutY="5.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="86.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="48.0" layoutX="87.0" layoutY="4.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="78.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="76.0" layoutX="86.0" layoutY="50.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="550.0" />
-      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="531.0" layoutY="329.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgFundo" fitHeight="444.0" fitWidth="804.0" layoutX="-162.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/EssenciAll2.png" />
-         </image>
-      </ImageView>
-      <Label layoutX="414.0" layoutY="67.0" text="Cadastrar" textFill="WHITE">
+            <Image url="@../../../../../Desktop/gif/city.gif" />
+         </image></ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="35.0" layoutX="66.0" layoutY="101.0" opacity="0.3" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="559.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="444.0" layoutX="80.0" opacity="0.46" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="545.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="438.0" layoutX="-2.0" layoutY="5.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="86.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="76.0" layoutX="80.0" layoutY="25.0" opacity="0.83" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="545.0" />
+      <Label layoutX="414.0" layoutY="42.0" text="Cadastrar" textFill="WHITE">
          <font>
             <Font name="Bank Gothic Light BT" size="32.0" />
          </font></Label>
-      <ImageView fx:id="imagemPerfil" fitHeight="116.0" fitWidth="105.0" layoutX="159.0" layoutY="79.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imagemPerfil" fitHeight="116.0" fitWidth="105.0" layoutX="155.0" layoutY="54.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
          </image>
@@ -45,20 +34,30 @@
             <DropShadow />
          </effect>
       </ImageView>
-      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="124.0" layoutY="243.0" prefHeight="25.0" prefWidth="219.0" promptText="Login" unFocusColor="WHITE">
+      <JFXTextField fx:id="textLogin" focusColor="#14fff3" labelFloat="true" layoutX="124.0" layoutY="202.0" prefHeight="25.0" prefWidth="219.0" promptText="Login" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font>
       </JFXTextField>
-      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="124.0" layoutY="283.0" prefHeight="25.0" prefWidth="219.0" promptText="Senha" unFocusColor="WHITE">
+      <JFXPasswordField fx:id="textSenha" focusColor="#14fff3" labelFloat="true" layoutX="124.0" layoutY="242.0" prefHeight="25.0" prefWidth="219.0" promptText="Senha" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXPasswordField>
-      <JFXPasswordField fx:id="textSenha2" focusColor="#14fff3" labelFloat="true" layoutX="363.0" layoutY="243.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmar Senha" unFocusColor="WHITE">
+      <JFXPasswordField fx:id="textSenha2" focusColor="#14fff3" labelFloat="true" layoutX="124.0" layoutY="282.0" prefHeight="25.0" prefWidth="219.0" promptText="Confirmar Senha" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font></JFXPasswordField>
-      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="363.0" layoutY="283.0" prefHeight="25.0" prefWidth="219.0" promptText="Email" unFocusColor="WHITE">
+      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="363.0" layoutY="201.0" prefHeight="25.0" prefWidth="219.0" promptText="Email" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textCidade" focusColor="#14fff3" labelFloat="true" layoutX="363.0" layoutY="243.0" prefHeight="23.0" prefWidth="219.0" promptText="Cidade" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font>
+      </JFXTextField>
+      <JFXTextField fx:id="textEndereco" focusColor="#14fff3" labelFloat="true" layoutX="363.0" layoutY="283.0" prefHeight="23.0" prefWidth="219.0" promptText="Endereço" unFocusColor="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
          </font>
@@ -74,8 +73,8 @@
          </font>
       </JFXRadioButton>
       <JFXButton layoutX="285.0" layoutY="382.0" onAction="#cadastra" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: #14fff3; -fx-background-radius: 2; -fx-border-radius: 2;" text="Cadastrar" textFill="WHITE" />
-      <JFXButton fx:id="btnImagem" layoutX="285.0" layoutY="165.0" onAction="#trocarImagem" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: #14fff3; -fx-background-radius: 2; -fx-border-radius: 2;" text=" Escolher Imagem" textFill="WHITE" />
-      <Separator layoutX="339.0" layoutY="102.0" prefWidth="200.0" />
+      <JFXButton fx:id="btnImagem" layoutX="285.0" layoutY="144.0" onAction="#trocarImagem" prefHeight="27.0" prefWidth="120.0" style="-fx-border-color: #14fff3; -fx-background-radius: 2; -fx-border-radius: 2;" text=" Escolher Imagem" textFill="WHITE" />
+      <Separator layoutX="339.0" layoutY="77.0" prefWidth="200.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="54.0" layoutX="-63.0" layoutY="-28.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
          <effect>
             <InnerShadow />
@@ -87,12 +86,16 @@
          </effect>
       </Rectangle>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="406.0" layoutY="19.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#233443" height="105.0" layoutX="87.0" layoutY="337.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="78.0" />
       <ImageView fx:id="imagemIconeSair" fitHeight="27.0" fitWidth="30.0" layoutX="41.0" layoutY="210.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
          </image>
       </ImageView>
       <JFXButton fx:id="btnVoltar" layoutX="34.0" layoutY="205.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
+      <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="520.0" layoutY="330.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/EssenciAll2.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

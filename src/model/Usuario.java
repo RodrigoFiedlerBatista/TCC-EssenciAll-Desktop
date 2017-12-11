@@ -12,6 +12,24 @@ public class Usuario {
     private String codigo;
     private boolean ativado;
     private static int usuarioLogado;
+    private String cidade;
+    private String endereco;
+    
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
+    }
 
     public static int getUsuarioLogado() {
         return Usuario.usuarioLogado;

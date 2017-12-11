@@ -63,5 +63,25 @@ public class RevendeDAO {
         return usuarios;
     }
     
+    public void editaRevende(Revende revende) {
+        String sql = "update revende set eudora = ?, hinode = ?, jequiti = ?, laqua = ?, mary = ?, natura = ?, boticario = ?, up = ?, avon = ? where id_revende = ?;";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setBoolean(1, revende.isEudora());
+            stmt.setBoolean(2, revende.isHinode());
+            stmt.setBoolean(3, revende.isJequiti());
+            stmt.setBoolean(4, revende.isLaqua());
+            stmt.setBoolean(5, revende.isMary());
+            stmt.setBoolean(6, revende.isNatura());
+            stmt.setBoolean(7, revende.isBoticario());
+            stmt.setBoolean(8, revende.isUp());
+            stmt.setBoolean(9, revende.isAvon());
+            stmt.setInt(10, revende.getId_revende());
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(RevendeDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
 }

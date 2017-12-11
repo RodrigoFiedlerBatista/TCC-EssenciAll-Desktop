@@ -32,6 +32,9 @@ public class NovaSenhaController implements Initializable {
     @FXML
     private ImageView fundo;
     
+    @FXML
+    private ImageView imgEmail;
+    
     private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
 
     @FXML
@@ -87,6 +90,7 @@ public class NovaSenhaController implements Initializable {
         fundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\oi.jpg"));
         iconeInicio.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
         textEmail.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+        imgEmail.setImage(new Image("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\envelope.png"));
     }
     
     @Override

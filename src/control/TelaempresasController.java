@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -12,7 +13,9 @@ import javafx.scene.image.ImageView;
 import model.Alertas;
 import model.Revende;
 import model.TCC;
+import model.Usuario;
 import model.jdbc.RevendeDAO;
+import model.jdbc.UsuarioDAO;
 
 
 public class TelaempresasController implements Initializable {
@@ -424,10 +427,72 @@ public class TelaempresasController implements Initializable {
         });
     }
     
+    private void checaUsuario() {
+        if (Usuario.getUsuarioLogado() != 0) {
+            UsuarioDAO usuarioDAO = new UsuarioDAO();
+            ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
+            RevendeDAO revendeDAO = new RevendeDAO();
+            ObservableList<Revende> revende = revendeDAO.selectRevende();
+            for (int i = 0; i < usuarios.size(); i++) {
+                for (int j = 0; j < revende.size(); j++) {
+                    if (usuarios.get(i).getId_usuario() == revende.get(j).getId_usuario()) {
+                        if (revende.get(j).isAvon()) {
+                            this.ChekAvon.setSelected(true);
+                        } else {
+                            this.ChekAvon.setSelected(false);
+                        }
+                        if (revende.get(j).isBoticario()) {
+                            this.ChekBoticario.setSelected(true);
+                        } else {
+                            this.ChekBoticario.setSelected(false);
+                        }
+                        if (revende.get(j).isEudora()) {
+                            this.ChekEudora.setSelected(true);
+                        } else {
+                            this.ChekEudora.setSelected(false);
+                        }
+                        if (revende.get(j).isHinode()) {
+                            this.ChekHinode.setSelected(true);
+                        } else {
+                            this.ChekHinode.setSelected(false);
+                        }
+                        if (revende.get(j).isJequiti()) {
+                            this.ChekJequiti.setSelected(true);
+                        } else {
+                            this.ChekJequiti.setSelected(false);
+                        }
+                        if (revende.get(j).isLaqua()) {
+                            this.ChekLaqua.setSelected(true);
+                        } else {
+                            this.ChekLaqua.setSelected(false);
+                        }
+                        if (revende.get(j).isMary()) {
+                            this.ChekMAry.setSelected(true);
+                        } else {
+                            this.ChekMAry.setSelected(false);
+                        }
+                        if (revende.get(j).isNatura()) {
+                            this.CkeckNatura.setSelected(true);
+                        } else {
+                            this.CkeckNatura.setSelected(false);
+                        }
+                        if (revende.get(j).isUp()) {
+                            this.ChekUP.setSelected(true);
+                        } else {
+                            this.ChekUP.setSelected(false);
+                        }
+                        checaSelecionados();
+                    }
+                }
+            }
+        }
+    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         iniciaImagem();
         acaoBotoes();
+        checaUsuario();
     }    
     
 }

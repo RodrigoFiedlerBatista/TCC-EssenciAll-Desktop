@@ -33,9 +33,20 @@
                </stops>
             </LinearGradient>
          </fill>
+         <effect>
+            <DropShadow />
+         </effect>
       </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="402.0" layoutX="-5.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="95.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="195.0" layoutY="86.0" opacity="0.04" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="256.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="402.0" layoutX="-5.0" layoutY="-1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="95.0">
+         <fill>
+            <LinearGradient endX="0.9809523809523809" endY="1.0" startX="0.9857142857142858" startY="0.480952380952381">
+               <stops>
+                  <Stop color="#2c2c31" />
+                  <Stop color="#14fff3" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill></Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="401.0" layoutX="88.0" opacity="0.04" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="492.0">
          <fill>
             <LinearGradient endX="1.0" endY="1.0">
                <stops>
@@ -45,28 +56,25 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <Label layoutX="235.0" layoutY="114.0" text="Digite o email cadastrado" textFill="WHITE">
+      <Label layoutX="239.0" layoutY="118.0" text="Digite o email cadastrado" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
          </font></Label>
-      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="210.0" layoutY="193.0" prefHeight="25.0" prefWidth="224.0" promptText="Email" unFocusColor="WHITE" />
-      <JFXButton layoutX="270.0" layoutY="248.0" onAction="#enviar" prefHeight="27.0" prefWidth="89.0" style="-fx-border-color: #14fff3; -fx-border-radius: 2;" text="Enviar" textFill="WHITE" />
-      <ImageView fx:id="iconeInicio" fitHeight="36.0" fitWidth="41.0" layoutX="41.0" layoutY="179.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="imgEmail" fitHeight="20.0" fitWidth="29.0" layoutX="424.0" layoutY="190.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Diversos/parfume_1.png" />
+            <Image url="@../../../../../Desktop/envelope.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnInicio" layoutX="37.0" layoutY="180.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="54.0" layoutX="-101.0" layoutY="347.0" rotate="30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
+      <JFXTextField fx:id="textEmail" focusColor="#14fff3" labelFloat="true" layoutX="201.0" layoutY="185.0" prefHeight="25.0" prefWidth="245.0" promptText="Email" style="-fx-text-fill: #14fff3;" unFocusColor="WHITE" />
+      <JFXButton layoutX="273.0" layoutY="255.0" onAction="#enviar" prefHeight="27.0" prefWidth="89.0" style="-fx-border-color: #14fff3; -fx-border-radius: 2;" text="Enviar" textFill="WHITE" />
+      <ImageView fx:id="iconeInicio" fitHeight="22.0" fitWidth="22.0" layoutX="37.0" layoutY="187.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
+         </image>
          <effect>
-            <InnerShadow />
+            <DropShadow />
          </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="54.0" layoutX="-73.0" layoutY="-18.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
-         <effect>
-            <InnerShadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#14fff3" height="401.0" layoutX="-7.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="26.0" />
+      </ImageView>
+      <JFXButton fx:id="btnInicio" alignment="BOTTOM_LEFT" layoutX="35.0" layoutY="184.0" onAction="#voltar" prefHeight="27.0" prefWidth="29.0" text=" " textFill="WHITE" />
    </children>
 </AnchorPane>

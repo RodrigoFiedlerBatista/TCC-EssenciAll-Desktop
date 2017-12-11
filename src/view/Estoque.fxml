@@ -49,17 +49,17 @@
             <Font name="Bank Gothic Light BT" size="32.0" />
          </font>
       </Label>
-      <Label layoutX="56.0" layoutY="116.0" prefHeight="27.0" prefWidth="20.0" text="+" textFill="WHITE">
+      <Label layoutX="56.0" layoutY="110.0" prefHeight="27.0" prefWidth="20.0" text="+" textFill="WHITE">
          <font>
-            <Font size="29.0" />
+            <Font size="24.0" />
          </font>
       </Label>
-      <ImageView fx:id="icone_cadastrarPerfume" fitHeight="36.0" fitWidth="35.0" layoutX="38.0" layoutY="137.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="icone_cadastrarPerfume" fitHeight="27.0" fitWidth="29.0" layoutX="41.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/Icones/perfume/perfume_1.png" />
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/perfume/perfume_1.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnAdd" layoutX="37.0" layoutY="133.0" onAction="#cadastraProduto" prefHeight="43.0" prefWidth="35.0" text=" " textFill="#b8e0f8" />
+      <JFXButton fx:id="btnAdd" layoutX="40.0" layoutY="124.0" onAction="#cadastraProduto" prefHeight="35.0" prefWidth="29.0" text=" " textFill="#b8e0f8" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#232525" height="61.0" layoutX="677.0" layoutY="18.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="62.0">
          <effect>
             <DropShadow />
@@ -70,7 +70,7 @@
             <Image url="@../../../../../Desktop/Icones/estoque/stocks.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tbProduto" layoutX="134.0" layoutY="117.0" prefHeight="301.0" prefWidth="509.0">
+      <TableView fx:id="tbProduto" layoutX="134.0" layoutY="117.0" prefHeight="301.0" prefWidth="509.0" style="-fx-background-color: #95a1ab; -fx-border-color: white; -fx-border-radius: 5;" stylesheets="@../css/Tabelacss.css">
         <columns>
           <TableColumn fx:id="colNome" prefWidth="113.00003051757812" text="Nome" />
             <TableColumn fx:id="colMarca" prefWidth="75.0" text="Marca" />
@@ -79,14 +79,8 @@
             <TableColumn fx:id="colImagem" prefWidth="144.99996948242188" text="Imagem" />
         </columns>
       </TableView>
-      <ImageView fx:id="imagemIconeSair" fitHeight="27.0" fitWidth="30.0" layoutX="41.0" layoutY="292.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/Icones/menu/left-arrow-angle.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="btnVoltar" layoutX="34.0" layoutY="287.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="687.0" layoutY="293.0" stroke="WHITE" strokeType="INSIDE" width="62.0" />
-      <ImageView fx:id="iconeDelete" fitHeight="36.0" fitWidth="41.0" layoutX="700.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="687.0" layoutY="236.0" stroke="WHITE" strokeType="INSIDE" width="62.0" />
+      <ImageView fx:id="iconeDelete" fitHeight="36.0" fitWidth="41.0" layoutX="700.0" layoutY="245.0" pickOnBounds="true" preserveRatio="true">
          <effect>
             <DropShadow color="#392020" />
          </effect>
@@ -94,9 +88,9 @@
             <Image url="@../../../../../Desktop/Icones/menu/deletar.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="deleteProduto" layoutX="687.0" layoutY="293.0" prefHeight="54.0" prefWidth="62.0" text=" " />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f3a54" height="54.0" layoutX="687.0" layoutY="172.0" stroke="WHITE" strokeType="INSIDE" width="62.0" />
-      <ImageView fx:id="iconeEdit" fitHeight="35.0" fitWidth="35.0" layoutX="700.0" layoutY="183.0" pickOnBounds="true" preserveRatio="true">
+      <JFXButton fx:id="deleteProduto" layoutX="687.0" layoutY="236.0" prefHeight="54.0" prefWidth="62.0" text=" " />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f3a54" height="54.0" layoutX="687.0" layoutY="137.0" stroke="WHITE" strokeType="INSIDE" width="62.0" />
+      <ImageView fx:id="iconeEdit" fitHeight="35.0" fitWidth="35.0" layoutX="700.0" layoutY="148.0" pickOnBounds="true" preserveRatio="true">
          <effect>
             <DropShadow color="#392020" />
          </effect>
@@ -104,13 +98,34 @@
             <Image url="@../../../../../Desktop/Icones/editar/settings.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="editProduto" layoutX="687.0" layoutY="172.0" prefHeight="54.0" prefWidth="62.0" text=" " />
+      <JFXButton fx:id="editProduto" layoutX="687.0" layoutY="137.0" prefHeight="54.0" prefWidth="62.0" text=" " />
       <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="116.0" layoutY="37.0" prefHeight="25.0" prefWidth="235.0" promptText="Pesquisar" unFocusColor="WHITE" />
       <ImageView fx:id="imgPesquisa" fitHeight="18.0" fitWidth="20.0" layoutX="355.0" layoutY="47.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/pesquisa.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnGraficos" layoutX="34.0" layoutY="200.0" onAction="#graficos" prefHeight="43.0" prefWidth="35.0" text=" " textFill="#b8e0f8" />
+      <ImageView fx:id="imgGrafico" fitHeight="22.0" fitWidth="22.0" layoutX="43.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/grafico.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnGraficos" layoutX="41.0" layoutY="210.0" onAction="#graficos" prefHeight="27.0" prefWidth="27.0" text=" " />
+      <ImageView fx:id="imagemIconeSair" fitHeight="22.0" fitWidth="22.0" layoutX="42.0" layoutY="305.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnVoltar" alignment="BOTTOM_LEFT" layoutX="40.0" layoutY="302.0" onAction="#voltar" prefHeight="27.0" prefWidth="29.0" text=" " textFill="WHITE" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="687.0" layoutY="338.0" stroke="WHITE" strokeType="INSIDE" width="62.0" />
+      <ImageView fx:id="iconePDF" fitHeight="35.0" fitWidth="35.0" layoutX="699.0" layoutY="348.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow color="#392020" />
+         </effect>
+         <image>
+            <Image url="@../imagens/pdf%20(2).png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="emitirPDF" layoutX="687.0" layoutY="338.0" prefHeight="54.0" prefWidth="62.0" text=" " />
    </children>
 </AnchorPane>

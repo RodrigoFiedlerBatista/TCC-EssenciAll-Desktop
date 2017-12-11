@@ -36,13 +36,12 @@ public class InformacaoPedidoController implements Initializable {
     private void iniciaTextPedido() {
         // O que vai aparecer no text area
         String id_pedido;
-        String status;
+        ObservableList<String> status = FXCollections.observableArrayList();
         ObservableList<String> nomeProduto = FXCollections.observableArrayList();
         ObservableList<String> qtdProduto = FXCollections.observableArrayList();
         ObservableList<String> nomeRevendedor = FXCollections.observableArrayList();
         // Setando os valores
         id_pedido = String.valueOf(pedido.getId_pedido());
-        status = pedido.getStatus();
         // Logica para pegar o nome dos produtos no pedido
         ProdutoDAO produtoDAO = new ProdutoDAO();
         ObservableList<Produto> produtos = produtoDAO.selectProduto();
@@ -53,6 +52,7 @@ public class InformacaoPedidoController implements Initializable {
                 if (produtos.get(i).getId_produto() == pedido.getProdutos().get(j)) {
                     nomeProduto.add(produtos.get(i).getNome());
                     qtdProduto.add(String.valueOf(pedido.getQuantidade().get(j)));
+                    status.add(pedido.getStatus().get(j));
                     // Logica para pegar o nome do revendedor do produto
                     for (int k = 0; k < usuarios.size(); k++) {
                         if (produtos.get(i).getVendedor() == usuarios.get(k).getId_usuario()) {
@@ -64,12 +64,12 @@ public class InformacaoPedidoController implements Initializable {
         }
         // Setando o Text Area
         textPedido.setText("ID Pedido: " + id_pedido + "\n"
-                + "Status Do Pedido: " + status + "\n"
                 + "Produtos Comprados: \n\n");
         for (int i = 1; i <= nomeProduto.size(); i++) {
             textPedido.appendText("Produto " + i + ": " + nomeProduto.get(i - 1) + "\n"
                     + "Revendedor: " + nomeRevendedor.get(i - 1) + "\n"
                     + "Quantidade: " + qtdProduto.get(i - 1) + "\n"
+                    + "Status: " + status.get(i - 1) + "\n"
                     + "------------------------\n\n");
         }
         

@@ -12,7 +12,7 @@ import model.Usuario;
 public class UsuarioDAO {
     
     public void addUsuario(Usuario usuario){
-        String sql = "insert into usuario (usuario_login, usuario_senha, chave_senha, email, revendedor, url_imagem, ativada, codigo) values (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "insert into usuario (usuario_login, usuario_senha, chave_senha, email, revendedor, url_imagem, ativada, codigo, cidade, endereco) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         ConnectionFactory con = new ConnectionFactory();
         
         try {
@@ -25,6 +25,8 @@ public class UsuarioDAO {
             stmt.setString(6, usuario.getUrl_imagem());
             stmt.setBoolean(7, usuario.isAtivado());
             stmt.setString(8, usuario.getCodigo());
+            stmt.setString(9, usuario.getCidade());
+            stmt.setString(10, usuario.getEndereco());
             stmt.execute();
         } catch (SQLException e) {
             System.out.println("nao foi por algum motivo");
@@ -87,6 +89,8 @@ public class UsuarioDAO {
                 usuario.setUrl_imagem(rs.getString("url_imagem"));
                 usuario.setAtivado(rs.getBoolean("ativada"));
                 usuario.setCodigo(rs.getString("codigo"));
+                usuario.setCidade(rs.getString("cidade"));
+                usuario.setEndereco(rs.getString("endereco"));
                 usuarios.add(usuario);
             }
         } catch (SQLException ex) {
@@ -162,6 +166,32 @@ public class UsuarioDAO {
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setString(1, login + ".png");
+            stmt.setInt(2, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void atualizaCidade(String cidade, ObservableList<Usuario> usuarios) {
+        String sql = "update usuario set cidade = ? where id_usuario = ?;";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, cidade);
+            stmt.setInt(2, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(UsuarioDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    public void atualizaEndereco(String endereco, ObservableList<Usuario> usuarios) {
+        String sql = "update usuario set endereco = ? where id_usuario = ?;";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, endereco);
             stmt.setInt(2, usuarios.get(Usuario.getUsuarioLogado()).getId_usuario());
             stmt.execute();
         } catch (SQLException ex) {

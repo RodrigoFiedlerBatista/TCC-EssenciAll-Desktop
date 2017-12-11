@@ -114,4 +114,17 @@ public class ProdutoDAO {
         }
     }
     
+    public void editaVendidos(int vendidos, int id) {
+        String sql = "update produto set vendidos = ? where id_produto = ?";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setInt(1, vendidos);
+            stmt.setInt(2, id);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
 }

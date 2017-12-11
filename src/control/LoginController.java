@@ -58,6 +58,9 @@ public class LoginController implements Initializable {
     @FXML
     private JFXButton botaoLogin;
     
+    @FXML
+    private ImageView imgGif;
+    
     private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
     
     @FXML
@@ -109,6 +112,7 @@ public class LoginController implements Initializable {
         }
         
         if (logou == false) {
+            textSenha.clear();
             alerta.erroLogin();
         }
         
@@ -136,6 +140,7 @@ public class LoginController implements Initializable {
         imgLogin.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\userBranco.png"));
         imgSenha.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\keyBranco.png"));
         ImagemIconeNovasenha.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\nova senhaBranco.png"));
+        //imgGif.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\gif\\gifLogin.gif"));
         
     }
     
@@ -248,6 +253,8 @@ public class LoginController implements Initializable {
         fadeIn(img_desodorante);
         task();
         Carrinho.clear();
+        Usuario.setUsuarioLogado(-1);
+        
     }    
     
 }

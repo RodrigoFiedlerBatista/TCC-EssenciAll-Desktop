@@ -13,19 +13,20 @@ import model.Produto;
 public class PedidoDAO {
     
     public void addPedido(int cliente, ObservableList<Produto> produtos) {
-        String sql = "insert into pedido (id_usuario, status) values (?, ?);";
-        String sql2 = "insert into itenPedido (id_produto, id_pedido, quantidade) values (?, ?, ?);";
+        String sql = "insert into pedido (id_usuario) values (?);";
+        String sql2 = "insert into itenPedido (id_produto, id_pedido, quantidade, status, visualizado) values (?, ?, ?, ?, ?);";
         ConnectionFactory con = new ConnectionFactory();
         try {
             PreparedStatement stmt = con.getConnection().prepareStatement(sql);
             stmt.setInt(1, cliente);
-            stmt.setString(2, "Esperando Pagamento");
             stmt.execute();
             PreparedStatement stmt2 = con.getConnection().prepareStatement(sql2);
             for (int i = 0; i < produtos.size(); i++) {
                 stmt2.setInt(1, produtos.get(i).getId_produto());
                 stmt2.setInt(2, ultimoPedido());
                 stmt2.setInt(3, produtos.get(i).getQuantidade());
+                stmt2.setString(4, "Aguardando Entrega");
+                stmt2.setBoolean(5, false);
                 stmt2.execute();
             }
         } catch (SQLException ex) {
@@ -64,7 +65,6 @@ public class PedidoDAO {
             while(rs.next()) {
                 Pedido pedido = new Pedido();
                 pedido.setId_pedido(rs.getInt("id_pedido"));
-                pedido.setStatus(rs.getString("status"));
                 pedido.setCliente(rs.getInt("id_usuario"));
                 pedidos.add(pedido);
             }
@@ -75,6 +75,9 @@ public class PedidoDAO {
                 pedido.setProdutos(rs2.getInt("id_produto"));
                 pedido.setId_pedido(rs2.getInt("id_pedido"));
                 pedido.setQuantidade(rs2.getInt("quantidade"));
+                pedido.setStatus(rs2.getString("status"));
+                pedido.setVisualizado(rs2.getBoolean("visualizado"));
+                pedido.setId_itenpedido(rs2.getInt("id_itenpedido"));
                 itenPedidos.add(pedido);
             }
             for (int i = 0; i < pedidos.size(); i++) {
@@ -82,6 +85,9 @@ public class PedidoDAO {
                     if (pedidos.get(i).getId_pedido() == itenPedidos.get(j).getId_pedido()) {
                         pedidos.get(i).setProdutos(itenPedidos.get(j).getProdutos().get(0));
                         pedidos.get(i).setQuantidade(itenPedidos.get(j).getQuantidade().get(0));
+                        pedidos.get(i).setStatus(itenPedidos.get(j).getStatus().get(0));
+                        pedidos.get(i).setVisualizado(itenPedidos.get(j).getVisualizado().get(0));
+                        pedidos.get(i).setId_itenpedido(itenPedidos.get(j).getId_itenpedido().get(0));
                     }
                 }
             }
@@ -89,6 +95,19 @@ public class PedidoDAO {
             Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return pedidos;
+    }
+    
+    public void editaStatus(String status, int id_itenpedido) {
+        String sql = "update itenpedido set status = ? where id_itenpedido = ?;";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setString(1, status);
+            stmt.setInt(2, id_itenpedido);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(PedidoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
     
 }

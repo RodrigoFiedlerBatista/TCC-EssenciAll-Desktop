@@ -2,8 +2,11 @@ package control;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -21,6 +24,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import model.Alertas;
+import model.GeraPdf;
 import model.GerenciaArquivos;
 import model.Produto;
 import model.TCC;
@@ -87,6 +91,15 @@ public class EstoqueController implements Initializable {
     @FXML
     private JFXButton btnGraficos;
     
+    @FXML
+    private ImageView imgGrafico;
+    
+    @FXML
+    private JFXButton emitirPDF;
+
+    @FXML
+    private ImageView iconePDF;
+    
     private Produto produto;
     
     private ObservableList<Produto> produtos;
@@ -146,6 +159,8 @@ public class EstoqueController implements Initializable {
         icone_cadastrarPerfume.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfume_1.png"));
         imgFundoEstoque.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\PerfumeCadastrar.jpg"));
         imgPesquisa.setImage(new Image ("File:///" + System.getProperty("user.dir") + "\\src\\imagens\\pesquisa.png"));
+        imgGrafico.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\grafico.png"));
+        iconePDF.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\pdf_2.png"));
     }
     
     private void acaoBotoes() {
@@ -163,10 +178,11 @@ public class EstoqueController implements Initializable {
                 alertas.erroDeletarProduto();
             } else {
                 Alert alerta = new Alert(AlertType.CONFIRMATION);
-                alerta.setTitle("Confirmação");
-                alerta.setHeaderText("Tem certeza que deseja excluir esse produto?");
+                alerta.setTitle("Atenção");
+                alerta.setHeaderText("Não é possivel excluir produtos. Marcar produto como");
                 alerta.showAndWait().ifPresent(b -> {
                     if (b == alerta.getButtonTypes().get(0)) {
+                        
                         GerenciaArquivos gerencia = new GerenciaArquivos();
                         ProdutoDAO produtoDAO = new ProdutoDAO();
                         UsuarioDAO usuarioDAO = new UsuarioDAO();
@@ -217,6 +233,32 @@ public class EstoqueController implements Initializable {
             icone_cadastrarPerfume.setScaleY(1.0);
         });
         btnAdd.setTooltip(new Tooltip("Cadastrar Produto"));
+        btnGraficos.setOnMouseEntered(event -> {
+            imgGrafico.setScaleX(1.1);
+            imgGrafico.setScaleY(1.1);
+        });
+        btnGraficos.setOnMouseExited(event -> {
+            imgGrafico.setScaleX(1.0);
+            imgGrafico.setScaleY(1.0);
+        });
+        btnGraficos.setTooltip(new Tooltip("Graficos"));
+        emitirPDF.setOnMouseClicked(event -> {
+            GeraPdf geraPdf = new GeraPdf();
+            try {
+                geraPdf.gerarPdf("ProdutosRevendedor");
+            } catch (IOException ex) {
+                Logger.getLogger(EstoqueController.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        emitirPDF.setOnMouseEntered(event -> {
+            iconePDF.setScaleX(1.1);
+            iconePDF.setScaleY(1.1);
+        });
+        emitirPDF.setOnMouseExited(event -> {
+            iconePDF.setScaleX(1.0);
+            iconePDF.setScaleY(1.0);
+        });
+        emitirPDF.setTooltip(new Tooltip("Gerar PDF"));
     }
     
     private void pesquisaTabela(){

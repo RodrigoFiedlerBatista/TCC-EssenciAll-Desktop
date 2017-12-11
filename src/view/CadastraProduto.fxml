@@ -29,7 +29,7 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="76.0" layoutX="96.0" layoutY="60.0" opacity="0.5" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="537.0" />
       <ImageView fx:id="imgEssencial" fitHeight="105.0" fitWidth="112.0" layoutX="527.0" layoutY="323.0" opacity="0.1" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../Desktop/EssenciAll2.png" />
+            <Image url="@../imagens/EssenciAll.png" />
          </image>
       </ImageView>
       <ImageView fx:id="imgProduto" fitHeight="122.0" fitWidth="135.0" layoutX="116.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true" />
@@ -70,5 +70,10 @@
       <JFXButton fx:id="btnVoltar" layoutX="36.0" layoutY="203.0" onAction="#voltar" prefHeight="36.0" prefWidth="41.0" text=" " />
       <JFXComboBox fx:id="cbMarca" focusColor="#14fff3" layoutX="365.0" layoutY="323.0" prefHeight="25.0" prefWidth="232.0" unFocusColor="WHITE" />
       <Label layoutX="366.0" layoutY="307.0" text="Marca" textFill="WHITE" />
+      <JFXTextField fx:id="textCodigo" focusColor="#14fff3" labelFloat="true" layoutX="457.0" layoutY="139.0" promptText="Código" unFocusColor="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="14.0" />
+         </font>
+      </JFXTextField>
    </children>
 </AnchorPane>

@@ -13,6 +13,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListCell;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.Tooltip;
@@ -86,7 +87,7 @@ public class EncontrarRevendedorController implements Initializable {
     private void iniciaImagem() {
         imgFundo.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfumecapa.jpg"));
         imgPesquisa.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\pesquisa.png"));
-        imgPerfilRevendedor.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin()));
+        imgPerfilRevendedor.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + ".png"));
         imgConta1.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
         imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png"));
         imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
@@ -154,6 +155,17 @@ public class EncontrarRevendedorController implements Initializable {
         marcas.add("UP");
         marcas.add("Avon");
         cbMarcas.setItems(marcas);
+        cbMarcas.setButtonCell(new ListCell<String>(){
+            @Override
+            protected void updateItem(String item, boolean empty) {
+                super.updateItem(item, empty); 
+                setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
+                if(!(empty || item==null)){
+                    setText("");
+                    setText(item.toString());
+                }
+            }
+        });
     }
     
     private void iniciaTabela() {
@@ -168,6 +180,7 @@ public class EncontrarRevendedorController implements Initializable {
                 RevendeDAO revendeDAO = new RevendeDAO();
                 usuarios = usuarioDAO.selectUsuario();
                 ObservableList<Revende> revende = revendeDAO.selectRevende();
+                usuariosSelecionados = FXCollections.observableArrayList();
                 //ObservableList<Usuario> usuariosSelecionados = FXCollections.observableArrayList();
                 switch(newValue) {
                     case "Eudora":
@@ -344,6 +357,7 @@ public class EncontrarRevendedorController implements Initializable {
         labelNome.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
         labelNome.autosize();
         tbRevendedor.setPlaceholder(new Label("Não há revendedores"));
+        textPesquisa.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
     }
     
 }

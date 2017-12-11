@@ -5,6 +5,46 @@ import javafx.scene.control.Alert.AlertType;
 
 public class Alertas {
     
+    public void statusAlterado() {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Pedido");
+        alerta.setHeaderText("Status");
+        alerta.setContentText("Status do pedido alterado com sucesso.");
+        alerta.show();
+    }
+    
+    public void erroCodigoProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Cadastro");
+        alerta.setContentText("Digite um codigo valido.");
+        alerta.show();
+    }
+    
+    public void empresasEditadas() {
+        Alert alerta = new Alert(AlertType.INFORMATION);
+        alerta.setTitle("Editar");
+        alerta.setHeaderText("Empresas");
+        alerta.setContentText("Empresas editadas com sucesso.");
+        alerta.show();
+    }
+    
+    public void erroEnderecoInvalido() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Cadastro");
+        alerta.setContentText("Digite um endereco. O endereco não deve passar de 200 caracteres.");
+        alerta.show();
+    }
+    
+    public void erroCidadeInvalida() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Cadastro");
+        alerta.setContentText("Digite uma cidade. O nome da cidade não deve passar de 100 caracteres.");
+        alerta.show();
+    }
+    
     public void erroSelecionePedido() {
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro");
@@ -89,6 +129,14 @@ public class Alertas {
         Alert alerta = new Alert(AlertType.ERROR);
         alerta.setTitle("Erro");
         alerta.setHeaderText("Editar Produto");
+        alerta.setContentText("Selecione um produto!");
+        alerta.show();
+    }
+    
+    public void erroSelecioneProduto() {
+        Alert alerta = new Alert(AlertType.ERROR);
+        alerta.setTitle("Erro");
+        alerta.setHeaderText("Produto");
         alerta.setContentText("Selecione um produto!");
         alerta.show();
     }

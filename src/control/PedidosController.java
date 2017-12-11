@@ -16,7 +16,9 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import model.Alertas;
 import model.Pedido;
 import model.TCC;
+import model.Usuario;
 import model.jdbc.PedidoDAO;
+import model.jdbc.UsuarioDAO;
 
 public class PedidosController implements Initializable {
     
@@ -54,7 +56,15 @@ public class PedidosController implements Initializable {
     private void iniciaTabela() {
         PedidoDAO pedidoDAO = new PedidoDAO();
         ObservableList<Pedido> pedidos = pedidoDAO.selectPedido();
-        tbPedido.setItems(pedidos);
+        ObservableList<Pedido> pedidoDefinitivo = FXCollections.observableArrayList();
+        UsuarioDAO usuarioDAO = new UsuarioDAO();
+        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
+        for (int i = 0; i < pedidos.size(); i++) {
+            if (pedidos.get(i).getCliente() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
+                pedidoDefinitivo.add(pedidos.get(i));
+            }
+        }
+        tbPedido.setItems(pedidoDefinitivo);
         colID.setCellValueFactory(new PropertyValueFactory("id_pedido"));
         colStatus.setCellValueFactory(new PropertyValueFactory("status"));
         tbPedido.setPlaceholder(new Label("Nenhum Pedido Realizado!"));
