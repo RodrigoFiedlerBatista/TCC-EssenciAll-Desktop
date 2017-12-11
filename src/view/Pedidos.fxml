@@ -1,21 +1,106 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="control.PedidosController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="control.PedidosController">
    <children>
-      <TableView fx:id="tbPedido" layoutX="309.0" layoutY="22.0" prefHeight="357.0" prefWidth="249.0">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="449.0" layoutX="-1.0" layoutY="-1.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="741.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0" startX="0.21428571428571425" startY="0.6142857142857143">
+               <stops>
+                  <Stop color="#233443" />
+                  <Stop color="#2c2c31" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <TableView fx:id="tbPedido" layoutX="292.0" layoutY="174.0" prefHeight="256.0" prefWidth="422.0">
         <columns>
-          <TableColumn fx:id="colID" prefWidth="100.0" text="ID_Pedido" />
-          <TableColumn fx:id="colStatus" prefWidth="148.0" text="Status" />
+          <TableColumn fx:id="colID" prefWidth="194.0" text="ID_Pedido" />
+          <TableColumn fx:id="colStatus" prefWidth="197.00006103515625" text="Status" />
         </columns>
       </TableView>
-      <Button layoutX="211.0" layoutY="145.0" mnemonicParsing="false" onAction="#verPedido" text="Ver Pedido" />
-      <Button layoutX="223.0" layoutY="200.0" mnemonicParsing="false" onAction="#voltar" text="Voltar" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="66.0" layoutX="80.0" layoutY="28.0" opacity="0.7" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="659.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#858d8c" height="28.0" layoutX="80.0" layoutY="94.0" opacity="0.4" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="659.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="447.0" layoutX="-1.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="86.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="-38.0" layoutY="-41.0" rotate="-30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="54.0" layoutX="-107.0" layoutY="394.0" rotate="30.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="194.0">
+         <effect>
+            <InnerShadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#9d0606" height="425.0" layoutY="13.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+      <ImageView fx:id="imgLogout" fitHeight="22.0" fitWidth="22.0" layoutX="41.0" layoutY="346.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/left-arrow-angle.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnSair" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="342.0" onAction="#voltar" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgConta" fitHeight="22.0" fitWidth="22.0" layoutX="42.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/ContaBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="278.0" onAction="#conta" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="41.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/revendedoresBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnRevendedores" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="141.0" onAction="#revendedores" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="30.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="36.0" layoutY="71.0" onAction="#carrinho" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <JFXButton layoutX="122.0" layoutY="268.0" onAction="#verPedido" prefHeight="27.0" prefWidth="129.0" style="-fx-border-color: white; -fx-border-radius: 2;" text="Ver Pedido" textFill="WHITE" />
+      <ImageView fx:id="imgPerfilRevendedor" fitHeight="104.0" fitWidth="99.0" layoutX="121.0" layoutY="50.0" pickOnBounds="true" preserveRatio="true">
+         <effect>
+            <DropShadow />
+         </effect>
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="labelNome" layoutX="241.0" layoutY="98.0" text="Nome" textFill="WHITE">
+         <font>
+            <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="695.0" layoutY="146.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/pesquisa.png" />
+         </image>
+      </ImageView>
+      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="462.0" layoutY="138.0" prefHeight="25.0" prefWidth="250.0" promptText="Pesquisar Pedido" unFocusColor="WHITE" />
+      <ImageView fx:id="imgHome" fitHeight="22.0" fitWidth="22.0" layoutX="43.0" layoutY="213.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../imagens/homeBranco.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="btnHome" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="210.0" onAction="#home" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <Separator layoutX="429.0" layoutY="73.0" prefWidth="200.0" />
+      <Label layoutX="504.0" layoutY="38.0" text="Pedidos" textFill="WHITE">
+         <font>
+            <Font name="Bank Gothic Light BT" size="32.0" />
+         </font>
+      </Label>
+      <JFXRadioButton fx:id="checkFinalizado" layoutX="117.0" layoutY="230.0" text="Pedido Finalizado" textFill="WHITE" visible="false" />
+      <JFXRadioButton fx:id="checkNaoFinalizado" layoutX="107.0" layoutY="270.0" text="Pedido Não Finalizado" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>

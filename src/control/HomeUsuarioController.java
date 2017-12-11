@@ -46,9 +46,6 @@ public class HomeUsuarioController implements Initializable {
     private JFXButton btnConta;
 
     @FXML
-    private JFXButton btnRevendedor;
-
-    @FXML
     private ImageView imgFundo;
 
     @FXML
@@ -56,9 +53,6 @@ public class HomeUsuarioController implements Initializable {
 
     @FXML
     private ImageView imgPerfil;
-
-    @FXML
-    private ImageView imgRevendedores;
 
     @FXML
     private JFXTextField textEmail;
@@ -236,7 +230,7 @@ public class HomeUsuarioController implements Initializable {
         usuarios = usuarioDAO.selectUsuario();
         url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
         imgPerfil.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + url));
-        imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
+        //imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgConta.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
         //imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\cart.png")); 
         //imgMenu.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\menu.png"));
@@ -282,15 +276,6 @@ public class HomeUsuarioController implements Initializable {
             imgHome.setScaleY(1.0);
         });
         btnHome.setTooltip(new Tooltip("Home"));
-        btnRevendedor.setOnMouseEntered(event ->{
-            imgRevendedores.setScaleX(1.1);
-            imgRevendedores.setScaleY(1.1);
-        });
-        btnRevendedor.setOnMouseExited(event ->{
-            imgRevendedores.setScaleX(1.0);
-            imgRevendedores.setScaleY(1.0);
-        });
-        btnRevendedor.setTooltip(new Tooltip("Revendedores"));
     }
     
     @Override

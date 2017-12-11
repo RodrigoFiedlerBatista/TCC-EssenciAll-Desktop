@@ -69,20 +69,21 @@
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
          </image>
       </ImageView>
-      <TableView fx:id="tbPedido" layoutX="312.0" layoutY="176.0" prefHeight="254.0" prefWidth="411.0">
+      <TableView fx:id="tbPedido" layoutX="262.0" layoutY="176.0" prefHeight="254.0" prefWidth="461.0">
         <columns>
-          <TableColumn fx:id="colPedido" prefWidth="94.0" text="ID" />
-          <TableColumn fx:id="colProduto" prefWidth="147.0" text="Produto" />
-            <TableColumn fx:id="colCliente" prefWidth="169.0" text="Cliente" />
+          <TableColumn fx:id="colPedido" prefWidth="54.0" text="ID" />
+          <TableColumn fx:id="colProduto" prefWidth="129.0" text="Produto" />
+            <TableColumn fx:id="colCliente" prefWidth="138.0" text="Cliente" />
+            <TableColumn fx:id="colStatus" prefWidth="139.0" text="Status" />
         </columns>
       </TableView>
-      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="312.0" layoutY="139.0" prefHeight="25.0" prefWidth="250.0" promptText="Pesquisar Pedido" unFocusColor="WHITE" />
-      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="545.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
+      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="368.0" layoutY="139.0" prefHeight="25.0" prefWidth="250.0" promptText="Pesquisar Pedido" unFocusColor="WHITE" />
+      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="601.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/pesquisa.png" />
          </image>
       </ImageView>
-      <JFXRadioButton fx:id="checkEntregue" layoutX="123.0" layoutY="231.0" text="Produto Entregado" textFill="WHITE" />
-      <JFXRadioButton fx:id="checkNaoEntregue" layoutX="110.0" layoutY="286.0" text="Produto Não Entregado" textFill="WHITE" />
+      <JFXRadioButton fx:id="checkEntregue" layoutX="88.0" layoutY="231.0" text="Produto Entregado" textFill="WHITE" />
+      <JFXRadioButton fx:id="checkNaoEntregue" layoutX="88.0" layoutY="286.0" text="Produto Não Entregado" textFill="WHITE" />
    </children>
 </AnchorPane>

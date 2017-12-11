@@ -26,6 +26,12 @@ public class GerenciaArquivos {
         new File(diretorio).mkdirs();
     }
     
+    public void renameDir(String diretorio, String novoDiretorio) {
+        File file1 = new File(diretorio);
+        File file2 = new File(novoDiretorio);
+        file1.renameTo(file2);
+    }
+    
     public void deleta(String arquivo){
         Path source = Paths.get(arquivo);
         try {

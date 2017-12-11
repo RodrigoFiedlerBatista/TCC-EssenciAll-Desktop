@@ -78,6 +78,9 @@ public class EncontrarRevendedorController implements Initializable {
     @FXML
     private JFXButton btnPedido;
     
+    @FXML
+    private TableColumn<Usuario, String> clCidade;
+    
     private ObservableList<Usuario> usuarios = FXCollections.observableArrayList();
     
     private ObservableList<Usuario> usuariosSelecionados = FXCollections.observableArrayList();
@@ -89,7 +92,7 @@ public class EncontrarRevendedorController implements Initializable {
         imgPesquisa.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\pesquisa.png"));
         imgPerfilRevendedor.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + ".png"));
         imgConta1.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\ContaBranco.png"));
-        imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png"));
+        imgLogout.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\left-arrow-angle.png"));
         imgRevendedores.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\revendedoresBranco.png"));
         imgCart.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\PedidosBranco.png"));
     }
@@ -132,6 +135,11 @@ public class EncontrarRevendedorController implements Initializable {
             tcc.fechaTela();
             tcc.iniciaStage("HomeUsuario.fxml");
         });
+        btnPedido.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("Carrinho.fxml");
+        });
         btnPedido.setOnMouseEntered(event -> {
             imgCart.setScaleX(1.1);
             imgCart.setScaleY(1.1);
@@ -170,6 +178,7 @@ public class EncontrarRevendedorController implements Initializable {
     
     private void iniciaTabela() {
         clNome.setCellValueFactory(new PropertyValueFactory("login"));
+        clCidade.setCellValueFactory(new PropertyValueFactory("cidade"));
     }
     
     private void atualizaComboBox() {

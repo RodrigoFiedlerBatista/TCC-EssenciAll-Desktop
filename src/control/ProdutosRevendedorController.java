@@ -60,6 +60,9 @@ public class ProdutosRevendedorController implements Initializable {
     private JFXButton btnMenos;
     
     @FXML
+    private JFXButton btnConta;
+    
+    @FXML
     private ImageView imgPerfil;
     
     @FXML
@@ -76,6 +79,12 @@ public class ProdutosRevendedorController implements Initializable {
     
     @FXML
     private JFXButton btnVoltar;
+    
+    @FXML
+    private JFXButton btnPedido;
+    
+    @FXML
+    private JFXButton btnRevendedores;
     
     private static Usuario usuario;
     
@@ -113,16 +122,17 @@ public class ProdutosRevendedorController implements Initializable {
     private void iniciaTabela() {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         ObservableList<Produto> produtos = produtoDAO.selectProduto();
-        //ObservableList<Produto> produtos2 = FXCollections.observableArrayList();
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuario.getId_usuario()) {
-                ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
-                imagem.setFitHeight(100);
-                imagem.setFitWidth(100);
-                produtos.get(i).setImagem(imagem);
-                produtos.get(i).setDisponivel();
-                System.out.println(produtos.get(i).getDisponivel());
-                produtos2.add(produtos.get(i));
+                if (produtos.get(i).getQuantidade() > 0) {
+                    ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
+                    imagem.setFitHeight(100);
+                    imagem.setFitWidth(100);
+                    produtos.get(i).setImagem(imagem);
+                    produtos.get(i).setDisponivel();
+                    System.out.println(produtos.get(i).getDisponivel());
+                    produtos2.add(produtos.get(i));
+                }
             }
         }
         tbProduto.setItems(produtos2);
@@ -207,6 +217,48 @@ public class ProdutosRevendedorController implements Initializable {
             imgLogout.setScaleY(1.0);
         });
         btnVoltar.setTooltip(new Tooltip("Voltar"));
+        btnConta.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("HomeUsuario.fxml");
+        });
+        btnConta.setOnMouseEntered(event -> {
+            imgConta1.setScaleX(1.1);
+            imgConta1.setScaleY(1.1);
+        });
+        btnConta.setOnMouseExited(event -> {
+            imgConta1.setScaleX(1.0);
+            imgConta1.setScaleY(1.0);
+        });
+        btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnRevendedores.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("EncontrarRevendedor.fxml");
+        });
+        btnRevendedores.setOnMouseEntered(event -> {
+            imgRevendedores.setScaleX(1.1);
+            imgRevendedores.setScaleY(1.1);
+        });
+        btnRevendedores.setOnMouseExited(event -> {
+            imgRevendedores.setScaleX(1.0);
+            imgRevendedores.setScaleY(1.0);
+        });
+        btnRevendedores.setTooltip(new Tooltip("Encontrar Revendedores"));
+        btnPedido.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("Carrinho.fxml");
+        });
+        btnPedido.setOnMouseEntered(event -> {
+            imgCart.setScaleX(1.1);
+            imgCart.setScaleY(1.1);
+        });
+        btnPedido.setOnMouseExited(event -> {
+            imgCart.setScaleX(1.0);
+            imgCart.setScaleY(1.0);
+        });
+        btnPedido.setTooltip(new Tooltip("Carrinho"));
     }
     
     @Override

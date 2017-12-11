@@ -56,7 +56,7 @@
             <Image url="@../../../../../Desktop/Icones/Usuario/revendedoresBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnRevendedor" alignment="BOTTOM_LEFT" layoutX="42.0" layoutY="207.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnRevendedor" alignment="BOTTOM_LEFT" layoutX="42.0" layoutY="207.0" onAction="#home" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="45.0" layoutY="274.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/Icones/Usuario/ContaBranco.png" />

@@ -179,16 +179,12 @@ public class EstoqueController implements Initializable {
             } else {
                 Alert alerta = new Alert(AlertType.CONFIRMATION);
                 alerta.setTitle("Atenção");
-                alerta.setHeaderText("Não é possivel excluir produtos. Marcar produto como");
+                alerta.setHeaderText("Não é possivel excluir produtos, para que o produto não apareça para seus clientes defina sua quantidade no estoque para 0\nDefinir quantidade para 0?");
                 alerta.showAndWait().ifPresent(b -> {
                     if (b == alerta.getButtonTypes().get(0)) {
-                        
-                        GerenciaArquivos gerencia = new GerenciaArquivos();
                         ProdutoDAO produtoDAO = new ProdutoDAO();
-                        UsuarioDAO usuarioDAO = new UsuarioDAO();
-                        ObservableList<Usuario> usuarios = usuarioDAO.selectUsuario();
-                        produtoDAO.removeProduto(produto.getId_produto());
-                        gerencia.deleta(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin() + "\\" + produto.getNome() + ".png");
+                        produto.setQuantidade(0);
+                        produtoDAO.editaProduto(produto);
                         atualizaTabela();
                     }
                 });

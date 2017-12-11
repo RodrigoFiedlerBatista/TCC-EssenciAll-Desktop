@@ -20,8 +20,10 @@ import model.CriptografiaOtp;
 import model.Email;
 import model.GerenciaArquivos;
 import model.GerenciaImagem;
+import model.Produto;
 import model.TCC;
 import model.Usuario;
+import model.jdbc.ProdutoDAO;
 import model.jdbc.UsuarioDAO;
 
 public class HomeRevendedorController implements Initializable {
@@ -119,6 +121,14 @@ public class HomeRevendedorController implements Initializable {
                 usuario.atualizaLogin(textLogin.getText(), usuarios);
                 usuario.atualizaUrlImagem(textLogin.getText(), usuarios);
                 gerencia.move(System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem(), System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + textLogin.getText() + ".png");
+                gerencia.renameDir(System.getProperty("user.dir") + "\\imagensProdutos\\" + usuarios.get(Usuario.getUsuarioLogado()).getLogin(), System.getProperty("user.dir") + "\\imagensProdutos\\" + textLogin.getText());
+                ProdutoDAO produtoDAO = new ProdutoDAO();
+                ObservableList<Produto> produtos = produtoDAO.selectProduto();
+                for (int i = 0; i < produtos.size(); i++) {
+                    if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {
+                        produtoDAO.editaUrlImagem(System.getProperty("user.dir") + "\\imagensProdutos\\" + textLogin.getText() + "\\" + produtos.get(i).getNome() + ".png", produtos.get(i).getId_produto());
+                    }
+                }
                 usuarios = usuario.selectUsuario();
                 url = usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem();
                 trocou = true;

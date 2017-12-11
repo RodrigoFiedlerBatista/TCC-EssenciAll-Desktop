@@ -59,24 +59,24 @@
          </image>
       </ImageView>
       <JFXButton fx:id="btnVoltar" alignment="BOTTOM_LEFT" layoutX="36.0" layoutY="293.0" onAction="#voltar" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
-      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="230.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgConta1" fitHeight="22.0" fitWidth="22.0" layoutX="42.0" layoutY="233.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/ContaBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnRevendedores" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="166.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnConta" alignment="BOTTOM_LEFT" layoutX="39.0" layoutY="230.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgRevendedores" fitHeight="28.0" fitWidth="22.0" layoutX="42.0" layoutY="170.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/revendedoresBranco.png" />
          </image>
       </ImageView>
-      <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="100.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
+      <JFXButton fx:id="btnRevendedores" alignment="BOTTOM_LEFT" layoutX="38.0" layoutY="166.0" prefHeight="28.0" prefWidth="28.0" text=" " textFill="WHITE" />
       <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="31.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/estoque/PedidosBranco.png" />
          </image>
       </ImageView>
+      <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="37.0" layoutY="100.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
       <Label fx:id="labelNome" layoutX="233.0" layoutY="95.0" text="Nome" textFill="WHITE">
          <font>
             <Font name="Tw Cen MT Condensed Extra Bold" size="18.0" />

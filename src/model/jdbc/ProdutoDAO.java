@@ -114,6 +114,19 @@ public class ProdutoDAO {
         }
     }
     
+    public void editaQuantidade(int quantidade, int id_produto) {
+        String sql = "update produto set quantidade = ? where id_produto = ?;";
+        ConnectionFactory con = new ConnectionFactory();
+        try {
+            PreparedStatement stmt = con.getConnection().prepareStatement(sql);
+            stmt.setInt(1, quantidade);
+            stmt.setInt(2, id_produto);
+            stmt.execute();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProdutoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
     public void editaVendidos(int vendidos, int id) {
         String sql = "update produto set vendidos = ? where id_produto = ?";
         ConnectionFactory con = new ConnectionFactory();

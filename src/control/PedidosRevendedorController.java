@@ -84,7 +84,12 @@ public class PedidosRevendedorController implements Initializable {
     @FXML
     private TableView<AuxiliaTable> tbPedido;
     
+    @FXML
+    private TableColumn<AuxiliaTable, String> colStatus;
+    
     private AuxiliaTable pedido;
+    
+    private ObservableList<AuxiliaTable> auxilia = FXCollections.observableArrayList();
     
     @FXML
     void home(ActionEvent event) {
@@ -176,7 +181,6 @@ public class PedidosRevendedorController implements Initializable {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         ObservableList<Produto> produtos = produtoDAO.selectProduto();
         ObservableList<Produto> produtosUsuario = FXCollections.observableArrayList();
-        ObservableList<AuxiliaTable> auxilia = FXCollections.observableArrayList();
         
         // Pega os produtos do usuario logado
         for (int i = 0; i < produtos.size(); i++) {
@@ -218,6 +222,12 @@ public class PedidosRevendedorController implements Initializable {
                 return new SimpleObjectProperty<>(p.getValue().getCliente());
             }
         });
+        colStatus.setCellValueFactory(new Callback<CellDataFeatures<AuxiliaTable, String>, ObservableValue<String>>() {
+            @Override
+            public ObservableValue<String> call(CellDataFeatures<AuxiliaTable, String> p) {
+                return new SimpleObjectProperty<>(p.getValue().getStatus());
+            }
+        });
     }
     
     private void acaoBotoes() {
@@ -250,18 +260,18 @@ public class PedidosRevendedorController implements Initializable {
         btnSair.setTooltip(new Tooltip("Sair"));
     }
     
-    /*private void pesquisaTabela() {
+    private void pesquisaTabela() {
         textPesquisa.setOnKeyReleased(event -> {
             //atualizaTabela();
-            ObservableList<Produto> novoProdutos = FXCollections.observableArrayList();
-            for (int i = 0; i < produtos.size(); i++) {
-                if (produtos.get(i).getNome().toLowerCase().startsWith(textPesquisa.getText().toLowerCase())) {
-                    novoProdutos.add(produtos.get(i));
+            ObservableList<AuxiliaTable> novoPedidos = FXCollections.observableArrayList();
+            for (int i = 0; i < auxilia.size(); i++) {
+                if (String.valueOf(auxilia.get(i).getIdPedido()).startsWith(textPesquisa.getText().toLowerCase())) {
+                    novoPedidos.add(auxilia.get(i));
                 }
             }
-            tbProduto.setItems(novoProdutos);
+            tbPedido.setItems(novoPedidos);
         });
-    }*/
+    }
     
     private void textCor() {
         textPesquisa.setStyle("-fx-text-fill: #14fff3; -fx-background-color:  transparent; -fx-prompt-text-fill: #ffffff");
@@ -276,6 +286,7 @@ public class PedidosRevendedorController implements Initializable {
         selecionaTabela();
         criaGrupo();
         selecionaRadioBotao();
+        pesquisaTabela();
     }    
     
 }

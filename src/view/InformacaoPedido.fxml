@@ -24,7 +24,7 @@
             </LinearGradient>
          </fill>
       </Rectangle>
-      <TextArea fx:id="textPedido" editable="false" layoutX="275.0" layoutY="166.0" prefHeight="262.0" prefWidth="420.0" />
+      <TextArea fx:id="textPedido" editable="false" layoutX="275.0" layoutY="173.0" prefHeight="262.0" prefWidth="420.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2c2c31" height="449.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="89.0" />
       <ImageView fx:id="imgCart" fitHeight="53.0" fitWidth="45.0" layoutX="31.0" layoutY="108.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -81,12 +81,5 @@
             <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/Usuario/userBranco.png" />
          </image>
       </ImageView>
-      <JFXTextField fx:id="textPesquisa" focusColor="#14fff3" layoutX="445.0" layoutY="135.0" prefHeight="25.0" prefWidth="250.0" promptText="Pesquisar Pedido" unFocusColor="WHITE" />
-      <ImageView fx:id="imgPesquisa" fitHeight="15.0" fitWidth="12.0" layoutX="678.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../Desktop/BackgroundEssenciAll/Icones/menu/pesquisa.png" />
-         </image>
-      </ImageView>
-      <JFXButton fx:id="deletePedido" layoutX="134.0" layoutY="282.0" prefHeight="27.0" prefWidth="101.0" style="-fx-border-color: white;" text="Excluir Pedido" textFill="WHITE" />
    </children>
 </AnchorPane>

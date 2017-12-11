@@ -142,6 +142,7 @@ public class ContaRevendedorController implements Initializable {
         imgLogout.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\sairBranco.png"));
         imgFundoContRevend.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\conta6.jpg"));
         imgPerfilRevendedor.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\usuario\\" + usuarios.get(Usuario.getUsuarioLogado()).getUrl_imagem()));
+        imgPedidos.setImage(new Image("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\perfumeProdutos.png"));
         imgEssencial.setImage(new Image ("file:///" + System.getProperty("user.dir") + "\\src\\imagens\\EssenciAll.png"));
         labelNome.setText(usuarios.get(Usuario.getUsuarioLogado()).getLogin());
         labelNome.autosize();

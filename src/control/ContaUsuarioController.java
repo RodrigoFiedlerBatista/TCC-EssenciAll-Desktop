@@ -142,6 +142,11 @@ public class ContaUsuarioController implements Initializable {
             tcc.iniciaStage("HomeUsuario.fxml");
         });
         btnConta.setTooltip(new Tooltip("Editar Perfil"));
+        btnRevendedor.setOnMouseClicked(event -> {
+            TCC tcc = new TCC();
+            tcc.fechaTela();
+            tcc.iniciaStage("EncontrarRevendedor.fxml");
+        });
         btnRevendedor.setOnMouseEntered(event -> {
             imgRevendedores.setScaleX(1.1);
             imgRevendedores.setScaleY(1.1);

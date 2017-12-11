@@ -84,7 +84,8 @@
       <JFXButton fx:id="btnPedido" alignment="BOTTOM_LEFT" layoutX="36.0" layoutY="103.0" prefHeight="35.0" prefWidth="35.0" text=" " textFill="WHITE" />
       <TableView fx:id="tbRevendedor" layoutX="305.0" layoutY="198.0" prefHeight="230.0" prefWidth="427.0" style="-fx-background-color: #95a1ab; -fx-border-color: white; -fx-border-radius: 4;" stylesheets="@../css/Tabelacss.css">
         <columns>
-          <TableColumn fx:id="clNome" prefWidth="424.00006103515625" text="Revendedor" />
+          <TableColumn fx:id="clNome" prefWidth="204.0" text="Revendedor" />
+            <TableColumn fx:id="clCidade" prefWidth="221.0" text="Cidade" />
         </columns>
       </TableView>
       <JFXButton layoutX="137.0" layoutY="291.0" onAction="#produtos" prefHeight="27.0" prefWidth="112.0" style="-fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: white;" text="Ver Produtos" textFill="WHITE" />
