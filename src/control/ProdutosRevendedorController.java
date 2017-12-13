@@ -88,9 +88,15 @@ public class ProdutosRevendedorController implements Initializable {
     
     private static Usuario usuario;
     
+    private static String marca;
+    
     private ObservableList<Produto> produtos2 = FXCollections.observableArrayList();
     
     private Produto produto;
+
+    public static void setMarca(String marca) {
+        ProdutosRevendedorController.marca = marca;
+    }
 
     public static void setUsuario(Usuario usuario) {
         ProdutosRevendedorController.usuario = usuario;
@@ -125,13 +131,15 @@ public class ProdutosRevendedorController implements Initializable {
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuario.getId_usuario()) {
                 if (produtos.get(i).getQuantidade() > 0) {
-                    ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
-                    imagem.setFitHeight(100);
-                    imagem.setFitWidth(100);
-                    produtos.get(i).setImagem(imagem);
-                    produtos.get(i).setDisponivel();
-                    System.out.println(produtos.get(i).getDisponivel());
-                    produtos2.add(produtos.get(i));
+                    if (produtos.get(i).getMarca().equals(marca)) {
+                        ImageView imagem = new ImageView(new Image("file:///" + produtos.get(i).getUrls().get(0)));
+                        imagem.setFitHeight(100);
+                        imagem.setFitWidth(100);
+                        produtos.get(i).setImagem(imagem);
+                        produtos.get(i).setDisponivel();
+                        System.out.println(produtos.get(i).getDisponivel());
+                        produtos2.add(produtos.get(i));
+                    }
                 }
             }
         }

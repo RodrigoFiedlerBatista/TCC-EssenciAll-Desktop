@@ -202,6 +202,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Eudora");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -215,6 +216,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Hinode");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -228,6 +230,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Jequiti");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -241,6 +244,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Laqua");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -254,6 +258,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Mary Kay");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -267,6 +272,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Natura");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -280,6 +286,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Boticario");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -293,6 +300,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("UP");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;
@@ -306,6 +314,7 @@ public class EncontrarRevendedorController implements Initializable {
                                 }
                             }
                         }
+                        ProdutosRevendedorController.setMarca("Avon");
                         tbRevendedor.setItems(usuariosSelecionados);
                         tbRevendedor.refresh();
                     break;

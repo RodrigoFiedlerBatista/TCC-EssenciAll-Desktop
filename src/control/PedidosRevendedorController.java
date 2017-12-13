@@ -128,14 +128,17 @@ public class PedidosRevendedorController implements Initializable {
         tbPedido.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AuxiliaTable>() {
             @Override
             public void changed(ObservableValue<? extends AuxiliaTable> observable, AuxiliaTable oldValue, AuxiliaTable newValue) {
-                if (newValue.getStatus().equals("Aguardando Entrega")) {
-                    checkNaoEntregue.setSelected(true);
-                    checkEntregue.setSelected(false);
-                } else {
-                    checkNaoEntregue.setSelected(false);
-                    checkEntregue.setSelected(true);
+                if (newValue != null) {
+                    if (newValue.getStatus().equals("Aguardando Entrega")) {
+                        checkNaoEntregue.setSelected(true);
+                        checkEntregue.setSelected(false);
+                    } else {
+                        checkNaoEntregue.setSelected(false);
+                        checkEntregue.setSelected(true);
+                    }
+                    pedido = newValue;
                 }
-                pedido = newValue;
+                
             }
         });
     }
@@ -151,6 +154,7 @@ public class PedidosRevendedorController implements Initializable {
                 pedidoDAO.editaStatus("Pedido Entregue", pedido.getId_itenpedido());
                 alertas.statusAlterado();
                 iniciaTabela();
+                tbPedido.refresh();
             }
         });
         checkNaoEntregue.setOnMouseClicked(event -> {
@@ -162,6 +166,7 @@ public class PedidosRevendedorController implements Initializable {
                 pedidoDAO.editaStatus("Aguardando Entrega", pedido.getId_itenpedido());
                 alertas.statusAlterado();
                 iniciaTabela();
+                tbPedido.refresh();
             }
         });
         
@@ -181,7 +186,7 @@ public class PedidosRevendedorController implements Initializable {
         ProdutoDAO produtoDAO = new ProdutoDAO();
         ObservableList<Produto> produtos = produtoDAO.selectProduto();
         ObservableList<Produto> produtosUsuario = FXCollections.observableArrayList();
-        
+        auxilia.clear();
         // Pega os produtos do usuario logado
         for (int i = 0; i < produtos.size(); i++) {
             if (produtos.get(i).getVendedor() == usuarios.get(Usuario.getUsuarioLogado()).getId_usuario()) {

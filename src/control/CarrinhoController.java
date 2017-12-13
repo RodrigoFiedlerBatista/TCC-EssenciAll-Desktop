@@ -96,7 +96,7 @@ public class CarrinhoController implements Initializable {
     @FXML
     void pedido(ActionEvent event) {
         Alertas alertas = new Alertas();
-        if (Carrinho.getCarrinho() == null) {
+        if (Carrinho.getCarrinho().isEmpty()) {
             alertas.carrinhoVazio();
         } else {
             PedidoDAO pedidoDAO = new PedidoDAO();
